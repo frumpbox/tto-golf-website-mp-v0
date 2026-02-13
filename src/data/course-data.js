@@ -1,5 +1,5 @@
 // Course data for Tyrells Wood
-const courses = {
+export const courses = {
   tyrellsWood: {
     name: "Tyrells Wood",
     courseRating: 70.7,
@@ -450,7 +450,7 @@ const courses = {
   },
 };
 
-const holeLabels = [
+export const holeLabels = [
   1,
   2,
   3,
@@ -474,10 +474,12 @@ const holeLabels = [
   "Tot",
 ];
 
-function getCourseData(courseName) {
+export function getCourseData(courseName) {
   return courses[courseName] || null;
 }
 
-function getAllCourses() {
+export function getAllCourses() {
   return courses;
 }
+
+

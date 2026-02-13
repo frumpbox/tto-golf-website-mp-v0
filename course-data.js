@@ -1,5 +1,5 @@
 // Course data for Tyrells Wood
-const courses = {
+export const courses = {
   tyrellsWood: {
     name: "Tyrells Wood",
     courseRating: 70.7,

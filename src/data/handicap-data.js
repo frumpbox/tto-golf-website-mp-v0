@@ -1,5 +1,5 @@
 // Player handicap data by year
-const playerHandicaps = {
+export const playerHandicaps = {
   2020: {
     "Sam Lewis": 0,
     "James Hall": 0,

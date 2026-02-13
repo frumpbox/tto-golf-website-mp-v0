@@ -1,4 +1,11 @@
 import './styles/legacy.css';
-import './legacy-script.js';
 
+import { courses, holeLabels, getCourseData, getAllCourses } from './data/course-data.js';
+
+window.courses = courses;
+window.holeLabels = holeLabels;
+window.getCourseData = getCourseData;
+window.getAllCourses = getAllCourses;
+
+import './legacy-script.js';
 
