@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>The Tyrells Open – Leaderboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <script src="course-data.js"></script>
+    <script src="handicap-data.js"></script>
+    <!-- Navigation -->
+    <nav>
+      <div class="container nav-layout">
+        <div class="crest-box">[insert TTO crest]</div>
+        <h1>The Tyrells Open</h1>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="leaderboard.html">Leaderboard</a></li>
+          <li><a href="course-ratings.html">Course Ratings</a></li>
+          <li><a href="shop.html">Shop</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container">
+      <!-- SUMMARY TABLE -->
+      <h2>TTO Leaderboard</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Member</th>
+            <th>Played</th>
+            <th>Rank Score*</th>
+            <th>Avg Rank</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1st</td>
+            <td>Sam Lewis</td>
+            <td>6</td>
+            <td>13</td>
+            <td>2.17</td>
+          </tr>
+          <tr>
+            <td>2nd</td>
+            <td>Sam Dynes</td>
+            <td>6</td>
+            <td>19</td>
+            <td>3.17</td>
+          </tr>
+          <tr>
+            <td>3rd</td>
+            <td>James Hall</td>
+            <td>6</td>
+            <td>20</td>
+            <td>3.33</td>
+          </tr>
+          <tr>
+            <td>4th</td>
+            <td>George Stinton</td>
+            <td>6</td>
+            <td>20</td>
+            <td>3.33</td>
+          </tr>
+          <tr>
+            <td>5th</td>
+            <td>Felipe Milo</td>
+            <td>5</td>
+            <td>17</td>
+            <td>3.40</td>
+          </tr>
+          <tr>
+            <td>6th</td>
+            <td>Tom Sutehall</td>
+            <td>2</td>
+            <td>8</td>
+            <td>4.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size: 0.8rem; margin-top: 6px">
+        * Lower Rank Score is better. Rank Score are based on finishing position
+        (1st = 1 point, 2nd = 2 points, etc.)
+      </p>
+
+      <!-- YEAR-BY-YEAR TABLES -->
+
+      <h2>2025 - Belgium - Royal Ostend, Royal Zoute</h2>
+      <div class="conditions-note">Conditions: Good</div>
+      <table id="table-2025">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Member</th>
+            <th>Handicap Index</th>
+            <th>R1 HCP</th>
+            <th>R2 HCP</th>
+            <th>Points</th>
+            <th>R1</th>
+            <th>R2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="details-toggle" data-target="details-2025-george-stinton">
+            <td>1st</td>
+            <td>George Stinton</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2025-george-stinton"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="george-stinton"
+                  data-year="2025"
+                  data-round="1"
+                >
+                  Round 1 - RO
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="george-stinton"
+                  data-year="2025"
+                  data-round="2"
+                >
+                  Round 2 - RZ
+                </button>
+              </div>
+              <div id="scorecard-2025-george-stinton"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2025-sam-dynes">
+            <td>2nd</td>
+            <td>Sam Dynes</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2025-sam-dynes"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="sam-dynes"
+                  data-year="2025"
+                  data-round="1"
+                >
+                  Round 1 - RO
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="sam-dynes"
+                  data-year="2025"
+                  data-round="2"
+                >
+                  Round 2 - RZ
+                </button>
+              </div>
+              <div id="scorecard-2025-sam-dynes"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2025-james-hall">
+            <td>3rd</td>
+            <td>James Hall</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2025-james-hall"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="james-hall"
+                  data-year="2025"
+                  data-round="1"
+                >
+                  Round 1 - RO
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="james-hall"
+                  data-year="2025"
+                  data-round="2"
+                >
+                  Round 2 - RZ
+                </button>
+              </div>
+              <div id="scorecard-2025-james-hall"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2025-felipe-milo">
+            <td>4th</td>
+            <td>Felipe Milo</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2025-felipe-milo"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="felipe-milo"
+                  data-year="2025"
+                  data-round="1"
+                >
+                  Round 1 - RO
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="felipe-milo"
+                  data-year="2025"
+                  data-round="2"
+                >
+                  Round 2 - RZ
+                </button>
+              </div>
+              <div id="scorecard-2025-felipe-milo"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2025-sam-lewis">
+            <td>5th</td>
+            <td>Sam Lewis</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2025-sam-lewis"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="sam-lewis"
+                  data-year="2025"
+                  data-round="1"
+                >
+                  Round 1 - RO
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="sam-lewis"
+                  data-year="2025"
+                  data-round="2"
+                >
+                  Round 2 - RZ
+                </button>
+              </div>
+              <div id="scorecard-2025-sam-lewis"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2025-tom-sutehall">
+            <td>6th</td>
+            <td>Tom Sutehall</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2025-tom-sutehall"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="tom-sutehall"
+                  data-year="2025"
+                  data-round="1"
+                >
+                  Round 1 - RO
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="tom-sutehall"
+                  data-year="2025"
+                  data-round="2"
+                >
+                  Round 2 - RZ
+                </button>
+              </div>
+              <div id="scorecard-2025-tom-sutehall"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>2024 - England - Saunton East Course, West Course</h2>
+      <div class="conditions-note">Conditions: Good</div>
+      <table id="table-2024">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Member</th>
+            <th>Handicap Index</th>
+            <th>R1 HCP</th>
+            <th>R2 HCP</th>
+            <th>Points</th>
+            <th>R1</th>
+            <th>R2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="details-toggle" data-target="details-2024-sam-lewis">
+            <td>1st</td>
+            <td>Sam Lewis</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2024-sam-lewis"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="sam-lewis"
+                  data-year="2024"
+                  data-round="1"
+                >
+                  Round 1 - SE
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="sam-lewis"
+                  data-year="2024"
+                  data-round="2"
+                >
+                  Round 2 - SW
+                </button>
+              </div>
+              <div id="scorecard-2024-sam-lewis"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2024-james-hall">
+            <td>2nd</td>
+            <td>James Hall</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2024-james-hall"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="james-hall"
+                  data-year="2024"
+                  data-round="1"
+                >
+                  Round 1 - SE
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="james-hall"
+                  data-year="2024"
+                  data-round="2"
+                >
+                  Round 2 - SW
+                </button>
+              </div>
+              <div id="scorecard-2024-james-hall"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2024-sam-dynes">
+            <td>3rd</td>
+            <td>Sam Dynes</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2024-sam-dynes"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="sam-dynes"
+                  data-year="2024"
+                  data-round="1"
+                >
+                  Round 1 - SE
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="sam-dynes"
+                  data-year="2024"
+                  data-round="2"
+                >
+                  Round 2 - SW
+                </button>
+              </div>
+              <div id="scorecard-2024-sam-dynes"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2024-george-stinton">
+            <td>4th</td>
+            <td>George Stinton</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2024-george-stinton"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="george-stinton"
+                  data-year="2024"
+                  data-round="1"
+                >
+                  Round 1 - SE
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="george-stinton"
+                  data-year="2024"
+                  data-round="2"
+                >
+                  Round 2 - SW
+                </button>
+              </div>
+              <div id="scorecard-2024-george-stinton"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2024-felipe-milo">
+            <td>5th</td>
+            <td>Felipe Milo</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2024-felipe-milo"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="felipe-milo"
+                  data-year="2024"
+                  data-round="1"
+                >
+                  Round 1 - SE
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="felipe-milo"
+                  data-year="2024"
+                  data-round="2"
+                >
+                  Round 2 - SW
+                </button>
+              </div>
+              <div id="scorecard-2024-felipe-milo"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>2023 - England - Luffenham Heath</h2>
+      <div class="conditions-note">Conditions: Good</div>
+      <table id="table-2023">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Member</th>
+            <th>Handicap Index</th>
+            <th>R1 HCP</th>
+            <th>R2 HCP</th>
+            <th>Points</th>
+            <th>R1</th>
+            <th>R2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="details-toggle" data-target="details-2023-sam-lewis">
+            <td>1st</td>
+            <td>Sam Lewis</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2023-sam-lewis"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="sam-lewis"
+                  data-year="2023"
+                  data-round="1"
+                >
+                  Round 1 - LH
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="sam-lewis"
+                  data-year="2023"
+                  data-round="2"
+                >
+                  Round 2 - LH
+                </button>
+              </div>
+              <div id="scorecard-2023-sam-lewis"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2023-tom-sutehall">
+            <td>2nd</td>
+            <td>Tom Sutehall</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2023-tom-sutehall"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="tom-sutehall"
+                  data-year="2023"
+                  data-round="1"
+                >
+                  Round 1 - LH
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="tom-sutehall"
+                  data-year="2023"
+                  data-round="2"
+                >
+                  Round 2 - LH
+                </button>
+              </div>
+              <div id="scorecard-2023-tom-sutehall"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2023-george-stinton">
+            <td>3rd</td>
+            <td>George Stinton</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2023-george-stinton"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="george-stinton"
+                  data-year="2023"
+                  data-round="1"
+                >
+                  Round 1 - LH
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="george-stinton"
+                  data-year="2023"
+                  data-round="2"
+                >
+                  Round 2 - LH
+                </button>
+              </div>
+              <div id="scorecard-2023-george-stinton"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2023-felipe-milo">
+            <td>4th</td>
+            <td>Felipe Milo</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2023-felipe-milo"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="felipe-milo"
+                  data-year="2023"
+                  data-round="1"
+                >
+                  Round 1 - LH
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="felipe-milo"
+                  data-year="2023"
+                  data-round="2"
+                >
+                  Round 2 - LH
+                </button>
+              </div>
+              <div id="scorecard-2023-felipe-milo"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2023-james-hall">
+            <td>5th</td>
+            <td>James Hall</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2023-james-hall"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="james-hall"
+                  data-year="2023"
+                  data-round="1"
+                >
+                  Round 1 - LH
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="james-hall"
+                  data-year="2023"
+                  data-round="2"
+                >
+                  Round 2 - LH
+                </button>
+              </div>
+              <div id="scorecard-2023-james-hall"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2023-sam-dynes">
+            <td>6th</td>
+            <td>Sam Dynes</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2023-sam-dynes"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="sam-dynes"
+                  data-year="2023"
+                  data-round="1"
+                >
+                  Round 1 - LH
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="sam-dynes"
+                  data-year="2023"
+                  data-round="2"
+                >
+                  Round 2 - LH
+                </button>
+              </div>
+              <div id="scorecard-2023-sam-dynes"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>2022 - Canada - Silvertip, Stewart Creek</h2>
+      <div class="conditions-note">Conditions: Good</div>
+      <table id="table-2022">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Member</th>
+            <th>Handicap Index</th>
+            <th>R1 HCP</th>
+            <th>R2 HCP</th>
+            <th>Points</th>
+            <th>R1</th>
+            <th>R2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="details-toggle" data-target="details-2022-felipe-milo">
+            <td>1st</td>
+            <td>Felipe Milo</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2022-felipe-milo"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="felipe-milo"
+                  data-year="2022"
+                  data-round="1"
+                >
+                  Round 1 - ST
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="felipe-milo"
+                  data-year="2022"
+                  data-round="2"
+                >
+                  Round 2 - SC
+                </button>
+              </div>
+              <div id="scorecard-2022-felipe-milo"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2022-sam-dynes">
+            <td>2nd</td>
+            <td>Sam Dynes</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2022-sam-dynes"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="sam-dynes"
+                  data-year="2022"
+                  data-round="1"
+                >
+                  Round 1 - ST
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="sam-dynes"
+                  data-year="2022"
+                  data-round="2"
+                >
+                  Round 2 - SC
+                </button>
+              </div>
+              <div id="scorecard-2022-sam-dynes"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2022-sam-lewis">
+            <td>3rd</td>
+            <td>Sam Lewis</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2022-sam-lewis"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="sam-lewis"
+                  data-year="2022"
+                  data-round="1"
+                >
+                  Round 1 - ST
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="sam-lewis"
+                  data-year="2022"
+                  data-round="2"
+                >
+                  Round 2 - SC
+                </button>
+              </div>
+              <div id="scorecard-2022-sam-lewis"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2022-james-hall">
+            <td>4th</td>
+            <td>James Hall</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2022-james-hall"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="james-hall"
+                  data-year="2022"
+                  data-round="1"
+                >
+                  Round 1 - ST
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="james-hall"
+                  data-year="2022"
+                  data-round="2"
+                >
+                  Round 2 - SC
+                </button>
+              </div>
+              <div id="scorecard-2022-james-hall"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2022-george-stinton">
+            <td>5th</td>
+            <td>George Stinton</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2022-george-stinton"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="george-stinton"
+                  data-year="2022"
+                  data-round="1"
+                >
+                  Round 1 - ST
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="george-stinton"
+                  data-year="2022"
+                  data-round="2"
+                >
+                  Round 2 - SC
+                </button>
+              </div>
+              <div id="scorecard-2022-george-stinton"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>2021 - England - Tyrells Wood</h2>
+      <div class="conditions-note">Conditions: Good</div>
+      <table id="table-2021">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Member</th>
+            <th>Handicap Index</th>
+            <th>R1 HCP</th>
+            <th>R2 HCP</th>
+            <th>Points</th>
+            <th>R1</th>
+            <th>R2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="details-toggle" data-target="details-2021-sam-dynes">
+            <td>1st</td>
+            <td>Sam Dynes</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2021-sam-dynes"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="sam-dynes"
+                  data-year="2021"
+                  data-round="1"
+                >
+                  Round 1 - TW
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="sam-dynes"
+                  data-year="2021"
+                  data-round="2"
+                >
+                  Round 2 - TW
+                </button>
+              </div>
+              <div id="scorecard-2021-sam-dynes"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2021-sam-lewis">
+            <td>2nd</td>
+            <td>Sam Lewis</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2021-sam-lewis"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="sam-lewis"
+                  data-year="2021"
+                  data-round="1"
+                >
+                  Round 1 - TW
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="sam-lewis"
+                  data-year="2021"
+                  data-round="2"
+                >
+                  Round 2 - TW
+                </button>
+              </div>
+              <div id="scorecard-2021-sam-lewis"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2021-george-stinton">
+            <td>3rd</td>
+            <td>George Stinton</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2021-george-stinton"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="george-stinton"
+                  data-year="2021"
+                  data-round="1"
+                >
+                  Round 1 - TW
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="george-stinton"
+                  data-year="2021"
+                  data-round="2"
+                >
+                  Round 2 - TW
+                </button>
+              </div>
+              <div id="scorecard-2021-george-stinton"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2021-james-hall">
+            <td>4th</td>
+            <td>James Hall</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2021-james-hall"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="james-hall"
+                  data-year="2021"
+                  data-round="1"
+                >
+                  Round 1 - TW
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="james-hall"
+                  data-year="2021"
+                  data-round="2"
+                >
+                  Round 2 - TW
+                </button>
+              </div>
+              <div id="scorecard-2021-james-hall"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>2020 - England - Tyrells Wood</h2>
+      <div class="conditions-note">Conditions: Good</div>
+      <table id="table-2020">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Member</th>
+            <th>Handicap Index</th>
+            <th>R1 HCP</th>
+            <th>R2 HCP</th>
+            <th>Points</th>
+            <th>R1</th>
+            <th>R2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Clickable row for Sam Lewis -->
+          <tr class="details-toggle" data-target="details-2020-sam-lewis">
+            <td>1st</td>
+            <td>Sam Lewis</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <!-- Scorecard will be generated here by JavaScript -->
+          <tr
+            id="details-2020-sam-lewis"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="sam-lewis"
+                  data-year="2020"
+                  data-round="1"
+                >
+                  Round 1 - TW
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="sam-lewis"
+                  data-year="2020"
+                  data-round="2"
+                >
+                  Round 2 - TW
+                </button>
+              </div>
+              <div id="scorecard-2020-sam-lewis"></div>
+            </td>
+          </tr>
+
+          <!-- Other 2020 players -->
+          <tr class="details-toggle" data-target="details-2020-james-hall">
+            <td>2nd</td>
+            <td>James Hall</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2020-james-hall"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="james-hall"
+                  data-year="2020"
+                  data-round="1"
+                >
+                  Round 1 - TW
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="james-hall"
+                  data-year="2020"
+                  data-round="2"
+                >
+                  Round 2 - TW
+                </button>
+              </div>
+              <div id="scorecard-2020-james-hall"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2020-felipe-milo">
+            <td>3rd</td>
+            <td>Felipe Milo</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2020-felipe-milo"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="felipe-milo"
+                  data-year="2020"
+                  data-round="1"
+                >
+                  Round 1 - TW
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="felipe-milo"
+                  data-year="2020"
+                  data-round="2"
+                >
+                  Round 2 - TW
+                </button>
+              </div>
+              <div id="scorecard-2020-felipe-milo"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2020-george-stinton">
+            <td>4th</td>
+            <td>George Stinton</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2020-george-stinton"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="george-stinton"
+                  data-year="2020"
+                  data-round="1"
+                >
+                  Round 1 - TW
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="george-stinton"
+                  data-year="2020"
+                  data-round="2"
+                >
+                  Round 2 - TW
+                </button>
+              </div>
+              <div id="scorecard-2020-george-stinton"></div>
+            </td>
+          </tr>
+
+          <tr class="details-toggle" data-target="details-2020-sam-dynes">
+            <td>5th</td>
+            <td>Sam Dynes</td>
+            <td class="handicap-index"></td>
+            <td class="handicap">0</td>
+            <td class="handicap-r2">0</td>
+            <td class="points"></td>
+            <td class="r1-points"></td>
+            <td class="r2-points"></td>
+          </tr>
+          <tr
+            id="details-2020-sam-dynes"
+            class="details-row"
+            style="display: none"
+          >
+            <td colspan="8">
+              <div class="round-toggle">
+                <button
+                  class="round-btn active"
+                  data-player="sam-dynes"
+                  data-year="2020"
+                  data-round="1"
+                >
+                  Round 1 - TW
+                </button>
+                <button
+                  class="round-btn"
+                  data-player="sam-dynes"
+                  data-year="2020"
+                  data-round="2"
+                >
+                  Round 2 - TW
+                </button>
+              </div>
+              <div id="scorecard-2020-sam-dynes"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
