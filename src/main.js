@@ -1,3 +1,4 @@
+console.log('Agent test patch');
 import './styles/legacy.css';
 
 import { courses, holeLabels, getCourseData, getAllCourses } from './data/course-data.js';
