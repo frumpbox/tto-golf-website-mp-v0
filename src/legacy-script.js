@@ -164,8 +164,14 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
 
   // Write computed gross scores back into the row
   for (let i = 0; i < holeLabels.length; i++) {
-    scoreRow.children[i + 1].textContent =
-      grossScores[i] === 0 || grossScores[i] === null ? "" : grossScores[i];
+    const td = scoreRow.children[i + 1];
+    const val = grossScores[i];
+    td.textContent = val === 0 || val === null ? "" : val;
+    if (val !== null && val !== 0 && i !== 9 && i !== 19 && i !== 20 && typeof courseData.par[i] === 'number') {
+      const diff = val - courseData.par[i];
+      if (diff < 0) td.classList.add('under-par');
+      else if (diff > 0) td.classList.add('over-par');
+    }
   }
   tbody.appendChild(scoreRow);
 
@@ -213,6 +219,11 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
       else points = 0; // double bogey or worse
 
       td.textContent = points;
+      if (points === 3) td.classList.add('point-birdie');
+      else if (points === 4) td.classList.add('point-eagle');
+      else if (points === 5) td.classList.add('point-albatross');
+      else if (points === 1) td.classList.add('point-bogey');
+      else if (points === 0) td.classList.add('point-double');
       if (i <= 8) outPoints += points;
       if (i >= 10 && i <= 18) inPoints += points;
       totalPoints += points;
