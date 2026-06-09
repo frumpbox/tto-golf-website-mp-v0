@@ -169,7 +169,7 @@ const years = {
     results: [
       {
         playerId: "sam-lewis",
-        handicapIndex: 12,
+        handicapIndex: 12, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "sauntonEast", gross: [5,5,7,5,4,4,5,5,5,4,5,5,4,7,4,5,3,5] },
           { courseKey: "sauntonWest", gross: [5,7,7,4,4,5,4,4,3,5,5,6,6,6,5,2,8,5] },
@@ -182,7 +182,7 @@ const years = {
       },
       {
         playerId: "james-hall",
-        handicapIndex: 9,
+        handicapIndex: 9, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "sauntonEast", gross: [5,6,4,5,3,5,5,4,4,5,5,4,5,4,6,5,4,5] },
           { courseKey: "sauntonWest", gross: null },
@@ -191,7 +191,7 @@ const years = {
       },
       {
         playerId: "sam-dynes",
-        handicapIndex: 21,
+        handicapIndex: 21, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "sauntonEast", gross: [7,6,6,5,3,4,5,4,5,7,5,4,4,5,5,7,6,6] },
           { courseKey: "sauntonWest", gross: [5,7,7,4,6,7,6,4,3,7,6,4,7,7,7,4,8,4] },
@@ -200,7 +200,7 @@ const years = {
       },
       {
         playerId: "felipe-milo",
-        handicapIndex: 12,
+        handicapIndex: 12, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "sauntonEast", gross: [5,5,7,6,2,6,5,7,4,5,4,4,4,5,7,6,3,5] },
           { courseKey: "sauntonWest", gross: null },
@@ -209,7 +209,7 @@ const years = {
       },
       {
         playerId: "george-stinton",
-        handicapIndex: 3,
+        handicapIndex: 3, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "sauntonEast", gross: [4,7,5,4,5,3,4,4,4,3,4,7,2,4,5,4,3,4] },
           { courseKey: "sauntonWest", gross: [5,5,7,4,5,5,5,6,4,5,3,7,4,7,4,4,7,5] },
@@ -236,7 +236,7 @@ const years = {
     results: [
       {
         playerId: "george-stinton",
-        handicapIndex: 0,
+        handicapIndex: 0, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "royalOstend", gross: null },
           { courseKey: "royalZoute", gross: null },
@@ -245,7 +245,7 @@ const years = {
       },
       {
         playerId: "sam-dynes",
-        handicapIndex: 16,
+        handicapIndex: 16, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "royalOstend", gross: null },
           { courseKey: "royalZoute", gross: null },
@@ -254,7 +254,7 @@ const years = {
       },
       {
         playerId: "james-hall",
-        handicapIndex: 6,
+        handicapIndex: 6, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "royalOstend", gross: null },
           { courseKey: "royalZoute", gross: null },
@@ -263,7 +263,7 @@ const years = {
       },
       {
         playerId: "felipe-milo",
-        handicapIndex: 8,
+        handicapIndex: 8, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "royalOstend", gross: null },
           { courseKey: "royalZoute", gross: null },
@@ -272,7 +272,7 @@ const years = {
       },
       {
         playerId: "sam-lewis",
-        handicapIndex: 9,
+        handicapIndex: 9, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "royalOstend", gross: null },
           { courseKey: "royalZoute", gross: null },
@@ -281,7 +281,7 @@ const years = {
       },
       {
         playerId: "tom-sutehall",
-        handicapIndex: 14,
+        handicapIndex: 14, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "royalOstend", gross: null },
           { courseKey: "royalZoute", gross: null },
