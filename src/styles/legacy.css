@@ -414,3 +414,313 @@ th {
     font-size: 0.7rem;
   }
 }
+
+/* ========================================
+   LEADERBOARD & SCORECARD ENHANCEMENTS
+   PGA Tour-inspired styling
+   ======================================== */
+
+/* ---------- Global body refinement ---------- */
+body {
+  background: #0a0e0a;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Section headers ---------- */
+h2 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f0f0ea;
+  border-bottom: 2px solid rgba(201, 168, 76, 0.25);
+  padding-bottom: 10px;
+  margin-top: 44px;
+  margin-bottom: 16px;
+}
+
+main > h2:first-of-type {
+  margin-top: 8px;
+}
+
+/* ---------- Conditions note ---------- */
+.conditions-note {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(240, 240, 234, 0.45);
+  margin: -12px 0 12px;
+}
+
+/* ---------- Leaderboard tables ---------- */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #111811;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+
+th,
+td {
+  padding: 11px 14px;
+  font-size: 0.83rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+th {
+  background: #0d130d;
+  font-weight: 600;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(240, 240, 234, 0.5);
+}
+
+/* Row hover on non-expandable and summary rows */
+table:not(.scorecard-table) tbody tr.details-toggle:hover {
+  background: rgba(201, 168, 76, 0.06);
+  cursor: pointer;
+}
+
+/* Position column */
+td:first-child {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Summary table (first table — Season Rankings) ---------- */
+main > table:first-of-type {
+  border: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+main > table:first-of-type td:first-child {
+  color: #c9a84c;
+}
+
+main > table:first-of-type tbody tr:first-child td:first-child {
+  color: #d4af37;
+  font-size: 0.95rem;
+}
+
+/* ---------- Year-by-year section tables ---------- */
+table[id^="table-"] th:first-child,
+table[id^="table-"] td:first-child {
+  width: 52px;
+  text-align: center;
+}
+
+/* ---------- Leaderboard subtitle ---------- */
+.leaderboard-subtitle {
+  font-size: 0.78rem;
+  color: rgba(240, 240, 234, 0.45);
+  margin: -12px 0 22px;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Footnote ---------- */
+.leaderboard-footnote {
+  font-size: 0.68rem;
+  color: rgba(240, 240, 234, 0.35);
+  margin-top: 8px;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Expandable details row ---------- */
+.details-row td {
+  padding: 0;
+  background: #0d130d;
+}
+
+.details-row > td {
+  border-bottom: none;
+  padding: 16px 20px 20px;
+}
+
+/* ---------- Round toggle buttons ---------- */
+.round-toggle {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.round-btn {
+  flex: 1;
+  padding: 8px 14px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: 'Inter', system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: transparent;
+  color: rgba(240, 240, 234, 0.4);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.round-btn:hover {
+  color: rgba(240, 240, 234, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.round-btn.active {
+  background: #1c2a1c;
+  color: #f0f0ea;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Scorecard table ---------- */
+.scorecard-table {
+  margin-top: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.scorecard-table th,
+.scorecard-table td {
+  padding: 5px 4px;
+  font-size: 0.7rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.scorecard-table th {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.scorecard-table th:first-child {
+  text-align: left;
+  background: rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  font-weight: 600;
+  min-width: 90px;
+}
+
+.scorecard-table .total-col {
+  border-left: 2px solid rgba(255, 255, 255, 0.12);
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- Visual score markers: Points ---------- */
+.points-hole {
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  transition: all 0.15s ease;
+}
+
+/* Par — subtle */
+.point-par {
+  color: rgba(240, 240, 234, 0.55);
+}
+
+/* Birdie — cool green with dot */
+.point-birdie {
+  color: #6abf69;
+}
+.point-birdie::after {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: #6abf69;
+  border-radius: 50%;
+  margin-left: 3px;
+  vertical-align: middle;
+}
+
+/* Eagle — purple */
+.point-eagle {
+  color: #b388ff;
+}
+.point-eagle::after {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: #b388ff;
+  border-radius: 50%;
+  margin-left: 3px;
+  vertical-align: middle;
+}
+
+/* Albatross+ — gold */
+.point-albatross {
+  color: #ffd54f;
+}
+.point-albatross::after {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: #ffd54f;
+  border-radius: 50%;
+  margin-left: 3px;
+  vertical-align: middle;
+}
+
+/* Bogey — warm amber */
+.point-bogey {
+  color: #ff8a65;
+}
+
+/* Double bogey+ — red */
+.point-double {
+  color: #ef5350;
+}
+
+/* ---------- Visual score markers: Gross score relative to par ---------- */
+.gross-score {
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.gross-score.under-par {
+  color: #6abf69;
+  font-weight: 700;
+}
+
+.gross-score.over-par {
+  color: #ef5350;
+  font-weight: 500;
+}
+
+/* ---------- Mobile adjustments ---------- */
+@media (max-width: 600px) {
+  h2 {
+    font-size: 0.95rem;
+    margin-top: 32px;
+  }
+
+  main > h2:first-of-type {
+    margin-top: 4px;
+  }
+
+  th,
+  td {
+    padding: 8px 6px;
+    font-size: 0.76rem;
+  }
+
+  .round-toggle {
+    flex-direction: column;
+  }
+
+  .round-btn {
+    font-size: 0.65rem;
+    padding: 7px 10px;
+  }
+
+  .details-row > td {
+    padding: 12px 8px 16px;
+  }
+}
