@@ -69,7 +69,7 @@ const playerHandicapIndexes = {
   },
 };
 
-function getPlayerHandicap(year, playerName) {
+export function getPlayerHandicap(year, playerName) {
   if (
     playerHandicaps[year] &&
     playerHandicaps[year][playerName] !== undefined
@@ -79,7 +79,7 @@ function getPlayerHandicap(year, playerName) {
   return null;
 }
 
-function getPlayerHandicapIndex(year, playerName) {
+export function getPlayerHandicapIndex(year, playerName) {
   if (
     playerHandicapIndexes[year] &&
     playerHandicapIndexes[year][playerName] !== undefined

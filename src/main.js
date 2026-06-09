@@ -9,5 +9,10 @@ window.holeLabels = holeLabels;
 window.getCourseData = getCourseData;
 window.getAllCourses = getAllCourses;
 
+import { getPlayerHandicap, getPlayerHandicapIndex } from './data/handicap-data.js';
+
+window.getPlayerHandicap = getPlayerHandicap;
+window.getPlayerHandicapIndex = getPlayerHandicapIndex;
+
 import './legacy-script.js';
 
