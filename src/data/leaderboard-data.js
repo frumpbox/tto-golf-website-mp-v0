@@ -159,6 +159,141 @@ const years = {
       photos: [],
     },
   },
+  2022: {
+    location: "Canada",
+    courses: ["Silvertip", "Stewart Creek"],
+    courseKeys: ["silvertip", "stewartCreek"],
+    roundLabels: ["Round 1 - ST", "Round 2 - SC"],
+    conditions: "Good",
+    status: "completed",
+    results: [
+      {
+        playerId: "felipe-milo",
+        handicapIndex: 16.8,
+        rounds: [
+          { courseKey: "silvertip", gross: null },
+          { courseKey: "stewartCreek", gross: null },
+        ],
+        playoff: null,
+      },
+      {
+        playerId: "sam-dynes",
+        handicapIndex: 31.1,
+        rounds: [
+          { courseKey: "silvertip", gross: [5,8,6,7,3,6,5,8,5,6,5,3,6,7,6,4,5,6] },
+          { courseKey: "stewartCreek", gross: null },
+        ],
+        playoff: null,
+      },
+      {
+        playerId: "sam-lewis",
+        handicapIndex: 16.8,
+        rounds: [
+          { courseKey: "silvertip", gross: null },
+          { courseKey: "stewartCreek", gross: null },
+        ],
+        playoff: null,
+      },
+      {
+        playerId: "james-hall",
+        handicapIndex: 12.8,
+        rounds: [
+          { courseKey: "silvertip", gross: null },
+          { courseKey: "stewartCreek", gross: null },
+        ],
+        playoff: null,
+      },
+      {
+        playerId: "george-stinton",
+        handicapIndex: 4.9,
+        rounds: [
+          { courseKey: "silvertip", gross: null },
+          { courseKey: "stewartCreek", gross: null },
+        ],
+        playoff: null,
+      },
+    ],
+    attendees: ["felipe-milo", "sam-dynes", "sam-lewis", "james-hall", "george-stinton"],
+    summary: {
+      winner: "sam-dynes",
+      runnerUp: "sam-lewis",
+      margin: "TBD",
+      writeup: "The 2022 Tyrells Open was held in Canada at Silvertip and Stewart Creek.",
+      photos: [],
+    },
+  },
+  2023: {
+    location: "England",
+    courses: ["Luffenham Heath", "Luffenham Heath"],
+    courseKeys: ["luffenhamHeath", "luffenhamHeath"],
+    roundLabels: ["Round 1 - LH", "Round 2 - LH"],
+    conditions: "Good",
+    status: "completed",
+    results: [
+      {
+        playerId: "sam-lewis",
+        handicapIndex: 9.5,
+        rounds: [
+          { courseKey: "luffenhamHeath", gross: [5,6,4,6,5,5,4,4,4,4,3,3,5,4,5,5,6,5] },
+          { courseKey: "luffenhamHeath", gross: [6,6,7,4,3,5,3,5,4,5,5,4,5,4,4,5,4,6] },
+        ],
+        playoff: null,
+      },
+      {
+        playerId: "tom-sutehall",
+        handicapIndex: 13.8,
+        rounds: [
+          { courseKey: "luffenhamHeath", gross: [6,7,7,5,4,6,7,4,3,6,7,4,5,5,6,4,5,7] },
+          { courseKey: "luffenhamHeath", gross: [4,6,5,3,3,6,4,3,4,5,7,5,7,4,5,4,5,4] },
+        ],
+        playoff: null,
+      },
+      {
+        playerId: "george-stinton",
+        handicapIndex: 0.9,
+        rounds: [
+          { courseKey: "luffenhamHeath", gross: [6,3,4,6,5,8,4,4,3,5,3,3,5,4,4,6,4,4] },
+          { courseKey: "luffenhamHeath", gross: null },
+        ],
+        playoff: null,
+      },
+      {
+        playerId: "felipe-milo",
+        handicapIndex: 8.8,
+        rounds: [
+          { courseKey: "luffenhamHeath", gross: null },
+          { courseKey: "luffenhamHeath", gross: null },
+        ],
+        playoff: null,
+      },
+      {
+        playerId: "james-hall",
+        handicapIndex: 8.1,
+        rounds: [
+          { courseKey: "luffenhamHeath", gross: [6,5,4,4,5,8,4,5,3,5,6,3,6,5,7,7,3,6] },
+          { courseKey: "luffenhamHeath", gross: null },
+        ],
+        playoff: null,
+      },
+      {
+        playerId: "sam-dynes",
+        handicapIndex: 20.6,
+        rounds: [
+          { courseKey: "luffenhamHeath", gross: [7,6,7,5,4,6,8,7,6,7,4,4,6,5,8,8,5,8] },
+          { courseKey: "luffenhamHeath", gross: [7,8,7,7,6,9,6,6,4,7,6,6,8,5,6,4,4,8] },
+        ],
+        playoff: null,
+      },
+    ],
+    attendees: ["sam-lewis", "tom-sutehall", "george-stinton", "felipe-milo", "james-hall", "sam-dynes"],
+    summary: {
+      winner: "sam-lewis",
+      runnerUp: "tom-sutehall",
+      margin: "TBD",
+      writeup: "The 2023 Tyrells Open was held at Luffenham Heath in England.",
+      photos: [],
+    },
+  },
   2024: {
     location: "England",
     courses: ["Saunton East", "Saunton West"],
@@ -307,7 +442,7 @@ const years = {
   },
 };
 
-const yearOrder = [2020, 2021, 2024, 2025];
+const yearOrder = [2020, 2021, 2022, 2023, 2024, 2025];
 
 export const leaderboardData = {
   yearOrder,

@@ -301,6 +301,98 @@ if (samLewis2024) {
   }
 }
 
+// ----------------------------------------------------------------
+// 2022 verification
+// ----------------------------------------------------------------
+const year2022 = verifyYearBasics(2022, { location: "Canada", courseKeys: 2, results: 5 });
+const expected2022Players = ["felipe-milo", "sam-dynes", "sam-lewis", "james-hall", "george-stinton"];
+verifyPlayerAttendees(2022, expected2022Players);
+
+if (year2022.courseKeys[0] !== "silvertip" || year2022.courseKeys[1] !== "stewartCreek") {
+  failures.push("2022 should have silvertip and stewartCreek courseKeys");
+}
+
+const EXPECTED_2022_TOTALS = {
+  "sam-dynes":    { r1: 40, r2: 0, total: 40 },
+};
+
+for (const result of year2022.results) {
+  if (!result.playerId) failures.push("2022 result missing playerId");
+  if (!Array.isArray(result.rounds)) failures.push(`2022 ${result.playerId} missing rounds array`);
+  if (result.rounds.length !== 2) failures.push(`2022 ${result.playerId} should have 2 rounds`);
+
+  let computedTotal = 0;
+  result.rounds.forEach((round, rIdx) => {
+    if (!round.courseKey) failures.push(`2022 ${result.playerId} round ${rIdx + 1} missing courseKey`);
+    if (round.gross === null) return;
+    const courseData = leaderboardData.courses[round.courseKey];
+    if (!courseData) {
+      failures.push(`2022 ${result.playerId} round ${rIdx + 1}: unknown course ${round.courseKey}`);
+      return;
+    }
+    const parTotal = courseData.par[courseData.par.length - 1];
+    const courseHcp = calculateCourseHandicap(
+      result.handicapIndex, courseData.slope, courseData.courseRating, parTotal
+    );
+    const roundPts = computeRoundPoints(round.gross, courseData, courseHcp);
+    computedTotal += roundPts;
+  });
+
+  const expected = EXPECTED_2022_TOTALS[result.playerId];
+  if (expected && computedTotal !== expected.total) {
+    failures.push(`2022 ${result.playerId}: expected ${expected.total} total points, got ${computedTotal}`);
+  }
+}
+
+// ----------------------------------------------------------------
+// 2023 verification
+// ----------------------------------------------------------------
+const year2023 = verifyYearBasics(2023, { location: "England", courseKeys: 2, results: 6 });
+const expected2023Players = ["sam-lewis", "tom-sutehall", "george-stinton", "felipe-milo", "james-hall", "sam-dynes"];
+verifyPlayerAttendees(2023, expected2023Players);
+
+if (year2023.courseKeys[0] !== "luffenhamHeath" || year2023.courseKeys[1] !== "luffenhamHeath") {
+  failures.push("2023 both rounds should be luffenhamHeath");
+}
+
+const course2023 = leaderboardData.courses.luffenhamHeath;
+
+const EXPECTED_2023_TOTALS = {
+  "sam-lewis":    { r1: 35, r2: 33, total: 68 },
+  "tom-sutehall": { r1: 25, r2: 39, total: 64 },
+  "george-stinton": { r1: 27, r2: 0, total: 27 },
+  "felipe-milo":  { r1: 0, r2: 0, total: 0 },
+  "james-hall":   { r1: 24, r2: 0, total: 24 },
+  "sam-dynes":    { r1: 20, r2: 17, total: 37 },
+};
+
+for (const result of year2023.results) {
+  if (!result.playerId) failures.push("2023 result missing playerId");
+  if (!Array.isArray(result.rounds)) failures.push(`2023 ${result.playerId} missing rounds array`);
+  if (result.rounds.length !== 2) failures.push(`2023 ${result.playerId} should have 2 rounds`);
+
+  let computedTotal = 0;
+  result.rounds.forEach((round, rIdx) => {
+    if (!round.courseKey) failures.push(`2023 ${result.playerId} round ${rIdx + 1} missing courseKey`);
+    if (round.gross == null) return;
+    const parTotal = course2023.par[course2023.par.length - 1];
+    const courseHcp = calculateCourseHandicap(
+      result.handicapIndex, course2023.slope, course2023.courseRating, parTotal
+    );
+    const roundPts = computeRoundPoints(round.gross, course2023, courseHcp);
+    computedTotal += roundPts;
+  });
+
+  const expected = EXPECTED_2023_TOTALS[result.playerId];
+  if (!expected) {
+    failures.push(`2023 ${result.playerId}: no expected values defined`);
+    continue;
+  }
+  if (computedTotal !== expected.total) {
+    failures.push(`2023 ${result.playerId}: expected ${expected.total} total points, got ${computedTotal}`);
+  }
+}
+
 // Summary
 if (failures.length > 0) {
   console.error("\n  VERIFICATION FAILURES:");
@@ -312,6 +404,8 @@ if (failures.length > 0) {
   const y2025 = leaderboardData.years[2025];
   const y2020 = leaderboardData.years[2020];
   const y2021 = leaderboardData.years[2021];
+  const y2022 = leaderboardData.years[2022];
+  const y2023 = leaderboardData.years[2023];
   const y2024 = leaderboardData.years[2024];
   console.log("\n  ✅ All leaderboard data verified successfully.");
   console.log("     Players in registry: " + Object.keys(leaderboardData.players).length);
@@ -326,6 +420,12 @@ if (failures.length > 0) {
   console.log("     2021 results:        " + y2021.results.length + " players");
   console.log("     2021 Stableford:     sam-dynes=82, sam-lewis=74, george-stinton=71, james-hall=59");
   console.log("     2021 summary:        winner=" + y2021.summary.winner + ", runnerUp=" + y2021.summary.runnerUp);
+  console.log("     2022 results:        " + y2022.results.length + " players");
+  console.log("     2022 Stableford:     sam-dynes=40, all others 0 (single non-null round)");
+  console.log("     2022 summary:        winner=" + y2022.summary.winner + ", runnerUp=" + y2022.summary.runnerUp);
+  console.log("     2023 results:        " + y2023.results.length + " players");
+  console.log("     2023 Stableford:     sam-lewis=68, tom-sutehall=64, george-stinton=27, felipe-milo=0, james-hall=24, sam-dynes=37");
+  console.log("     2023 summary:        winner=" + y2023.summary.winner + ", runnerUp=" + y2023.summary.runnerUp);
   console.log("     2024 results:        " + y2024.results.length + " players");
   console.log("     2024 Stableford:     sam-lewis=58 (playoff), sam-dynes=57, george-stinton=51, james-hall=31, felipe-milo=28");
   console.log("     2024 playoff:        sam-lewis def. ? on hole 9 (SD: 10 -> 9)");
