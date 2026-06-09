@@ -8,7 +8,8 @@ export default defineConfig({
         about: 'about.html',
         leaderboard: 'leaderboard.html',
         courseRatings: 'course-ratings.html',
-        shop: 'shop.html'
+        shop: 'shop.html',
+        yearInReview: 'year-in-review.html'
       }
     }
   }

@@ -311,6 +311,8 @@ verifyPlayerAttendees(2022, expected2022Players);
 if (year2022.courseKeys[0] !== "silvertip" || year2022.courseKeys[1] !== "stewartCreek") {
   failures.push("2022 should have silvertip and stewartCreek courseKeys");
 }
+if (year2022.summary.winner !== "felipe-milo") failures.push("2022 winner should be felipe-milo");
+if (year2022.summary.runnerUp !== "sam-dynes") failures.push("2022 runnerUp should be sam-dynes");
 
 const EXPECTED_2022_TOTALS = {
   "sam-dynes":    { r1: 40, r2: 0, total: 40 },

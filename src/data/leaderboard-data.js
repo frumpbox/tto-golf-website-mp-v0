@@ -215,8 +215,8 @@ const years = {
     ],
     attendees: ["felipe-milo", "sam-dynes", "sam-lewis", "james-hall", "george-stinton"],
     summary: {
-      winner: "sam-dynes",
-      runnerUp: "sam-lewis",
+      winner: "felipe-milo",
+      runnerUp: "sam-dynes",
       margin: "TBD",
       writeup: "The 2022 Tyrells Open was held in Canada at Silvertip and Stewart Creek.",
       photos: [],

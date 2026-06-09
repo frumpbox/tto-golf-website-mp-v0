@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Tyrells Open – Year in Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/src/styles/legacy.css" />
+</head>
+<body>
+  <nav>
+    <div class="container nav-layout">
+      <a href="index.html"><img src="/crest/tto-crest-right-gold-transparent.png" class="crest-logo" /></a>
+      <h1>The Tyrells Open</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li><a href="course-ratings.html">Course Ratings</a></li>
+        <li><a href="year-in-review.html">Year in Review</a></li>
+        <li><a href="shop.html">Shop</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="yir-hero">
+    <div class="yir-hero-overlay"></div>
+    <div class="yir-hero-content">
+      <p class="yir-hero-eyebrow">The Tyrells Open</p>
+      <h2 class="yir-hero-title">Year in Review</h2>
+      <p class="yir-hero-subtitle">Relive every season — the courses, the moments, the champions.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="yir-tabs" id="yir-tabs"></div>
+
+    <div id="yir-content"></div>
+  </main>
+
+  <script type="module">
+    import { yearReviews, yearOrder } from '/src/data/year-review-data.js';
+
+    const tabsContainer = document.getElementById('yir-tabs');
+    const contentContainer = document.getElementById('yir-content');
+
+    for (const year of yearOrder) {
+      const tab = document.createElement('button');
+      tab.className = 'yir-tab';
+      tab.dataset.year = year;
+      tab.textContent = year;
+      tab.addEventListener('click', () => selectYear(year));
+      tabsContainer.appendChild(tab);
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    let selectedYear = params.get('year');
+    if (!selectedYear || !yearReviews[selectedYear]) {
+      selectedYear = yearOrder[yearOrder.length - 1];
+    }
+
+    function selectYear(year) {
+      selectedYear = year;
+
+      const url = new URL(window.location);
+      url.searchParams.set('year', year);
+      window.history.replaceState({}, '', url);
+
+      document.querySelectorAll('.yir-tab').forEach(t => {
+        t.classList.toggle('active', parseInt(t.dataset.year) === year);
+      });
+
+      renderYear(year);
+    }
+
+    function renderYear(year) {
+      const review = yearReviews[year];
+      if (!review) return;
+
+      const coursesStr = review.courses.join(', ');
+
+      let html = `
+        <article class="yir-year">
+          <header class="yir-year-header">
+            <div class="yir-year-badge-wrapper">
+              <span class="yir-year-number">${year}</span>
+            </div>
+            <h2 class="yir-year-title">${review.location}</h2>
+            <p class="yir-year-courses">${coursesStr}</p>
+          </header>
+
+          <div class="yir-player-cards">
+            <div class="yir-player-card winner">
+              <span class="yir-card-label">Champion</span>
+              <span class="yir-card-name">${review.winner}</span>
+              ${review.margin ? `<span class="yir-card-margin">${review.margin}</span>` : ''}
+            </div>
+            <div class="yir-player-card runner-up">
+              <span class="yir-card-label">Runner-Up</span>
+              <span class="yir-card-name">${review.runnerUp}</span>
+            </div>
+          </div>
+      `;
+
+      if (review.hasWriteup && review.writeup) {
+        html += `<div class="yir-article">${review.writeup}</div>`;
+      } else {
+        html += `
+          <div class="yir-coming-soon-wrapper">
+            <div class="yir-coming-soon-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <p class="yir-coming-soon-title">Coming Soon</p>
+            <p class="yir-coming-soon-desc">The writeup for ${year} is being written. Check back later.</p>
+          </div>`;
+      }
+
+      html += `<div class="yir-gallery-section">`;
+      html += `<h3 class="yir-gallery-heading">Gallery</h3>`;
+      html += `<div class="yir-gallery">`;
+      if (review.photos && review.photos.length > 0) {
+        for (const photo of review.photos) {
+          html += `<img class="yir-photo" src="${photo}" alt="${year} photo" />`;
+        }
+      } else {
+        html += `<p class="yir-gallery-placeholder">No photos yet</p>`;
+      }
+      html += `</div>`;
+      html += `</div>`;
+
+      html += `<div class="yir-footer-link">`;
+      html += `<a class="yir-lb-link" href="leaderboard.html#year-${year}">View ${year} Leaderboard &rarr;</a>`;
+      html += `</div>`;
+
+      html += `</article>`;
+
+      contentContainer.innerHTML = html;
+    }
+
+    selectYear(selectedYear);
+  </script>
+</body>
+</html>

@@ -160,20 +160,19 @@ th {
   gap: 20px;
 }
 
-/* Crest placeholder box */
-.crest-box {
-  width: 60px;
-  height: 60px;
-  background: #14542a;
-  border: 2px solid #f5f5f5;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.6rem;
-  color: #f5f5f5;
-  text-align: center;
-  padding: 4px;
+/* Crest logo */
+.crest-logo {
+  width: 44px;
+  height: 44px;
+  display: block;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .crest-logo {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 /* Member rows layout */
