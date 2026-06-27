@@ -1,7 +1,27 @@
 // Course data for Tyrells Wood
+/* courseRatingNotes:
+ * courseRating54 will eventually be built from hole-by-hole tier ratings.
+ * Future scorecard-photo imports can populate each hole rating (1-5 per hole),
+ * which will sum to a /54 total across 18 holes.
+ * All sub-rating fields (golfFacilities, clubhouse, etc.) are /9 except
+ * courseMap (/1) and total (/100).
+ */
 export const courses = {
   tyrellsWood: {
     name: "Tyrells Wood",
+    ratings: {
+      courseRating54: null,
+      golfFacilities: null,
+      clubhouse: null,
+      postRoundVibes: null,
+      valueForMoney: null,
+      location: null,
+      courseMap: null,
+      total: null,
+    },
+    website: '',
+    description: '',
+    photos: ['', '', '', ''],
     courseRating: 70.7,
     slope: 137,
     distance: [
@@ -58,6 +78,19 @@ export const courses = {
   },
   silvertip: {
     name: "Silvertip",
+    ratings: {
+      courseRating54: null,
+      golfFacilities: null,
+      clubhouse: null,
+      postRoundVibes: null,
+      valueForMoney: null,
+      location: null,
+      courseMap: null,
+      total: null,
+    },
+    website: '',
+    description: '',
+    photos: ['', '', '', ''],
     courseRating: 69.0,
     slope: 129,
     distance: [
@@ -114,6 +147,19 @@ export const courses = {
   },
   stewartCreek: {
     name: "Stewart Creek",
+    ratings: {
+      courseRating54: null,
+      golfFacilities: null,
+      clubhouse: null,
+      postRoundVibes: null,
+      valueForMoney: null,
+      location: null,
+      courseMap: null,
+      total: null,
+    },
+    website: '',
+    description: '',
+    photos: ['', '', '', ''],
     courseRating: 68.7,
     slope: 123,
     distance: [
@@ -170,6 +216,19 @@ export const courses = {
   },
   luffenhamHeath: {
     name: "Luffenham Heath",
+    ratings: {
+      courseRating54: null,
+      golfFacilities: null,
+      clubhouse: null,
+      postRoundVibes: null,
+      valueForMoney: null,
+      location: null,
+      courseMap: null,
+      total: null,
+    },
+    website: '',
+    description: '',
+    photos: ['', '', '', ''],
     courseRating: 70.9,
     slope: 132,
     distance: [
@@ -226,6 +285,19 @@ export const courses = {
   },
   sauntonEast: {
     name: "Saunton East",
+    ratings: {
+      courseRating54: null,
+      golfFacilities: null,
+      clubhouse: null,
+      postRoundVibes: null,
+      valueForMoney: null,
+      location: null,
+      courseMap: null,
+      total: null,
+    },
+    website: '',
+    description: '',
+    photos: ['', '', '', ''],
     courseRating: 70.0,
     slope: 113,
     distance: [
@@ -282,6 +354,19 @@ export const courses = {
   },
   sauntonWest: {
     name: "Saunton West",
+    ratings: {
+      courseRating54: null,
+      golfFacilities: null,
+      clubhouse: null,
+      postRoundVibes: null,
+      valueForMoney: null,
+      location: null,
+      courseMap: null,
+      total: null,
+    },
+    website: '',
+    description: '',
+    photos: ['', '', '', ''],
     courseRating: 70.0,
     slope: 113,
     distance: [
@@ -338,6 +423,19 @@ export const courses = {
   },
   royalOstend: {
     name: "Royal Ostend",
+    ratings: {
+      courseRating54: null,
+      golfFacilities: null,
+      clubhouse: null,
+      postRoundVibes: null,
+      valueForMoney: null,
+      location: null,
+      courseMap: null,
+      total: null,
+    },
+    website: '',
+    description: '',
+    photos: ['', '', '', ''],
     courseRating: 70.3,
     slope: 121,
     distance: [
@@ -394,6 +492,19 @@ export const courses = {
   },
   royalZoute: {
     name: "Royal Zoute",
+    ratings: {
+      courseRating54: null,
+      golfFacilities: null,
+      clubhouse: null,
+      postRoundVibes: null,
+      valueForMoney: null,
+      location: null,
+      courseMap: null,
+      total: null,
+    },
+    website: '',
+    description: '',
+    photos: ['', '', '', ''],
     courseRating: 73.1,
     slope: 132,
     distance: [
