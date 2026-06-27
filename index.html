@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Tyrells Open – TTO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/src/styles/legacy.css" />
   <script type="module" src="/src/main.js"></script>
 </head>
 <body>
@@ -34,6 +41,12 @@
       <a href="index.html"><img src="/crest/tto-crest-right-gold-transparent.png" class="hero-crest-img" /></a>
       <p class="hero-title">The Tyrells Open</p>
       <p class="hero-subtitle">An annual golf competition</p>
+      <div class="hero-stats" id="hero-stats">
+        <div class="hero-stat-item"><span class="hero-stat-number" id="stat-years">0</span><span class="hero-stat-label">Years</span></div>
+        <div class="hero-stat-item"><span class="hero-stat-number" id="stat-courses">0</span><span class="hero-stat-label">Courses</span></div>
+        <div class="hero-stat-item"><span class="hero-stat-number" id="stat-players">0</span><span class="hero-stat-label">Players</span></div>
+        <div class="hero-stat-item"><span class="hero-stat-number">1</span><span class="hero-stat-label">Shield</span></div>
+      </div>
       <div class="hero-actions">
         <a href="about.html" class="btn btn-primary">About the Open</a>
         <a href="leaderboard.html" class="btn btn-outline">View Leaderboard</a>

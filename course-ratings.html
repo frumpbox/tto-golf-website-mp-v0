@@ -2,135 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Tyrells Open - Course Ratings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Tyrells Open – Course Ratings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="/src/styles/legacy.css" />
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const tbody = document.getElementById("course-summary-body");
-      if (!tbody) return;
-
-      const courses =
-        typeof getAllCourses === "function"
-          ? getAllCourses()
-          : { tyrellsWood: getCourseData("tyrellsWood") };
-      const defaultHoleRating = 5;
-
-      Object.keys(courses || {}).forEach((key) => {
-        const course = courses[key];
-        if (!course) return;
-
-        const holeValues = [];
-        for (let i = 0; i < holeLabels.length; i++) {
-          if (i === 9 || i === 19 || i === 20) continue;
-          const v =
-            course.holeRating &&
-            course.holeRating[i] !== null &&
-            course.holeRating[i] !== undefined
-              ? Number(course.holeRating[i])
-              : defaultHoleRating;
-          if (!Number.isNaN(v)) holeValues.push(v);
-        }
-        const avgHole =
-          holeValues.length > 0
-            ? (
-                holeValues.reduce((a, b) => a + b, 0) / holeValues.length
-              ).toFixed(2)
-            : "—";
-
-        const summaryRow = document.createElement("tr");
-        summaryRow.className = "details-toggle";
-        summaryRow.style.cursor = "pointer";
-        summaryRow.dataset.detailTarget = `course-detail-${key}`;
-        summaryRow.innerHTML = `
-          <td>${course.name}</td>
-          <td>${course.par[20] || ""}</td>
-          <td>${course.distance[20] ? course.distance[20] + " yds" : ""}</td>
-          <td>${course.courseRating ?? ""}</td>
-          <td>${course.slope ?? ""}</td>
-          <td class="avg-hole-rating">${avgHole}</td>
-        `;
-        tbody.appendChild(summaryRow);
-
-        const detailRow = document.createElement("tr");
-        detailRow.id = `course-detail-${key}`;
-        detailRow.className = "details-row";
-        detailRow.style.display = "none";
-        const detailCell = document.createElement("td");
-        detailCell.colSpan = 6;
-        detailRow.appendChild(detailCell);
-        tbody.appendChild(detailRow);
-
-        const table = document.createElement("table");
-        table.className = "scorecard-table";
-
-        const thead = document.createElement("thead");
-        const headerRow = document.createElement("tr");
-        headerRow.appendChild(document.createElement("th"));
-        holeLabels.forEach((label) => {
-          const th = document.createElement("th");
-          th.textContent = label;
-          headerRow.appendChild(th);
-        });
-        thead.appendChild(headerRow);
-        table.appendChild(thead);
-
-        const tbodyDetail = document.createElement("tbody");
-
-        function addRow(label, values) {
-          const tr = document.createElement("tr");
-          const th = document.createElement("th");
-          th.textContent = label;
-          tr.appendChild(th);
-          values.forEach((v) => {
-            const td = document.createElement("td");
-            td.textContent = v ?? "";
-            tr.appendChild(td);
-          });
-          tbodyDetail.appendChild(tr);
-        }
-
-        addRow("Distance (yds)", course.distance);
-        addRow("Par", course.par);
-        addRow(
-          "Stroke Index",
-          course.strokeIndex.map((v) => (v === null ? "" : v))
-        );
-
-        const holeRatingRow = holeLabels.map((_, idx) => {
-          if (idx === 9 || idx === 19 || idx === 20) return "";
-          const v =
-            course.holeRating &&
-            course.holeRating[idx] !== null &&
-            course.holeRating[idx] !== undefined
-              ? course.holeRating[idx]
-              : defaultHoleRating;
-          return v;
-        });
-        addRow("Hole Rating", holeRatingRow);
-
-        table.appendChild(tbodyDetail);
-        detailCell.appendChild(table);
-
-        summaryRow.addEventListener("click", function () {
-          const isHidden =
-            detailRow.style.display === "none" || detailRow.style.display === "";
-          detailRow.style.display = isHidden ? "table-row" : "none";
-        });
-      });
-    });
-  </script>
 </head>
-
 <body>
 
-  <!-- Navigation (same as other pages) -->
   <nav>
     <div class="container nav-layout">
-
       <a href="index.html"><img src="/crest/tto-crest-right-gold-transparent.png" class="crest-logo" /></a>
-
-      <h1>The Tyrells Open - TTO</h1>
-
+      <h1>The Tyrells Open</h1>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
@@ -142,27 +29,272 @@
     </div>
   </nav>
 
-  <main class="container">
-    <h2>Course & Scorecard Details</h2>
-    <p>
-      Click a course row to view its scorecard and hole ratings (out of 5).
-    </p>
+  <section class="page-hero">
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <p class="page-hero-eyebrow">The Tyrells Open</p>
+      <h2 class="page-hero-title">Course Ratings</h2>
+      <p class="page-hero-subtitle">Every course we've played, rated and reviewed.</p>
+    </div>
+  </section>
 
+  <main class="container">
     <table>
       <thead>
         <tr>
           <th>Course</th>
+          <th>Country</th>
           <th>Par</th>
           <th>Distance</th>
-          <th>Rating</th>
-          <th>Slope</th>
-          <th>Avg Hole Rating</th>
+          <th>Overall</th>
         </tr>
       </thead>
       <tbody id="course-summary-body"></tbody>
     </table>
 
+    <div id="selected-course-panel"></div>
   </main>
+
   <script type="module" src="/src/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tbody = document.getElementById("course-summary-body");
+      if (!tbody) return;
+
+      const courses =
+        typeof getAllCourses === "function"
+          ? getAllCourses()
+          : { tyrellsWood: getCourseData("tyrellsWood") };
+      const defaultHoleRating = 5;
+
+      var courseCountries = {
+        tyrellsWood: "England",
+        silvertip: "Canada",
+        stewartCreek: "Canada",
+        luffenhamHeath: "England",
+        sauntonEast: "England",
+        sauntonWest: "England",
+        royalOstend: "Belgium",
+        royalZoute: "Belgium",
+      };
+
+      var currentlySelectedRow = null;
+
+      function getOverall(course) {
+        var r = course.ratings;
+        if (!r || r.total === null || r.total === undefined) return "TBC";
+        return r.total;
+      }
+
+      function renderSubRatings(course) {
+        var fields = [
+          { label: "Course Rating", key: "courseRating54", max: 54 },
+          { label: "Golf Facilities", key: "golfFacilities", max: 9 },
+          { label: "Clubhouse", key: "clubhouse", max: 9 },
+          { label: "Post Round Vibes", key: "postRoundVibes", max: 9 },
+          { label: "Value for Money", key: "valueForMoney", max: 9 },
+          { label: "Location", key: "location", max: 9 },
+          { label: "Course Map", key: "courseMap", max: 1 },
+          { label: "Total", key: "total", max: 100 },
+        ];
+
+        var table = document.createElement("table");
+        table.className = "cr-ratings-table";
+
+        var caption = document.createElement("caption");
+        caption.className = "cr-ratings-caption";
+        caption.textContent = "Course Ratings";
+        table.appendChild(caption);
+
+        var thead = document.createElement("thead");
+        var headerRow = document.createElement("tr");
+        var th1 = document.createElement("th");
+        th1.textContent = "Category";
+        var th2 = document.createElement("th");
+        th2.textContent = "Score";
+        headerRow.appendChild(th1);
+        headerRow.appendChild(th2);
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        var tbodyRatings = document.createElement("tbody");
+
+        fields.forEach(function (field) {
+          var tr = document.createElement("tr");
+          if (field.key === "total") {
+            tr.className = "cr-total-row";
+          }
+          var tdLabel = document.createElement("td");
+          tdLabel.textContent = field.label;
+          tr.appendChild(tdLabel);
+
+          var tdScore = document.createElement("td");
+          var val = course.ratings ? course.ratings[field.key] : null;
+          if (val === null || val === undefined) {
+            tdScore.textContent = "TBC";
+          } else {
+            tdScore.textContent = val + " /" + field.max;
+          }
+          tr.appendChild(tdScore);
+
+          tbodyRatings.appendChild(tr);
+        });
+
+        table.appendChild(tbodyRatings);
+        return table;
+      }
+
+      Object.keys(courses || {}).forEach(function (key) {
+        var course = courses[key];
+        if (!course) return;
+
+        var overall = getOverall(course);
+
+        var summaryRow = document.createElement("tr");
+        summaryRow.className = "details-toggle";
+        summaryRow.style.cursor = "pointer";
+        summaryRow.dataset.courseKey = key;
+        summaryRow.innerHTML =
+          "<td>" + course.name + "</td>" +
+          "<td>" + (courseCountries[key] || "") + "</td>" +
+          "<td>" + (course.par[20] || "") + "</td>" +
+          "<td>" + (course.distance[20] ? course.distance[20] + " yds" : "") + "</td>" +
+          "<td class=\"cr-overall\">" + overall + "</td>";
+        tbody.appendChild(summaryRow);
+
+        summaryRow.addEventListener("click", function () {
+          var panel = document.getElementById("selected-course-panel");
+
+          if (currentlySelectedRow === this) {
+            this.classList.remove("selected");
+            currentlySelectedRow = null;
+            panel.innerHTML = "";
+            return;
+          }
+
+          if (currentlySelectedRow) {
+            currentlySelectedRow.classList.remove("selected");
+          }
+          this.classList.add("selected");
+          currentlySelectedRow = this;
+
+          panel.innerHTML = "";
+
+          var topGrid = document.createElement("div");
+          topGrid.className = "course-panel-top";
+
+          var leftCol = document.createElement("div");
+          leftCol.className = "course-panel-left";
+
+          var heading = document.createElement("div");
+          heading.className = "course-header-row";
+          var h3 = document.createElement("h3");
+          h3.textContent = course.name;
+          heading.appendChild(h3);
+
+          var overallEl = document.createElement("span");
+          overallEl.className = "course-header-overall";
+          var oVal = getOverall(course);
+          overallEl.textContent = oVal !== "TBC" ? oVal + "/100" : "TBC";
+          heading.appendChild(overallEl);
+
+          var countryP = document.createElement("p");
+          countryP.textContent = courseCountries[key] || "";
+          heading.appendChild(countryP);
+          leftCol.appendChild(heading);
+
+          var photosDiv = document.createElement("div");
+          photosDiv.className = "course-feature-photos";
+          for (var pi = 0; pi < 4; pi++) {
+            var placeholder = document.createElement("div");
+            placeholder.className = "course-photo-placeholder";
+            placeholder.textContent = "Photo " + (pi + 1);
+            photosDiv.appendChild(placeholder);
+          }
+          leftCol.appendChild(photosDiv);
+
+          var descDiv = document.createElement("div");
+          descDiv.className = "course-feature-description";
+          var descP = document.createElement("p");
+          descP.textContent = course.description || "Description coming soon.";
+          descDiv.appendChild(descP);
+          leftCol.appendChild(descDiv);
+
+          var link = document.createElement("a");
+          link.className = "course-feature-link";
+          link.href = course.website || "#";
+          link.target = "_blank";
+          link.textContent = "Official Website \u2192";
+          leftCol.appendChild(link);
+
+          topGrid.appendChild(leftCol);
+
+          var rightCol = document.createElement("div");
+          rightCol.className = "course-panel-right";
+
+          var subRatingsTable = renderSubRatings(course);
+          rightCol.appendChild(subRatingsTable);
+
+          topGrid.appendChild(rightCol);
+
+          panel.appendChild(topGrid);
+
+          var scorecardTable = document.createElement("table");
+          scorecardTable.className = "scorecard-table";
+
+          var thead = document.createElement("thead");
+          var headerRow = document.createElement("tr");
+          headerRow.appendChild(document.createElement("th"));
+          holeLabels.forEach(function (label) {
+            var th = document.createElement("th");
+            th.textContent = label;
+            headerRow.appendChild(th);
+          });
+          thead.appendChild(headerRow);
+          scorecardTable.appendChild(thead);
+
+          var tbodyDetail = document.createElement("tbody");
+
+          function addRow(label, values) {
+            var tr = document.createElement("tr");
+            var th = document.createElement("th");
+            th.textContent = label;
+            tr.appendChild(th);
+            values.forEach(function (v) {
+              var td = document.createElement("td");
+              td.textContent = v ?? "";
+              tr.appendChild(td);
+            });
+            tbodyDetail.appendChild(tr);
+          }
+
+          addRow("Distance (yds)", course.distance);
+          addRow("Par", course.par);
+          addRow(
+            "Stroke Index",
+            course.strokeIndex.map(function (v) { return v === null ? "" : v; })
+          );
+
+          var holeRatingRow = holeLabels.map(function (_, idx) {
+            if (idx === 9 || idx === 19 || idx === 20) return "";
+            var v =
+              course.holeRating &&
+              course.holeRating[idx] !== null &&
+              course.holeRating[idx] !== undefined
+                ? course.holeRating[idx]
+                : defaultHoleRating;
+            return v;
+          });
+          addRow("Hole Rating", holeRatingRow);
+
+          scorecardTable.appendChild(tbodyDetail);
+          panel.appendChild(scorecardTable);
+
+          panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>
