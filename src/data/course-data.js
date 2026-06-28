@@ -1,4 +1,4 @@
-// Course data for Tyrells Wood
+// Course data for Tyrrels Wood
 /* courseRatingNotes:
  * courseRating54 will eventually be built from hole-by-hole tier ratings.
  * Future scorecard-photo imports can populate each hole rating (1-5 per hole),
@@ -8,7 +8,7 @@
  */
 export const courses = {
   tyrellsWood: {
-    name: "Tyrells Wood",
+    name: "Tyrrels Wood",
     ratings: {
       courseRating54: null,
       golfFacilities: null,
