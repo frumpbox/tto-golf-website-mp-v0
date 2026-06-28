@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Tyrrels Open – Leaderboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,6 +19,11 @@
       <div class="container nav-layout">
         <a href="index.html"><img src="/crest/tto-crest-right-gold-transparent.png" class="crest-logo" /></a>
         <h1>The Tyrrels Open</h1>
+        <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
@@ -41,6 +47,7 @@
     <main class="container">
       <!-- SUMMARY TABLE -->
 
+      <div class="table-wrapper">
       <table>
         <thead>
           <tr>
@@ -96,6 +103,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <p class="leaderboard-footnote">
         * Lower Rank Score is better. Rank Score are based on finishing position
@@ -106,6 +114,7 @@
 
       <h2 id="year-2025">2025 - Belgium - Royal Ostend, Royal Zoute <a class="yir-link" href="year-in-review.html?year=2025">YiR</a></h2>
       <div class="conditions-note">Conditions: Good</div>
+      <div class="table-wrapper">
       <table id="table-2025">
         <thead>
           <tr>
@@ -349,9 +358,11 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h2 id="year-2024">2024 - England - Saunton East Course, West Course <a class="yir-link" href="year-in-review.html?year=2024">YiR</a></h2>
       <div class="conditions-note">Conditions: Good</div>
+      <div class="table-wrapper">
       <table id="table-2024">
         <thead>
           <tr>
@@ -557,9 +568,11 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h2 id="year-2023">2023 - England - Luffenham Heath <a class="yir-link" href="year-in-review.html?year=2023">YiR</a></h2>
       <div class="conditions-note">Conditions: Good</div>
+      <div class="table-wrapper">
       <table id="table-2023">
         <thead>
           <tr>
@@ -803,9 +816,11 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h2 id="year-2022">2022 - Canada - Silvertip, Stewart Creek <a class="yir-link" href="year-in-review.html?year=2022">YiR</a></h2>
       <div class="conditions-note">Conditions: Good</div>
+      <div class="table-wrapper">
       <table id="table-2022">
         <thead>
           <tr>
@@ -1011,9 +1026,11 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h2 id="year-2021">2021 - England - Tyrrels Wood <a class="yir-link" href="year-in-review.html?year=2021">YiR</a></h2>
       <div class="conditions-note">Conditions: Good</div>
+      <div class="table-wrapper">
       <table id="table-2021">
         <thead>
           <tr>
@@ -1181,9 +1198,11 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h2 id="year-2020">2020 - England - Tyrrels Wood <a class="yir-link" href="year-in-review.html?year=2020">YiR</a></h2>
       <div class="conditions-note">Conditions: Good</div>
+      <div class="table-wrapper">
       <table id="table-2020">
         <thead>
           <tr>
@@ -1392,6 +1411,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </main>
 
     <script type="module" src="/src/main.js"></script>
