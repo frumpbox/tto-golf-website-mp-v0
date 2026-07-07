@@ -1241,11 +1241,151 @@ table[id^="table-"] td:first-child {
   font-size: 0.9rem;
 }
 
+/* =============================================
+   COURSE RATINGS — Hole Tier Summary table
+   ============================================= */
+
+.cr-tier-summary-table {
+  margin-top: 20px;
+  background: #111811;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  width: 100%;
+}
+
+.cr-tier-summary-caption {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #c9a84c;
+  text-align: left;
+  padding: 12px 16px 4px;
+  caption-side: top;
+}
+
+.cr-tier-summary-table th {
+  background: #0d130d;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(240, 240, 234, 0.5);
+  padding: 8px 14px;
+}
+
+.cr-tier-summary-table td {
+  padding: 8px 14px;
+  font-size: 0.83rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cr-tier-summary-table td:first-child {
+  font-weight: 600;
+  color: rgba(240, 240, 234, 0.85);
+}
+
+.cr-tier-summary-table td:nth-child(2) {
+  font-variant-numeric: tabular-nums;
+}
+
+.cr-tier-summary-table td:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.cr-tier-summary-placeholder {
+  margin-top: 20px;
+  font-size: 0.78rem;
+  color: rgba(240, 240, 234, 0.35);
+  font-style: italic;
+  padding: 16px;
+  background: #111811;
+  border: 1px dashed rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  text-align: center;
+}
+
+#selected-course-panel .cr-tier-summary-table {
+  max-width: none;
+  width: 100%;
+}
+
 /* Overall column in summary table */
 .cr-overall {
   font-weight: 700;
   color: #c9a84c;
   font-variant-numeric: tabular-nums;
+}
+
+.course-info-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+  background: #111811;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 20px 24px;
+}
+
+.course-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.course-info-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(240, 240, 234, 0.45);
+}
+
+.course-info-value {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #f0f0ea;
+  font-variant-numeric: tabular-nums;
+}
+
+.course-info-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.course-info-row .cr-tier-summary-table {
+  margin-top: 0;
+}
+
+/* Total row in tier summary */
+.cr-tier-total-row td {
+  font-weight: 700;
+  border-top: 1px solid rgba(201, 168, 76, 0.25);
+  color: #f0f0ea;
+}
+
+.cr-tier-total-row td:first-child {
+  color: #c9a84c;
+}
+
+.cr-tier-total-row td:last-child {
+  color: #c9a84c;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 800px) {
+  .course-info-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .course-info-card {
+    padding: 16px;
+    gap: 8px 16px;
+  }
 }
 
 /* =============================================

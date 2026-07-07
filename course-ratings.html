@@ -51,7 +51,7 @@
       <thead>
         <tr>
           <th>Course</th>
-          <th>Country</th>
+          <th>Location</th>
           <th>Par</th>
           <th>Distance</th>
           <th>Overall</th>
@@ -74,37 +74,35 @@
         typeof getAllCourses === "function"
           ? getAllCourses()
           : { tyrellsWood: getCourseData("tyrellsWood") };
-      const defaultHoleRating = 5;
-
-      var courseCountries = {
-        tyrellsWood: "England",
-        silvertip: "Canada",
-        stewartCreek: "Canada",
-        luffenhamHeath: "England",
-        sauntonEast: "England",
-        sauntonWest: "England",
-        royalOstend: "Belgium",
-        royalZoute: "Belgium",
-      };
 
       var currentlySelectedRow = null;
 
       function getOverall(course) {
         var r = course.ratings;
-        if (!r || r.total === null || r.total === undefined) return "TBC";
-        return r.total;
+        if (!r || r.total100 === null || r.total100 === undefined) return "TBC";
+        return r.total100;
+      }
+
+      function getRatingsVal(course, field) {
+        if (!course.ratings) return null;
+        if (field.group === "facilityRatings") {
+          var fr = course.ratings.facilityRatings;
+          return fr ? fr[field.key] : null;
+        }
+        return course.ratings[field.key];
       }
 
       function renderSubRatings(course) {
         var fields = [
           { label: "Course Rating", key: "courseRating54", max: 54 },
-          { label: "Golf Facilities", key: "golfFacilities", max: 9 },
-          { label: "Clubhouse", key: "clubhouse", max: 9 },
-          { label: "Post Round Vibes", key: "postRoundVibes", max: 9 },
-          { label: "Value for Money", key: "valueForMoney", max: 9 },
-          { label: "Location", key: "location", max: 9 },
-          { label: "Course Map", key: "courseMap", max: 1 },
-          { label: "Total", key: "total", max: 100 },
+          { label: "Location – Ease of Access", key: "locationEaseOfAccess", max: 9, group: "facilityRatings" },
+          { label: "Value for Money", key: "valueForMoney", max: 9, group: "facilityRatings" },
+          { label: "Post Round Vibes", key: "postRoundVibes", max: 9, group: "facilityRatings" },
+          { label: "Clubhouse", key: "clubhouse", max: 9, group: "facilityRatings" },
+          { label: "Golf Facilities", key: "golfFacilities", max: 9, group: "facilityRatings" },
+          { label: "Course Map", key: "courseMap", max: 1, group: "facilityRatings" },
+          { label: "Facilities Total", key: "facilities46", max: 46 },
+          { label: "Total", key: "total100", max: 100 },
         ];
 
         var table = document.createElement("table");
@@ -130,7 +128,7 @@
 
         fields.forEach(function (field) {
           var tr = document.createElement("tr");
-          if (field.key === "total") {
+          if (field.key === "total100") {
             tr.className = "cr-total-row";
           }
           var tdLabel = document.createElement("td");
@@ -138,7 +136,7 @@
           tr.appendChild(tdLabel);
 
           var tdScore = document.createElement("td");
-          var val = course.ratings ? course.ratings[field.key] : null;
+          var val = getRatingsVal(course, field);
           if (val === null || val === undefined) {
             tdScore.textContent = "TBC";
           } else {
@@ -150,6 +148,80 @@
         });
 
         table.appendChild(tbodyRatings);
+        return table;
+      }
+
+      function renderHoleTierSummary(course) {
+        var summary = course.holeTierSummary;
+
+        var table = document.createElement("table");
+        table.className = "cr-tier-summary-table";
+
+        var caption = document.createElement("caption");
+        caption.className = "cr-tier-summary-caption";
+        caption.textContent = "Hole Tier Summary";
+        table.appendChild(caption);
+
+        var thead = document.createElement("thead");
+        var headerRow = document.createElement("tr");
+        var tierTh = document.createElement("th");
+        tierTh.textContent = "Tier";
+        headerRow.appendChild(tierTh);
+        var holesTh = document.createElement("th");
+        holesTh.textContent = "Holes";
+        headerRow.appendChild(holesTh);
+        var pointsTh = document.createElement("th");
+        pointsTh.textContent = "Points";
+        headerRow.appendChild(pointsTh);
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        var tbody = document.createElement("tbody");
+
+        var tiers = [
+          { key: "gravy", label: "Gravy" },
+          { key: "good", label: "Good" },
+          { key: "saltAndVinegar", label: "Salt & Vinegar" },
+          { key: "meh", label: "Meh" },
+          { key: "bad", label: "Bad" },
+        ];
+
+        tiers.forEach(function (tier) {
+          var tr = document.createElement("tr");
+          var tdLabel = document.createElement("td");
+          tdLabel.textContent = tier.label;
+          tr.appendChild(tdLabel);
+
+          var tdHoles = document.createElement("td");
+          var tdPoints = document.createElement("td");
+
+          if (summary && summary[tier.key]) {
+            var data = summary[tier.key];
+            tdHoles.textContent = data.holes.length > 0 ? data.holes.join(", ") : "\u2014";
+            tdPoints.textContent = data.points;
+          }
+
+          tr.appendChild(tdHoles);
+          tr.appendChild(tdPoints);
+          tbody.appendChild(tr);
+        });
+
+        var totalTr = document.createElement("tr");
+        totalTr.className = "cr-tier-total-row";
+        var tdTotalLabel = document.createElement("td");
+        tdTotalLabel.textContent = "Total";
+        totalTr.appendChild(tdTotalLabel);
+        var tdTotalHoles = document.createElement("td");
+        var tdTotalPoints = document.createElement("td");
+        if (summary && summary.total) {
+          tdTotalHoles.textContent = summary.total.holes;
+          tdTotalPoints.textContent = summary.total.points;
+        }
+        totalTr.appendChild(tdTotalHoles);
+        totalTr.appendChild(tdTotalPoints);
+        tbody.appendChild(totalTr);
+
+        table.appendChild(tbody);
         return table;
       }
 
@@ -165,7 +237,7 @@
         summaryRow.dataset.courseKey = key;
         summaryRow.innerHTML =
           "<td>" + course.name + "</td>" +
-          "<td>" + (courseCountries[key] || "") + "</td>" +
+          "<td>" + (course.location || "") + "</td>" +
           "<td>" + (course.par[20] || "") + "</td>" +
           "<td>" + (course.distance[20] ? course.distance[20] + " yds" : "") + "</td>" +
           "<td class=\"cr-overall\">" + overall + "</td>";
@@ -206,10 +278,6 @@
           var oVal = getOverall(course);
           overallEl.textContent = oVal !== "TBC" ? oVal + "/100" : "TBC";
           heading.appendChild(overallEl);
-
-          var countryP = document.createElement("p");
-          countryP.textContent = courseCountries[key] || "";
-          heading.appendChild(countryP);
           leftCol.appendChild(heading);
 
           var photosDiv = document.createElement("div");
@@ -236,6 +304,38 @@
           link.textContent = "Official Website \u2192";
           leftCol.appendChild(link);
 
+          var infoRow = document.createElement("div");
+          infoRow.className = "course-info-row";
+
+          var infoCard = document.createElement("div");
+          infoCard.className = "course-info-card";
+          var infoItems = [
+            { label: "Location", value: course.location || "TBC" },
+            { label: "Tee Played", value: course.teePlayed || "TBC" },
+            { label: "Course Rating", value: course.courseRating !== undefined ? course.courseRating : "TBC" },
+            { label: "Slope Rating", value: course.slope !== undefined ? course.slope : "TBC" },
+          ];
+          if (course.playedIn) {
+            infoItems.push({ label: "Played In", value: course.playedIn.join(", ") });
+          }
+          infoItems.forEach(function (item) {
+            var infoEl = document.createElement("div");
+            infoEl.className = "course-info-item";
+            var infoLabel = document.createElement("span");
+            infoLabel.className = "course-info-label";
+            infoLabel.textContent = item.label;
+            var infoValue = document.createElement("span");
+            infoValue.className = "course-info-value";
+            infoValue.textContent = item.value;
+            infoEl.appendChild(infoLabel);
+            infoEl.appendChild(infoValue);
+            infoCard.appendChild(infoEl);
+          });
+          infoRow.appendChild(infoCard);
+
+          var tierSummary = renderHoleTierSummary(course);
+          infoRow.appendChild(tierSummary);
+
           topGrid.appendChild(leftCol);
 
           var rightCol = document.createElement("div");
@@ -247,6 +347,8 @@
           topGrid.appendChild(rightCol);
 
           panel.appendChild(topGrid);
+
+          panel.appendChild(infoRow);
 
           var scorecardTable = document.createElement("table");
           scorecardTable.className = "scorecard-table";
@@ -291,7 +393,7 @@
               course.holeRating[idx] !== null &&
               course.holeRating[idx] !== undefined
                 ? course.holeRating[idx]
-                : defaultHoleRating;
+                : "";
             return v;
           });
           addRow("Hole Rating", holeRatingRow);
