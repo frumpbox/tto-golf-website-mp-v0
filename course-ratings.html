@@ -178,6 +178,11 @@
 
         var tbody = document.createElement("tbody");
 
+        function findArrayItem(tierLabel) {
+          if (!Array.isArray(summary)) return null;
+          return summary.find(function (item) { return item.tier === tierLabel; }) || null;
+        }
+
         var tiers = [
           { key: "gravy", label: "Gravy" },
           { key: "good", label: "Good" },
@@ -195,10 +200,18 @@
           var tdHoles = document.createElement("td");
           var tdPoints = document.createElement("td");
 
-          if (summary && summary[tier.key]) {
-            var data = summary[tier.key];
-            tdHoles.textContent = data.holes.length > 0 ? data.holes.join(", ") : "\u2014";
-            tdPoints.textContent = data.points;
+          if (summary) {
+            if (Array.isArray(summary)) {
+              var item = findArrayItem(tier.label);
+              if (item) {
+                tdHoles.textContent = item.holes;
+                tdPoints.textContent = item.points;
+              }
+            } else if (summary[tier.key]) {
+              var data = summary[tier.key];
+              tdHoles.textContent = data.holes.length > 0 ? data.holes.join(", ") : "\u2014";
+              tdPoints.textContent = data.points;
+            }
           }
 
           tr.appendChild(tdHoles);
@@ -213,9 +226,17 @@
         totalTr.appendChild(tdTotalLabel);
         var tdTotalHoles = document.createElement("td");
         var tdTotalPoints = document.createElement("td");
-        if (summary && summary.total) {
-          tdTotalHoles.textContent = summary.total.holes;
-          tdTotalPoints.textContent = summary.total.points;
+        if (summary) {
+          if (Array.isArray(summary)) {
+            var totalItem = findArrayItem("Total");
+            if (totalItem) {
+              tdTotalHoles.textContent = totalItem.holes;
+              tdTotalPoints.textContent = totalItem.points;
+            }
+          } else if (summary.total) {
+            tdTotalHoles.textContent = summary.total.holes;
+            tdTotalPoints.textContent = summary.total.points;
+          }
         }
         totalTr.appendChild(tdTotalHoles);
         totalTr.appendChild(tdTotalPoints);
