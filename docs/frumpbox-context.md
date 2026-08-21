@@ -13,16 +13,16 @@ These absolute paths describe James's current development machine. They are
 operational context, not portable repository architecture.
 
 ```text
-/home/frump/agent-workspace/tto-golf-website-mp-v0
+/home/frump/projects/tto-website/website
   Current active TTO repository
 
-/home/frump/frumpbox-v2
+/home/frump/projects/tto-website/frumpbox-v2
   Newer Frumpbox implementation
 
-/home/frump/frumpbox-discord-bot
+/home/frump/projects/tto-website/frumpbox-v1-prototype
   V1 prototype/reference; final long-term status not yet decided
 
-/home/frump/frumpbox-workspaces
+/home/frump/projects/tto-website/workspaces
   Generated non-Git job workspaces
 
 /home/frump/archives/frumpbox/historical-backups
