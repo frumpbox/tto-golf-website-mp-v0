@@ -16,10 +16,10 @@ operational context, not portable repository architecture.
 /home/frump/projects/tto-website/website
   Current active TTO repository
 
-/home/frump/projects/tto-website/frumpbox-v2
+/home/frump/projects/tto-website/frumpbox-v2-approval-workflow
   Newer Frumpbox implementation
 
-/home/frump/projects/tto-website/frumpbox-v1-prototype
+/home/frump/projects/tto-website/frumpbox-v1-discord-prototype
   V1 prototype/reference; final long-term status not yet decided
 
 /home/frump/projects/tto-website/workspaces
