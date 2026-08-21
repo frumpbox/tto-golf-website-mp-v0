@@ -32,6 +32,7 @@ npm run preview
 
 ## Focused documentation
 
+- [Current website TODO](docs/todo.md)
 - [Architecture](docs/architecture.md)
 - [Data and content](docs/data-and-content.md)
 - [Development workflow](docs/development-workflow.md)

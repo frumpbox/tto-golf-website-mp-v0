@@ -65,7 +65,7 @@ const year2025 = verifyYearBasics(2025, { location: "Belgium", courseKeys: 2, re
 const expected2025Players = ["sam-lewis", "sam-dynes", "james-hall", "george-stinton", "felipe-milo", "tom-sutehall"];
 verifyPlayerAttendees(2025, expected2025Players);
 
-const courseKeys = ["tyrellsWood", "silvertip", "stewartCreek", "luffenhamHeath", "sauntonEast", "sauntonWest", "royalOstend", "royalZoute"];
+const courseKeys = ["tyrrellsWood", "silvertip", "stewartCreek", "luffenhamHeath", "sauntonEast", "sauntonWest", "royalOstend", "royalZoute"];
 for (const key of courseKeys) {
   if (!leaderboardData.courses[key]) failures.push(`Course ${key} missing`);
 }
@@ -106,8 +106,8 @@ const year2020 = leaderboardData.years[2020];
 if (!year2020) failures.push("2020 year missing");
 if (year2020.location !== "England") failures.push("2020 location mismatch");
 if (year2020.courseKeys.length !== 2) failures.push("2020 should have 2 courseKeys");
-if (year2020.courseKeys[0] !== "tyrellsWood" || year2020.courseKeys[1] !== "tyrellsWood") {
-  failures.push("2020 both rounds should be tyrellsWood");
+if (year2020.courseKeys[0] !== "tyrrellsWood" || year2020.courseKeys[1] !== "tyrrellsWood") {
+  failures.push("2020 both rounds should be tyrrellsWood");
 }
 if (year2020.results.length !== 5) failures.push("2020 should have 5 results, got " + year2020.results.length);
 if (year2020.status !== "completed") failures.push("2020 status should be completed");
@@ -133,7 +133,7 @@ const EXPECTED_2020_TOTALS = {
   "sam-dynes":   { r1: 0, r2: 0, total: 0 },
 };
 
-const course2020 = leaderboardData.courses.tyrellsWood;
+const course2020 = leaderboardData.courses.tyrrellsWood;
 
 for (const result of year2020.results) {
   if (!result.playerId) failures.push("2020 result missing playerId");
@@ -195,11 +195,11 @@ const year2021 = verifyYearBasics(2021, { location: "England", courseKeys: 2, re
 const expected2021Players = ["sam-dynes", "sam-lewis", "george-stinton", "james-hall"];
 verifyPlayerAttendees(2021, expected2021Players);
 
-if (year2021.courseKeys[0] !== "tyrellsWood" || year2021.courseKeys[1] !== "tyrellsWood") {
-  failures.push("2021 both rounds should be tyrellsWood");
+if (year2021.courseKeys[0] !== "tyrrellsWood" || year2021.courseKeys[1] !== "tyrrellsWood") {
+  failures.push("2021 both rounds should be tyrrellsWood");
 }
 
-const course2021 = leaderboardData.courses.tyrellsWood;
+const course2021 = leaderboardData.courses.tyrrellsWood;
 
 const EXPECTED_2021_TOTALS = {
   "sam-dynes":    { r1: 38, r2: 44, total: 82 },

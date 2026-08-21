@@ -1,4 +1,4 @@
-// Course data for Tyrrels Wood
+// Course data for Tyrrells Wood
 /*
  * Ratings structure:
  *   holeTierRatings[18] — future hole-by-hole tier (1-5 each), sum → courseRating54
@@ -10,8 +10,8 @@
  *   total100 — courseRating54 + facilities46 (max 100)
  */
 export const courses = {
-  tyrellsWood: {
-    name: "Tyrrels Wood",
+  tyrrellsWood: {
+    name: "Tyrrells Wood",
     location: 'England, Surrey',
     teePlayed: 'White',
     playedIn: ['2020', '2021'],

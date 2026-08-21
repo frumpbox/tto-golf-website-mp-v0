@@ -1,14 +1,14 @@
 export const yearReviews = {
   2020: {
     location: 'England',
-    courses: ['Tyrells Wood', 'Tyrells Wood'],
+    courses: ['Tyrrells Wood', 'Tyrrells Wood'],
     winner: 'Sam Lewis',
     runnerUp: 'James Hall',
     margin: 'Playoff',
     hasWriteup: true,
     writeup: `
       <h3 class="yir-article-title">The Story of TTO 2020</h3>
-      <p>The inaugural playing of The Tyrrell's Open could hardly have drummed up any more anticipation, with the 5 founding members all present to cut the ribbon on a historic first skirmish around the incomparable Tyrrell's Wood Golf Club.</p>
+      <p>The inaugural playing of The Tyrrells Open could hardly have drummed up any more anticipation, with the 5 founding members all present to cut the ribbon on a historic first skirmish around the incomparable Tyrrells Wood Golf Club.</p>
       <p>To those familiar with the course layout, Tyrrells presented a stern test with trouble lurking on most holes for any who did not have control of their golf ball. Just shy of 6,300 yards, you would be forgiven for seeing a scorecard littered with short 4s and reachable 5s and thinking low scores were common enough, but frequent OB, harsh slopes and small greens offered more than a fair challenge for any would be champion to overcome.</p>
       <p>As the sun set on a warm Friday night, the time for talk was finally over, with the competitors raring to let them fly. Despite the largest birth in competitive parity across the field in the competition's history, there was a feeling that anything was possible, as George Stinton hit the first ever shot of TTO; an iron for safety on the handshake 330-yard par 4 opener. With the tournament low handicap of 6 George was admittedly starting behind the 8 ball compared to his less complete competition, but a wealth of course knowledge meant no one was discounting Stinton yet.</p>
       <p>Joining George was the latest of the 5 founders to have picked up a set of clubs (if they could be called that). Dynesy did not get off to the auspicious start he had hoped for, as he shanked one of his mismatched irons into the trouble to the right of the tee box. But alas, it mattered not how it began, but how it ended. Playing off a capped handicap of 54, Dynesy struggled on day one, a result that came as a surprise to no one, given it was one of his first times stepping foot on a golf course period. A commendable effort then from a player so young in his golf career and a modest 22 points was hardly a negative under the circumstances. His playing partner faired little better on day one, as George carded a disappointing 27 points, though must be credited greatly with his split attention between shepherding an anxious Dynesy around unfamiliar territory, and trying to play his own round.</p>
@@ -27,8 +27,8 @@ export const yearReviews = {
   },
   2021: {
     location: 'England',
-    courses: ['Tyrells Wood', 'Tyrells Wood'],
-    winner: 'Sam Dynes',
+    courses: ['Tyrrells Wood', 'Tyrrells Wood'],
+    winner: "Samuel 'Dynesy' Dynes",
     runnerUp: 'Sam Lewis',
     margin: '4 points',
     hasWriteup: true,
@@ -53,7 +53,7 @@ export const yearReviews = {
     location: 'Canada',
     courses: ['Silvertip', 'Stewart Creek'],
     winner: 'Felipe Milo',
-    runnerUp: 'Sam Dynes',
+    runnerUp: "Samuel 'Dynesy' Dynes",
     margin: '',
     hasWriteup: false,
     writeup: '',
@@ -83,7 +83,7 @@ export const yearReviews = {
     location: 'Belgium',
     courses: ['Royal Ostend', 'Royal Zoute'],
     winner: 'George Stinton',
-    runnerUp: 'Sam Dynes',
+    runnerUp: "Samuel 'Dynesy' Dynes",
     margin: '',
     hasWriteup: false,
     writeup: '',

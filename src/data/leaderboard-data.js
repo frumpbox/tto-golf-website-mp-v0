@@ -2,7 +2,7 @@ import { courses } from './course-data.js';
 
 const players = {
   "sam-lewis": { displayName: "Sam Lewis" },
-  "sam-dynes": { displayName: "Sam Dynes" },
+  "sam-dynes": { displayName: "Samuel 'Dynesy' Dynes" },
   "james-hall": { displayName: "James Hall" },
   "george-stinton": { displayName: "George Stinton" },
   "felipe-milo": { displayName: "Felipe Milo" },
@@ -12,8 +12,8 @@ const players = {
 const years = {
   2020: {
     location: "England",
-    courses: ["Tyrrels Wood", "Tyrrels Wood"],
-    courseKeys: ["tyrellsWood", "tyrellsWood"],
+    courses: ["Tyrrells Wood", "Tyrrells Wood"],
+    courseKeys: ["tyrrellsWood", "tyrrellsWood"],
     roundLabels: ["Round 1 - TW", "Round 2 - TW"],
     conditions: "Good",
     status: "completed",
@@ -23,11 +23,11 @@ const years = {
         handicapIndex: 26.7,
         rounds: [
           {
-            courseKey: "tyrellsWood",
+            courseKey: "tyrrellsWood",
             gross: [4,5,6,5,5,5,7,7,4,5,8,5,5,8,6,6,5,6],
           },
           {
-            courseKey: "tyrellsWood",
+            courseKey: "tyrrellsWood",
             gross: [6,5,5,6,6,5,7,5,5,6,5,7,6,6,6,4,3,7],
           },
         ],
@@ -42,11 +42,11 @@ const years = {
         handicapIndex: 10.1,
         rounds: [
           {
-            courseKey: "tyrellsWood",
+            courseKey: "tyrrellsWood",
             gross: [5,4,3,3,5,6,6,5,3,4,6,5,4,5,6,3,4,3],
           },
           {
-            courseKey: "tyrellsWood",
+            courseKey: "tyrrellsWood",
             gross: [4,4,4,3,4,5,5,6,5,5,5,5,4,5,5,3,4,6],
           },
         ],
@@ -61,11 +61,11 @@ const years = {
         handicapIndex: 13.4,
         rounds: [
           {
-            courseKey: "tyrellsWood",
+            courseKey: "tyrrellsWood",
             gross: [4,6,5,3,5,7,5,5,2,6,5,6,7,5,3,4,6,4],
           },
           {
-            courseKey: "tyrellsWood",
+            courseKey: "tyrrellsWood",
             gross: [3,6,5,4,5,7,7,4,3,4,4,6,6,5,6,6,6,7],
           },
         ],
@@ -75,8 +75,8 @@ const years = {
         playerId: "george-stinton",
         handicapIndex: 5.2,
         rounds: [
-          { courseKey: "tyrellsWood", gross: null },
-          { courseKey: "tyrellsWood", gross: null },
+          { courseKey: "tyrrellsWood", gross: null },
+          { courseKey: "tyrrellsWood", gross: null },
         ],
         playoff: null,
       },
@@ -84,8 +84,8 @@ const years = {
         playerId: "sam-dynes",
         handicapIndex: 44.8,
         rounds: [
-          { courseKey: "tyrellsWood", gross: null },
-          { courseKey: "tyrellsWood", gross: null },
+          { courseKey: "tyrrellsWood", gross: null },
+          { courseKey: "tyrrellsWood", gross: null },
         ],
         playoff: null,
       },
@@ -101,14 +101,14 @@ const years = {
       winner: "sam-lewis",
       runnerUp: "james-hall",
       margin: "Playoff",
-      writeup: "The 2020 Tyrrels Open was held at Tyrrels Wood in England.",
+      writeup: "The 2020 Tyrrels Open was held at Tyrrells Wood in England.",
       photos: [],
     },
   },
   2021: {
     location: "England",
-    courses: ["Tyrrels Wood", "Tyrrels Wood"],
-    courseKeys: ["tyrellsWood", "tyrellsWood"],
+    courses: ["Tyrrells Wood", "Tyrrells Wood"],
+    courseKeys: ["tyrrellsWood", "tyrrellsWood"],
     roundLabels: ["Round 1 - TW", "Round 2 - TW"],
     conditions: "Good",
     status: "completed",
@@ -117,8 +117,8 @@ const years = {
         playerId: "sam-dynes",
         handicapIndex: 36.5,
         rounds: [
-          { courseKey: "tyrellsWood", gross: [5,8,6,6,5,6,9,4,5,6,7,9,6,8,6,5,5,7] },
-          { courseKey: "tyrellsWood", gross: [6,5,6,4,6,7,9,4,5,7,6,6,6,6,5,5,7,7] },
+          { courseKey: "tyrrellsWood", gross: [5,8,6,6,5,6,9,4,5,6,7,9,6,8,6,5,5,7] },
+          { courseKey: "tyrrellsWood", gross: [6,5,6,4,6,7,9,4,5,7,6,6,6,6,5,5,7,7] },
         ],
         playoff: null,
       },
@@ -126,8 +126,8 @@ const years = {
         playerId: "sam-lewis",
         handicapIndex: 19.2,
         rounds: [
-          { courseKey: "tyrellsWood", gross: [4,4,5,4,5,6,6,5,4,6,3,7,5,5,7,5,5,7] },
-          { courseKey: "tyrellsWood", gross: [5,8,5,4,6,7,6,4,3,5,5,6,5,4,4,4,5,7] },
+          { courseKey: "tyrrellsWood", gross: [4,4,5,4,5,6,6,5,4,6,3,7,5,5,7,5,5,7] },
+          { courseKey: "tyrrellsWood", gross: [5,8,5,4,6,7,6,4,3,5,5,6,5,4,4,4,5,7] },
         ],
         playoff: null,
       },
@@ -135,8 +135,8 @@ const years = {
         playerId: "george-stinton",
         handicapIndex: 3.5,
         rounds: [
-          { courseKey: "tyrellsWood", gross: [6,6,6,3,4,3,5,5,3,4,5,5,6,3,4,2,3,5] },
-          { courseKey: "tyrellsWood", gross: [4,4,4,3,4,4,5,4,3,3,5,5,5,5,7,2,3,4] },
+          { courseKey: "tyrrellsWood", gross: [6,6,6,3,4,3,5,5,3,4,5,5,6,3,4,2,3,5] },
+          { courseKey: "tyrrellsWood", gross: [4,4,4,3,4,4,5,4,3,3,5,5,5,5,7,2,3,4] },
         ],
         playoff: null,
       },
@@ -144,8 +144,8 @@ const years = {
         playerId: "james-hall",
         handicapIndex: 10.1,
         rounds: [
-          { courseKey: "tyrellsWood", gross: [4,6,5,4,5,7,8,7,3,5,5,7,4,5,4,3,5,5] },
-          { courseKey: "tyrellsWood", gross: [4,4,5,5,5,5,7,4,4,5,5,6,4,5,5,4,7,3] },
+          { courseKey: "tyrrellsWood", gross: [4,6,5,4,5,7,8,7,3,5,5,7,4,5,4,3,5,5] },
+          { courseKey: "tyrrellsWood", gross: [4,4,5,5,5,5,7,4,4,5,5,6,4,5,5,4,7,3] },
         ],
         playoff: null,
       },
@@ -155,7 +155,7 @@ const years = {
       winner: "sam-dynes",
       runnerUp: "sam-lewis",
       margin: "4 points",
-      writeup: "The 2021 Tyrrels Open was held at Tyrrels Wood in England.",
+      writeup: "The 2021 Tyrrels Open was held at Tyrrells Wood in England.",
       photos: [],
     },
   },

@@ -253,20 +253,20 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
 document.addEventListener("DOMContentLoaded", function () {
   initYear({
     year: 2020,
-    courseNames: ["tyrellsWood", "tyrellsWood"],
+    courseNames: ["tyrrellsWood", "tyrrellsWood"],
     players: [
       "Sam Lewis",
       "James Hall",
       "Felipe Milo",
       "George Stinton",
-      "Sam Dynes",
+      "Samuel 'Dynesy' Dynes",
     ],
   });
 
   initYear({
     year: 2021,
-    courseNames: ["tyrellsWood", "tyrellsWood"],
-    players: ["Sam Dynes", "Sam Lewis", "George Stinton", "James Hall"],
+    courseNames: ["tyrrellsWood", "tyrrellsWood"],
+    players: ["Samuel 'Dynesy' Dynes", "Sam Lewis", "George Stinton", "James Hall"],
   });
 
   initYear({
@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
     courseNames: ["silvertip", "stewartCreek"],
     players: [
       "Felipe Milo",
-      "Sam Dynes",
+      "Samuel 'Dynesy' Dynes",
       "Sam Lewis",
       "James Hall",
       "George Stinton",
@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "George Stinton",
       "Felipe Milo",
       "James Hall",
-      "Sam Dynes",
+      "Samuel 'Dynesy' Dynes",
     ],
     roundLabels: { 1: "Round 1 - LH", 2: "Round 2 - LH" },
   });
@@ -302,7 +302,7 @@ document.addEventListener("DOMContentLoaded", function () {
     players: [
       "Sam Lewis",
       "James Hall",
-      "Sam Dynes",
+      "Samuel 'Dynesy' Dynes",
       "George Stinton",
       "Felipe Milo",
     ],
@@ -314,7 +314,7 @@ document.addEventListener("DOMContentLoaded", function () {
     courseNames: ["royalOstend", "royalZoute"],
     players: [
       "George Stinton",
-      "Sam Dynes",
+      "Samuel 'Dynesy' Dynes",
       "James Hall",
       "Felipe Milo",
       "Sam Lewis",
@@ -564,7 +564,7 @@ const grossOverridesByPlayer = {
     },
   },
   2021: {
-    "Sam Dynes": {
+    "Samuel 'Dynesy' Dynes": {
       1: [5, 8, 6, 6, 5, 6, 9, 4, 5, 6, 7, 9, 6, 8, 6, 5, 5, 7],
       2: [6, 5, 6, 4, 6, 7, 9, 4, 5, 7, 6, 6, 6, 6, 5, 5, 7, 7],
     },
@@ -582,7 +582,7 @@ const grossOverridesByPlayer = {
     },
   },
   2022: {
-    "Sam Dynes": {
+    "Samuel 'Dynesy' Dynes": {
       1: [5, 8, 6, 7, 3, 6, 5, 8, 5, 6, 5, 3, 6, 7, 6, 4, 5, 6],
       2: [6, 9, 6, 7, 6, 7, 6, 5, 3, 6, 9, 4, 6, 5, 5, 5, 3, 9],
     },
@@ -604,7 +604,7 @@ const grossOverridesByPlayer = {
     },
   },
   2023: {
-    "Sam Dynes": {
+    "Samuel 'Dynesy' Dynes": {
       1: [7, 6, 7, 5, 4, 6, 8, 7, 6, 7, 4, 4, 6, 5, 8, 8, 5, 8],
       2: [7, 8, 7, 7, 6, 9, 6, 6, 4, 7, 6, 6, 8, 5, 6, 4, 4, 8],
     },
@@ -624,7 +624,7 @@ const grossOverridesByPlayer = {
     },
   },
   2024: {
-    "Sam Dynes": {
+    "Samuel 'Dynesy' Dynes": {
       1: [7, 6, 6, 5, 3, 4, 5, 4, 5, 7, 5, 4, 4, 5, 5, 7, 6, 6],
       2: [5, 7, 7, 4, 6, 7, 6, 4, 3, 7, 6, 4, 7, 7, 7, 4, 8, 4],
     },
@@ -649,11 +649,11 @@ const grossOverridesByPlayer = {
 const grossModeOverridesByPlayer = {
   2020: {
     "George Stinton": { 1: "blank", 2: "blank" },
-    "Sam Dynes": { 1: "blank", 2: "blank" },
+    "Samuel 'Dynesy' Dynes": { 1: "blank", 2: "blank" },
   },
   2022: {
     "Felipe Milo": { 1: "blank", 2: "blank" },
-    "Sam Dynes": { 1: null, 2: "blank" },
+    "Samuel 'Dynesy' Dynes": { 1: null, 2: "blank" },
     "Sam Lewis": { 1: "blank", 2: "blank" },
     "James Hall": { 1: "blank", 2: "blank" },
     "George Stinton": { 1: "blank", 2: "blank" },
@@ -664,18 +664,18 @@ const grossModeOverridesByPlayer = {
     "George Stinton": { 1: "blank", 2: "blank" },
     "Felipe Milo": { 1: "blank", 2: "blank" },
     "James Hall": { 1: "blank", 2: "blank" },
-    "Sam Dynes": { 1: "blank", 2: "blank" },
+    "Samuel 'Dynesy' Dynes": { 1: "blank", 2: "blank" },
   },
   2024: {
     "Sam Lewis": { 1: "blank", 2: "blank" },
     "James Hall": { 1: "blank", 2: "blank" },
-    "Sam Dynes": { 1: "blank", 2: "blank" },
+    "Samuel 'Dynesy' Dynes": { 1: "blank", 2: "blank" },
     "George Stinton": { 1: "blank", 2: "blank" },
     "Felipe Milo": { 1: "blank", 2: "blank" },
   },
   2025: {
     "George Stinton": { 1: "blank", 2: "blank" },
-    "Sam Dynes": { 1: "blank", 2: "blank" },
+    "Samuel 'Dynesy' Dynes": { 1: "blank", 2: "blank" },
     "James Hall": { 1: "blank", 2: "blank" },
     "Felipe Milo": { 1: "blank", 2: "blank" },
     "Sam Lewis": { 1: "blank", 2: "blank" },
