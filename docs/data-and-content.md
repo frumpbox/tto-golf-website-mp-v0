@@ -62,24 +62,39 @@ Last verified: 6 August 2026
 
 ## Course Ratings
 
-The live source is `src/data/course-data.js`. Course entries can contain:
+The authoritative source for subjective Course Ratings is
+`data/import/course-ratings.xlsx`. Validated component values are imported into
+the live dataset at `src/data/course-data.js`; spreadsheet formulas are not
+used by the website.
+
+Course entries can contain:
 
 - identity, location, tee, years played, website, description, and photos;
 - course rating, slope, distance, par, and stroke index;
-- per-hole ratings and hole-tier summaries;
-- a course score out of 54;
-- facility category scores and a facilities score out of 46;
-- an overall score out of 100.
+- a top-level hole count;
+- an explicit rated or unrated subjective-rating status;
+- one subjective tier value per hole for rated courses; and
+- six facility components.
 
-There are currently 20 stored course entries. Five have a completed
-`total100`: Tyrrells Wood, Luffenham Heath, Saunton East, Saunton West, and
-Royal Ostend. Other overall ratings display `TBC`.
+Subjective totals are derived rather than stored. The official tiers are Gravy
+(+3), Good (+2), Salt & Vinegar (+1), Meh (0), and Busy's Teeth (-1). The
+facility maximum is 46. Eighteen-hole courses use `/54 + /46 = /100`; nine-hole
+courses use `/27 + /46 = /73`.
 
-Hole-tier summaries currently use more than one data shape. Descriptions,
-photos, ratings, scorecards, websites, and played-year metadata are incomplete
-for various courses. Unknown values must not be invented.
+The website contains 28 course records: the 23 previous records plus
+Broadstone, Hayling, Aldeburgh, Hollinwell, and Pastures. The workbook
+represents 26 courses; 25 are rated and Royal Zoute is explicitly unrated.
+Stewart Creek and Silvertip are website-only and remain unrated. Pastures is
+currently the only nine-hole course. Fifteen previously unrated website
+courses received authoritative workbook ratings in this import.
 
-Last verified: 6 August 2026
+Descriptions, photos, scorecards, websites, and played-year metadata remain
+incomplete for various courses. The five added courses contain only the
+authoritative subjective rating data and name/hole count; unknown metadata was
+not invented. Official course rating and slope validation remains a separate
+phase.
+
+Last verified: 22 August 2026
 
 ## Year in Review
 
@@ -108,4 +123,3 @@ Last verified: 6 August 2026
 Before editing data, confirm which code currently consumes it. Divergent root
 copies are not authoritative. Do not invent scores, handicaps, ratings,
 biographies, images, or publication facts.
-

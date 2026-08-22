@@ -17,7 +17,8 @@ This is a lightweight sequencing guide, not a fixed delivery schedule.
 - Confirm missing leaderboard gross scores and handicap indexes from
   authoritative information.
 - Keep renderer replacement behind successful data verification.
-- Complete and normalize Course Ratings data, including one hole-tier schema.
+- Maintain the validated Course Ratings workbook import and normalized
+  hole-tier schema.
 - Populate Year in Review articles and galleries as approved content becomes
   available.
 
@@ -50,7 +51,6 @@ Frumpbox work is separate from the critical path for improving TTO.
 - Current-state validation: **Now**
 - Year in Review: **Implemented / partially populated**
 - Leaderboard migration data: **In progress / not verified**
-- Course Ratings: **Implemented / partially populated and not normalized**
+- Course Ratings: **Implemented / authoritative subjective ratings imported and normalized**
 - General website polish: **Later**
 - Frumpbox integration: **Paused / separate stream**
-

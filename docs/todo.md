@@ -5,7 +5,8 @@ This is the living checklist for finishing The Tyrrells Open website.
 - [ ] Fix spelling on the TTO badge/crest graphic.
 - [x] Complete the naming consistency cleanup.
 - [x] Correct Samuel 'Dynesy' Dynes throughout the active website.
-- [ ] Import the complete Course Ratings workbook.
+- [x] Import the complete Course Ratings workbook.
+- [x] Normalize subjective Course Ratings to one generated hole-tier schema.
 - [ ] Validate par, tee, course rating and slope rating for every played course.
 - [ ] Add the completed player profiles.
 - [ ] Inventory historical leaderboard/scorecard completeness by year and player.
