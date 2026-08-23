@@ -55,10 +55,12 @@ It still contains null rounds, placeholder handicap indexes, incomplete
 summaries, and discrepancies with the legacy implementation. The consolidated
 dataset cannot replace the live source until verification passes.
 
-The existing verifier currently reports **nine failures**: five 2024 total
-failures and four 2023 total failures.
+The existing verifier currently reports **ten failures**: five 2024 total
+failures and five 2023 total failures. The canonical Luffenham Heath update
+added the George Stinton 2023 mismatch; historical points remain authoritative
+pending separately identified scorecard reconstruction work.
 
-Last verified: 6 August 2026
+Last verified: 23 August 2026
 
 ## Course Ratings
 
@@ -76,6 +78,14 @@ Course entries can contain:
 - one subjective tier value per hole for rated courses; and
 - six facility components.
 
+Each course has one deliberately selected canonical factual scorecard: the
+latest authoritative published configuration chosen for the website. TTO does
+not retain a separate course configuration for each historical event year.
+Course Ratings, leaderboard scorecards, and handicap/Stableford calculations
+may consume the same canonical card, while historical leaderboard points and
+results remain authoritative. Any future reconstructed gross scorecard must be
+identified internally as reconstructed rather than presented as original.
+
 Subjective totals are derived rather than stored. The official tiers are Gravy
 (+3), Good (+2), Salt & Vinegar (+1), Meh (0), and Busy's Teeth (-1). The
 facility maximum is 46. Eighteen-hole courses use `/54 + /46 = /100`; nine-hole
@@ -91,10 +101,12 @@ courses received authoritative workbook ratings in this import.
 Descriptions, photos, scorecards, websites, and played-year metadata remain
 incomplete for various courses. The five added courses contain only the
 authoritative subjective rating data and name/hole count; unknown metadata was
-not invented. Official course rating and slope validation remains a separate
-phase.
+not invented. Canonical factual validation is underway. Tyrrells Wood, Stewart
+Creek, Luffenham Heath, Saunton East, Saunton West, Royal Ostend, and Royal
+Zoute have deliberately selected canonical cards; Silvertip still requires
+final factual verification, as do the remaining non-historical courses.
 
-Last verified: 22 August 2026
+Last verified: 23 August 2026
 
 ## Year in Review
 

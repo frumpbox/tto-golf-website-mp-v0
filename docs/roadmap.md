@@ -13,7 +13,7 @@ This is a lightweight sequencing guide, not a fixed delivery schedule.
 
 ## Next — Data and content foundations
 
-- Reconcile the nine leaderboard verifier failures.
+- Reconcile the ten leaderboard verifier failures.
 - Confirm missing leaderboard gross scores and handicap indexes from
   authoritative information.
 - Keep renderer replacement behind successful data verification.

@@ -64,6 +64,21 @@ documentation explicitly states otherwise.
 
 **Consequence:** Divergent root copies are not authoritative.
 
+## Canonical course scorecards
+
+**Decision:** Each course has one canonical scorecard representing the latest
+authoritative published configuration deliberately selected for the website.
+TTO does not maintain separate historical course configurations for individual
+event years.
+
+**Consequence:** Course Ratings, leaderboard scorecards, and
+handicap/Stableford calculations may all use the same canonical course data.
+Historical leaderboard points and results remain authoritative even when an
+original gross scorecard is missing or no longer reproduces those points
+against the canonical card. A future gross-score reconstruction may use the
+canonical configuration, but it must be identified internally as reconstructed
+and must not be presented as an original scorecard.
+
 ## Historical plans
 
 **Decision:** Older root-level plans and audits are reference material, not
@@ -71,4 +86,3 @@ automatically current instructions.
 
 **Consequence:** Verify their claims against the current implementation before
 using them.
-
