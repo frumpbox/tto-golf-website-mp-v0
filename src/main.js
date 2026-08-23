@@ -15,11 +15,28 @@ window.getPlayerHandicap = getPlayerHandicap;
 window.getPlayerHandicapIndex = getPlayerHandicapIndex;
 
 import { leaderboardData } from './data/leaderboard-data.js';
+import { players } from './data/player-data.js';
 
 import './legacy-script.js';
 
 // Active navigation indicator
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+// Link leaderboard member names to their stable player profiles without
+// changing the table data or its score calculation behaviour.
+if (currentPage === 'leaderboard.html') {
+  const playerIdsByName = new Map(players.map(({ id, displayName }) => [displayName, id]));
+  document.querySelectorAll('table tbody td').forEach((cell) => {
+    const playerId = playerIdsByName.get(cell.textContent.trim());
+    if (!playerId || cell.querySelector('a')) return;
+    const link = document.createElement('a');
+    link.className = 'leaderboard-player-link';
+    link.href = `about.html?player=${playerId}`;
+    link.textContent = cell.textContent.trim();
+    link.addEventListener('click', (event) => event.stopPropagation());
+    cell.replaceChildren(link);
+  });
+}
 document.querySelectorAll('nav ul li a').forEach(link => {
   if (link.getAttribute('href') === currentPage) {
     link.classList.add('active');
@@ -58,4 +75,3 @@ if (navToggle && navMenu) {
     });
   });
 }
-

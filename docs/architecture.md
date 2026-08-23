@@ -37,8 +37,10 @@ These six page URLs are stable and should be preserved.
 - `src/styles/legacy.css` is the active shared stylesheet.
 - `src/legacy-script.js` contains the current scorecard and leaderboard
   calculation behavior.
+- `src/player-profiles.js` adds the About Us profile accordion and handles
+  stable player deep links.
 - `src/data/` contains the active course, handicap, leaderboard migration,
-  and Year in Review datasets.
+  player profile, and Year in Review datasets.
 
 ## Transitional structure
 
@@ -84,4 +86,3 @@ normal build.
 
 Older root-level plans and audits may be historical, partially completed, or
 superseded. Verify them against the current implementation.
-

@@ -10,6 +10,7 @@ Last verified: 6 August 2026
 | Scores and calculations | `src/legacy-script.js` | `src/tools/verify-leaderboard-data.js` |
 | Course and rating data | `src/data/course-data.js` | Root `course-data.js` is divergent |
 | Handicap data | `src/data/handicap-data.js` | Root `handicap-data.js` is divergent |
+| Player profiles | `src/data/player-data.js` | Supplied Player Profile DOCX files |
 | Year in Review | `src/data/year-review-data.js` | `yir/*.docx` source/reference files |
 
 ## Leaderboard
@@ -121,9 +122,25 @@ material for 2020 and 2021.
 
 Last verified: 6 August 2026
 
+## Player profiles
+
+The six existing member cards on `about.html` retain their established names,
+roles, labels, ordering, and visual design. Each card can open one expanded
+player profile beneath the grid. Stable deep links use the existing player ID,
+for example `about.html?player=sam-dynes`.
+
+`src/data/player-data.js` is the normalized source for detailed public profile
+content extracted from the supplied Player Profile DOCX documents. Unknown,
+blank, and `XXX` source fields are stored as `null` and shown as a restrained
+`TBC`; values are not inferred. The About Us card labels remain independent
+and authoritative for the top-level cards.
+
+Last verified: 23 August 2026
+
 ## Known content gaps
 
-- About member photos and biographies are placeholders.
+- About member cards have approved player photos; detailed biographies are
+  available in the expanded profiles.
 - Most course photos and descriptions are missing.
 - Many Course Ratings fields remain incomplete.
 - Some leaderboard gross rounds and real handicap indexes are missing.
