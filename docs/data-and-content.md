@@ -87,6 +87,19 @@ may consume the same canonical card, while historical leaderboard points and
 results remain authoritative. Any future reconstructed gross scorecard must be
 identified internally as reconstructed rather than presented as original.
 
+Canonical factual course distances are stored and displayed in yards. When an
+authoritative scorecard is published in metres, each hole is converted with
+`1 metre = 1.0936133 yards` and independently rounded to the nearest whole
+yard. Out, In, and Total are then derived from those stored hole values; course
+rating, scratch rating, ACR, and slope are not converted or recalculated.
+
+`src/tools/verify-course-data.js` validates the separate factual-card dataset.
+It classifies every course as complete or intentionally unresolved and checks
+the 18-hole array layout, required fields, yards-only storage, hole values,
+stroke-index set, and distance/par subtotals and totals. Subjective Course
+Ratings remain independently validated by
+`src/tools/verify-course-ratings-data.js`.
+
 Subjective totals are derived rather than stored. The official tiers are Gravy
 (+3), Good (+2), Salt & Vinegar (+1), Meh (0), and Busy's Teeth (-1). The
 facility maximum is 46. Eighteen-hole courses use `/54 + /46 = /100`; nine-hole
@@ -102,10 +115,10 @@ courses received authoritative workbook ratings in this import.
 Descriptions, photos, scorecards, websites, and played-year metadata remain
 incomplete for various courses. The five added courses contain only the
 authoritative subjective rating data and name/hole count; unknown metadata was
-not invented. Canonical factual validation is underway. Tyrrells Wood, Stewart
-Creek, Luffenham Heath, Saunton East, Saunton West, Royal Ostend, and Royal
-Zoute have deliberately selected canonical cards; Silvertip still requires
-final factual verification, as do the remaining non-historical courses.
+not invented. Canonical factual validation is underway. Nineteen courses now
+have deliberately selected and verified canonical factual cards. West Sussex,
+Royal Ashdown, Swinley Forest, Pleasington, Carbrook, Byron Bay, Brookwater,
+Royal Queensland, and Pastures remain intentionally unresolved.
 
 Last verified: 23 August 2026
 
