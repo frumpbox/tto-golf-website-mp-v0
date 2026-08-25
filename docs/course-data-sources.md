@@ -5,6 +5,12 @@ It records factual provenance, not subjective Course Ratings. A researched row
 is not approved for import until the selected tee and required factual fields
 are supported by authoritative evidence.
 
+Official club and governing-body sources are preferred. Golfify is an approved
+secondary factual source where the official source is inaccessible or omits a
+required field. Conflicts are recorded explicitly. A conflicting complete
+Golfify card is used only where James has deliberately selected it as TTO's
+frozen canonical representation.
+
 Last verified: 25 August 2026
 
 ## Canonical and verified
@@ -24,26 +30,52 @@ Last verified: 25 August 2026
 
 | TTO name | Official/source identity | Candidate tee | Primary authoritative source | Factual status / uncertainty |
 | --- | --- | --- | --- | --- |
-| West Sussex | West Sussex Golf Club | White | https://westsussexgolf.co.uk/hole-1/ | Official hole pages found; complete current rating evidence not assembled |
+| West Sussex | West Sussex Golf Club | White | Current official Micklem-routing material and selected Golfify card at https://www.golfify.io/courses/west-sussex-golf-club | Canonical and verified: selected Golfify 6,264 yards, par/rating 68, slope 128; James deliberately selected this complete card despite different current official White headline data |
 | East Brighton | East Brighton Golf Club | White | https://www.ebgc.co.uk/wp-content/uploads/2026/04/MensCard.jpg | Canonical and verified: 6,409 yards, par 72, 71.8/133 |
 | Chobham | Chobham Golf Club | White | https://www.chobhamgolfclub.co.uk/course/course-overview/ | Canonical and verified: 5,820 yards, par 69, 68.6/127 |
 | Hindhead | Hindhead Golf Club | Silver | https://www.hindheadgolfclub.co.uk/scorecard | Canonical and verified: 5,975 yards, par 70, 69.9/121 |
 | Camberley Heath | Camberley Heath Golf Club | Yellow | https://www.camberleyheathgolfclub.co.uk/course | Canonical and verified: 5,966 yards, par 71, 68.2/123; tee approved by James |
 | Royal St Davids | Royal St. David's Golf Club | White | https://www.royalstdavids.co.uk/the-course/course-overview/ | Canonical and verified: 6,418 yards, par 69, 71.4/118 |
-| Royal Ashdown | Royal Ashdown Forest Golf Club — Old Course | White candidate | https://www.royalashdown.co.uk/old_course | Complete Old Course hole pages available; current rating/slope not found |
+| Royal Ashdown | Royal Ashdown Forest Golf Club — Old Course | White | Official men's card and April 2024 WHS table at https://www.royalashdown.co.uk/whs_information | Canonical and verified: 6,562 yards, par 72, 72.6/138; official card preserved over conflicting Golfify values |
 | West Hill | West Hill Golf Club | White | https://www.westhillgc.co.uk/scorecard_and_slope_rating | Canonical and verified: 6,028 yards, par 69, 70.9/137 |
-| Swinley Forest | Swinley Forest Golf Club | Unresolved | https://www.swinleyforest.co.uk/ | Official site inaccessible during this pass; no import-ready card |
-| Pleasington | Pleasington Golf Club | Unresolved | https://www.pleasington-golf.co.uk/golf-courses-in-lancashire/the-course/ | Official course page found; no import-ready card obtained |
-| Carbrook | Carbrook Golf Club | White | https://carbrookgolfclub.com.au/scorecard/ | Metre distances, pars, scratch and slope found; stroke indexes absent |
+| Swinley Forest | Swinley Forest Golf Club | White | https://www.golfify.io/courses/swinley-forest-golf-club | Golfify fallback canonical and verified: 5,955 yards, par 69, 69/113 |
+| Pleasington | Pleasington Golf Club | White | Official course page and James-supplied selected White card | Canonical and verified: 6,373 yards, par 71, rating 70.0, slope 110; the selected card is not described as official |
+| Carbrook | Carbrook Golf Club | White | https://carbrookgolfclub.com.au/scorecard/ plus supplied Golfify card | Canonical and verified: official 5,839 metres/par 71/scratch 70/slope 122; Golfify supplies only the missing stroke indexes |
 | The Glades | The Glades Golf Club | White | https://www.glades.com.au/download/golf-scorecard/?wpdmdl=311&masterkey=5eebfd5f381a0 | Canonical and verified after hole-by-hole conversion: source 5,876 metres, par 72, scratch 71, slope 125 |
-| Byron Bay | Byron Bay Golf Club | White | https://byronbaygolfclub.com.au/cms/the-course/ | Official hole pages give 5,960 metres and par 72; indexes and scratch/slope not published |
-| Brookwater | Brookwater Golf & Country Club | Unresolved | https://www.brookwatergolf.com.au/ | Latest configuration and competing current cards still to confirm |
-| Royal Queensland | Royal Queensland Golf Club | Blue | https://www.rqgolf.com.au/web/pages/course | Active official site gives current Blue as 6,148 metres, par 72, ACR 73; full card and slope absent |
+| Byron Bay | Byron Bay Golf Club | White | Current official hole pages under https://byronbaygolfclub.com.au/cms/the-course/ plus selected Golfify card | Canonical and verified: selected Golfify 6,303 yards, par/rating 72, slope 136; James deliberately selected this frozen card despite the different newer official layout |
+| Brookwater | Brookwater Golf & Country Club | Black | https://www.golfify.io/courses/brookwater-golf-club and Golf Australia rating evidence | Canonical and verified: selected Golfify source 6,492 metres, par 72, scratch 75/slope 144; converted to 7,100 stored yards. Golf Australia lists Black 75/146; James selected the complete Golfify 75/144 card |
+| Royal Queensland | Royal Queensland Golf Club | Blue | https://www.rqgolf.com.au/web/pages/course and selected Golfify card at https://www.golfify.io/courses/royal-queensland-golf-club | Canonical and verified: selected Golfify source 6,196 metres, par/rating 73, slope 126; converted to 6,777 stored yards. James deliberately selected it despite official Blue 6,148 metres/par 72/ACR 73 |
 | Broadstone | Broadstone Golf Club | White | https://www.broadstonegolfclub.com/the_course | Canonical and verified: 6,393 yards, par 70, 71.5/139 |
 | Hayling | Hayling Golf Club | White | https://www.haylinggolf.co.uk/golf/course-overview/ | Canonical and verified: 6,515 yards, par 71, 71.4/121 |
 | Aldeburgh | Aldeburgh Golf Club — Championship Course | White | https://www.aldeburghgolfclub.co.uk/courses/championship-course/ | Canonical and verified: 6,528 yards, par 70, 71.5/124 |
 | Hollinwell | Notts Golf Club — Hollinwell | White | https://hollinwell.co.uk/hole-1/ | Canonical and verified: 6,914 yards, par 72, 74.5/145; archived official hole 8 resolves a current-page typo |
-| Pastures | Pastures Golf Club, Mickleover, Derby | White first nine unresolved | https://pasturesgolfclub.co.uk/ | Official site confirms nine holes/eighteen tees but publishes no card; WHS establishes 18-hole 4,940 yards/par 64/65.1/114 and nine-hole 32.7/112, 32.4/116 |
+| Pastures | Pastures Golf Club, Mickleover, Derby | White - Front | https://pasturesgolfclub.co.uk/ plus supplied Golfify card | Canonical and verified as the nine physical holes TTO played: 2,479 yards, par 32, 33/119; published front-nine SI values preserved |
+
+## Final-nine import evidence
+
+| TTO name | Fields from official source | Fields from Golfify | Conflict / result |
+| --- | --- | --- | --- |
+| Royal Ashdown | Identity, White tee, all hole distances, pars, stroke indexes, 6,562-yard total, course rating 72.6 and slope 138 from the official men's card and April 2024 WHS table | Supplied White card proposed 6,537 yards and rating 67, with no slope | Material conflict: official values preserved; official card imported |
+| Carbrook | White metre distances (290, 145, 348, 450, 375, 358, 112, 479, 339, 324, 148, 416, 386, 150, 327, 480, 344, 368), par 71, scratch 70, slope 122 | Men's stroke indexes only | No conflict in the fields used; converted hole-by-hole to 3,168 Out / 3,218 In / 6,386 yards and imported |
+| Byron Bay | Current White hole pages: 5,960 metres; pars and hole order | Complete 6,303-yard White card, rating 72, slope 136 and SI | Material layout conflict documented; James deliberately selected the Golfify card as the frozen TTO representation, and it was imported without mixing official holes |
+| Pastures | Official identity and nine-hole/eighteen-tee physical configuration | White - Front distances, pars, published SI, rating 33 and slope 119 | No conflicting official scorecard; genuine 9-hole card imported without White - Back |
+| Swinley Forest | Official identity; official scorecard was inaccessible | Complete White card: 5,955 yards, par/rating 69, slope 113, hole distances and SI | No conflicting official evidence found; imported |
+| West Sussex | Current official Micklem routing has different White headline data | Complete selected White card: 6,264 yards, par/rating 68, slope 128 and SI | James deliberately selected the complete Golfify White card; imported without mixing Micklem values |
+| Pleasington | Official identity and course page | Public Golfify card differed and lacked White slope; James supplied a complete selected White card | Selected card is 6,373 yards, par 71, rating 70.0 and slope 110; imported as the deliberate TTO choice, not represented as official |
+| Brookwater | Golf Australia Black rating is scratch 75/slope 146 | Complete Golfify Black: 6,492 metres, par 72, rating 75, slope 144 and SI | Rating-source discrepancy documented; James selected the internally consistent Golfify 75/144 card. Holes converted independently to 3,611 Out / 3,489 In / 7,100 yards |
+| Royal Queensland | Current official Blue is 6,148 metres, par 72, ACR 73 | Complete Golfify Blue: 6,196 metres, par/rating 73, slope 126 and SI | Material configuration conflict documented; James selected the frozen Golfify card. Holes converted independently to 3,424 Out / 3,353 In / 6,777 yards |
+
+The supplied Golfify Royal Ashdown distances were 3,073 Out / 3,464 In /
+6,537 total. The current official card is 3,106 Out / 3,456 In / 6,562 total;
+notable differences include hole 7 (387 versus official 431 yards). The
+official WHS rating of 72.6 also materially conflicts with Golfify's 67.
+
+The supplied Golfify Byron Bay card is not the official metric card expressed
+in yards. The current official holes convert independently to 3,324 Out /
+3,194 In / 6,518 stored yards, and the pars differ on multiple holes. James
+subsequently selected the complete Golfify card as TTO's frozen canonical
+representation. Its holes, rating, slope and SI are used together; no values
+from the newer official layout are mixed in.
 
 ## First bulk canonical import
 

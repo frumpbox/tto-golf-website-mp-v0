@@ -14,47 +14,49 @@ const completeCourseKeys = new Set([
   "hindhead",
   "camberleyHeath",
   "royalStDavids",
+  "royalAshdown",
+  "swinleyForest",
   "westHill",
   "theGlades",
   "broadstone",
   "hayling",
   "aldeburgh",
   "hollinwell",
-]);
-
-const unresolvedCourseKeys = new Set([
-  "westSussex",
-  "royalAshdown",
-  "swinleyForest",
-  "pleasington",
   "carbrook",
+  "pastures",
+  "westSussex",
+  "pleasington",
   "byronBay",
   "brookwater",
   "royalQueensland",
-  "pastures",
 ]);
+
+const unresolvedCourseKeys = new Set([]);
 
 const failures = [];
 const fail = (key, message) => failures.push(`${key}: ${message}`);
-const holeIndexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 const sum = (values, indexes) => indexes.reduce((total, index) => total + values[index], 0);
 
 for (const [key, course] of Object.entries(courses)) {
   if (completeCourseKeys.has(key)) {
     console.log(`COMPLETE: ${key} (${course.name})`);
 
-    if (course.holeCount !== 18) fail(key, "complete factual card must have holeCount 18");
+    if (![9, 18].includes(course.holeCount)) fail(key, "complete factual card must have holeCount 9 or 18");
     if (course.distanceUnit !== "yards") fail(key, 'distanceUnit must be exactly "yards"');
     if (typeof course.teePlayed !== "string" || !course.teePlayed.trim()) fail(key, "teePlayed is missing");
     if (typeof course.courseRating !== "number" || !Number.isFinite(course.courseRating)) fail(key, "courseRating must be numeric");
     if (typeof course.slope !== "number" || !Number.isFinite(course.slope)) fail(key, "slope must be numeric");
 
+    const expectedLength = course.holeCount === 9 ? 10 : 21;
+    const holeIndexes = course.holeCount === 9
+      ? [0, 1, 2, 3, 4, 5, 6, 7, 8]
+      : [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18];
     for (const field of ["distance", "par", "strokeIndex"]) {
-      if (!Array.isArray(course[field]) || course[field].length !== 21) {
-        fail(key, `${field} must use the 21-position layout`);
+      if (!Array.isArray(course[field]) || course[field].length !== expectedLength) {
+        fail(key, `${field} must use the ${expectedLength}-position layout`);
       }
     }
-    if (![course.distance, course.par, course.strokeIndex].every((values) => Array.isArray(values) && values.length === 21)) continue;
+    if (![course.distance, course.par, course.strokeIndex].every((values) => Array.isArray(values) && values.length === expectedLength)) continue;
 
     if (holeIndexes.some((index) => !Number.isInteger(course.distance[index]) || course.distance[index] <= 0)) {
       fail(key, "all 18 hole distances must be positive integers");
@@ -63,12 +65,27 @@ for (const [key, course] of Object.entries(courses)) {
       fail(key, "all 18 hole pars must be positive integers");
     }
 
-    const strokeIndexes = holeIndexes.map((index) => course.strokeIndex[index]).sort((a, b) => a - b);
-    if (strokeIndexes.some((value, index) => value !== index + 1)) {
-      fail(key, "stroke indexes must contain each integer from 1 to 18 exactly once");
+    const strokeIndexes = holeIndexes.map((index) => course.strokeIndex[index]);
+    if (strokeIndexes.some((value) => !Number.isInteger(value) || value < 1 || value > 18)) {
+      fail(key, "stroke indexes must be integers from 1 to 18");
     }
-    if ([9, 19, 20].some((index) => course.strokeIndex[index] !== null)) {
+    if (new Set(strokeIndexes).size !== course.holeCount) {
+      fail(key, "published stroke indexes must be unique");
+    }
+    if (course.holeCount === 18 && [...strokeIndexes].sort((a, b) => a - b).some((value, index) => value !== index + 1)) {
+      fail(key, "18-hole stroke indexes must contain each integer from 1 to 18 exactly once");
+    }
+    const aggregateIndexes = course.holeCount === 9 ? [9] : [9, 19, 20];
+    if (aggregateIndexes.some((index) => course.strokeIndex[index] !== null)) {
       fail(key, "stroke-index aggregate positions must be null");
+    }
+
+    if (course.holeCount === 9) {
+      const totalDistance = sum(course.distance, holeIndexes);
+      const totalPar = sum(course.par, holeIndexes);
+      if (course.distance[9] !== totalDistance) fail(key, `total distance ${course.distance[9]} does not equal ${totalDistance}`);
+      if (course.par[9] !== totalPar) fail(key, `total par ${course.par[9]} does not equal ${totalPar}`);
+      continue;
     }
 
     const frontIndexes = [0, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -105,8 +122,8 @@ const completeCount = Object.keys(courses).filter((key) => completeCourseKeys.ha
 const unresolvedCount = Object.keys(courses).filter((key) => unresolvedCourseKeys.has(key)).length;
 
 if (totalCount !== 28) failures.push(`dataset: expected 28 total courses; found ${totalCount}`);
-if (completeCount !== 19) failures.push(`dataset: expected 19 complete factual courses; found ${completeCount}`);
-if (unresolvedCount !== 9) failures.push(`dataset: expected 9 unresolved factual courses; found ${unresolvedCount}`);
+if (completeCount !== 28) failures.push(`dataset: expected 28 complete factual courses; found ${completeCount}`);
+if (unresolvedCount !== 0) failures.push(`dataset: expected 0 unresolved factual courses; found ${unresolvedCount}`);
 
 console.log("");
 console.log(`Total courses: ${totalCount}`);

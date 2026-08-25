@@ -95,8 +95,9 @@ rating, scratch rating, ACR, and slope are not converted or recalculated.
 
 `src/tools/verify-course-data.js` validates the separate factual-card dataset.
 It classifies every course as complete or intentionally unresolved and checks
-the 18-hole array layout, required fields, yards-only storage, hole values,
-stroke-index set, and distance/par subtotals and totals. Subjective Course
+the 21-position 18-hole or 10-position 9-hole array layout, required fields,
+yards-only storage, hole values, published stroke-index values, and
+distance/par subtotals and totals. Subjective Course
 Ratings remain independently validated by
 `src/tools/verify-course-ratings-data.js`.
 
@@ -115,10 +116,11 @@ courses received authoritative workbook ratings in this import.
 Descriptions, photos, scorecards, websites, and played-year metadata remain
 incomplete for various courses. The five added courses contain only the
 authoritative subjective rating data and name/hole count; unknown metadata was
-not invented. Canonical factual validation is underway. Nineteen courses now
-have deliberately selected and verified canonical factual cards. West Sussex,
-Royal Ashdown, Swinley Forest, Pleasington, Carbrook, Byron Bay, Brookwater,
-Royal Queensland, and Pastures remain intentionally unresolved.
+not invented. Canonical factual validation is complete: all 28 courses now
+have deliberately selected and verified canonical factual cards. Pastures
+remains a genuine nine-hole White - Front card; it is not duplicated into an
+artificial 18-hole configuration. Historical leaderboard reconstruction and
+its ten known verifier mismatches remain separate, unfinished work.
 
 Last verified: 23 August 2026
 
