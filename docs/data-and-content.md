@@ -56,12 +56,23 @@ It still contains null rounds, placeholder handicap indexes, incomplete
 summaries, and discrepancies with the legacy implementation. The consolidated
 dataset cannot replace the live source until verification passes.
 
-The existing verifier currently reports **ten failures**: five 2024 total
-failures and five 2023 total failures. The canonical Luffenham Heath update
-added the George Stinton 2023 mismatch; historical points remain authoritative
-pending separately identified scorecard reconstruction work.
+Historical leaderboard expectations are normalized from the authoritative
+`~/Downloads/TTO Workbook.xlsx` source into
+`src/data/historical-leaderboard-data.js`. Recorded round course handicaps take
+priority over recalculation from an uncertain handicap index. The verifier
+checks result integrity, historical scoring, handicap consistency, and
+playoff-derived positions independently using PASS, WARNING, UNKNOWN, and FAIL.
+Unknown results are stored as `null`, including Felipe Milo's 2024 second round
+and final result, and every 2025 first round and final result. Approved
+populated-card corrections are marked `reconstructed`; unchanged cards with
+uncertain origin remain `existing-provenance-unknown`. George Stinton's known
+2023 HI is 2.7 and derives HCP 6 for both Luffenham rounds. Approved 2024
+evidence-based HIs and HCPs are marked `estimated`. Sam Lewis's reconstructed
+2022 R1 hole-18 point is separately documented because the workbook holes
+totalled 41 while the authoritative round total is 42. Fully missing gross
+cards remain unresolved for a later reconstruction phase.
 
-Last verified: 23 August 2026
+Last verified: 31 August 2026
 
 ## Course Ratings
 
@@ -119,8 +130,9 @@ authoritative subjective rating data and name/hole count; unknown metadata was
 not invented. Canonical factual validation is complete: all 28 courses now
 have deliberately selected and verified canonical factual cards. Pastures
 remains a genuine nine-hole White - Front card; it is not duplicated into an
-artificial 18-hole configuration. Historical leaderboard reconstruction and
-its ten known verifier mismatches remain separate, unfinished work.
+artificial 18-hole configuration. Missing-card historical leaderboard
+reconstruction remains separate, unfinished work; the populated-data
+leaderboard verifier currently has no FAIL checks.
 
 Last verified: 23 August 2026
 

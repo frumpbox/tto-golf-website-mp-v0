@@ -13,7 +13,9 @@ This is a lightweight sequencing guide, not a fixed delivery schedule.
 
 ## Next — Data and content foundations
 
-- Reconcile the ten leaderboard verifier failures.
+- Continue missing-card historical leaderboard reconstruction using the
+  workbook-normalized schema and link-by-link verifier; preserve the resolved
+  populated-card corrections and authoritative results.
 - Confirm missing leaderboard gross scores and handicap indexes from
   authoritative information.
 - Keep renderer replacement behind successful data verification.

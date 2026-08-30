@@ -1,4 +1,5 @@
 import { courses } from './course-data.js';
+import { historicalLeaderboardRecords } from './historical-leaderboard-data.js';
 
 const players = {
   "sam-lewis": { displayName: "Sam Lewis" },
@@ -24,11 +25,13 @@ const years = {
         rounds: [
           {
             courseKey: "tyrrellsWood",
-            gross: [4,5,6,5,5,5,7,7,4,5,8,5,5,8,6,6,5,6],
+            gross: [4,5,6,5,5,5,7,7,4,5,8,5,5,8,5,6,6,6],
+            grossSource: "reconstructed",
           },
           {
             courseKey: "tyrrellsWood",
-            gross: [6,5,5,6,6,5,7,5,5,6,5,7,6,6,6,4,3,7],
+            gross: [6,5,5,6,6,5,7,5,5,6,5,7,6,6,5,4,4,7],
+            grossSource: "reconstructed",
           },
         ],
         playoff: {
@@ -43,11 +46,13 @@ const years = {
         rounds: [
           {
             courseKey: "tyrrellsWood",
-            gross: [5,4,3,3,5,6,6,5,3,4,6,5,4,5,6,3,4,3],
+            gross: [5,4,3,3,5,6,6,5,3,4,6,5,4,5,5,3,5,3],
+            grossSource: "reconstructed",
           },
           {
             courseKey: "tyrrellsWood",
-            gross: [4,4,4,3,4,5,5,6,5,5,5,5,4,5,5,3,4,6],
+            gross: [4,4,4,3,4,5,5,6,5,5,5,5,4,5,4,3,5,6],
+            grossSource: "reconstructed",
           },
         ],
         playoff: {
@@ -127,7 +132,7 @@ const years = {
         handicapIndex: 19.2,
         rounds: [
           { courseKey: "tyrrellsWood", gross: [4,4,5,4,5,6,6,5,4,6,3,7,5,5,7,5,5,7] },
-          { courseKey: "tyrrellsWood", gross: [5,8,5,4,6,7,6,4,3,5,5,6,5,4,4,4,5,7] },
+          { courseKey: "tyrrellsWood", gross: [5,8,5,4,6,7,6,4,3,5,5,6,5,4,4,3,6,7], grossSource: "reconstructed" },
         ],
         playoff: null,
       },
@@ -180,7 +185,7 @@ const years = {
         playerId: "sam-dynes",
         handicapIndex: 31.1,
         rounds: [
-          { courseKey: "silvertip", gross: [5,8,6,7,3,6,5,8,5,6,5,3,6,7,6,4,5,6] },
+          { courseKey: "silvertip", gross: [5,8,6,7,3,6,5,8,5,6,5,3,6,6,6,4,5,6], grossSource: "reconstructed" },
           { courseKey: "stewartCreek", gross: null },
         ],
         playoff: null,
@@ -234,8 +239,8 @@ const years = {
         playerId: "sam-lewis",
         handicapIndex: 9.5,
         rounds: [
-          { courseKey: "luffenhamHeath", gross: [5,6,4,6,5,5,4,4,4,4,3,3,5,4,5,5,6,5] },
-          { courseKey: "luffenhamHeath", gross: [6,6,7,4,3,5,3,5,4,5,5,4,5,4,4,5,4,6] },
+          { courseKey: "luffenhamHeath", gross: [5,6,4,7,5,5,4,4,4,4,3,3,5,4,5,5,4,8], grossSource: "reconstructed" },
+          { courseKey: "luffenhamHeath", gross: [6,6,7,5,3,5,3,5,4,5,5,4,5,5,4,5,4,7], grossSource: "reconstructed" },
         ],
         playoff: null,
       },
@@ -243,8 +248,8 @@ const years = {
         playerId: "tom-sutehall",
         handicapIndex: 13.8,
         rounds: [
-          { courseKey: "luffenhamHeath", gross: [6,7,7,5,4,6,7,4,3,6,7,4,5,5,6,4,5,7] },
-          { courseKey: "luffenhamHeath", gross: [4,6,5,3,3,6,4,3,4,5,7,5,7,4,5,4,5,4] },
+          { courseKey: "luffenhamHeath", gross: [6,7,7,5,3,6,7,5,3,6,7,4,5,5,6,4,5,7], grossSource: "reconstructed" },
+          { courseKey: "luffenhamHeath", gross: [4,6,5,3,2,6,4,4,4,5,7,5,7,4,5,4,5,4], grossSource: "reconstructed" },
         ],
         playoff: null,
       },
@@ -252,7 +257,7 @@ const years = {
         playerId: "george-stinton",
         handicapIndex: 0.9,
         rounds: [
-          { courseKey: "luffenhamHeath", gross: [6,3,4,6,5,8,4,4,3,5,3,3,5,4,4,6,4,4] },
+          { courseKey: "luffenhamHeath", gross: [6,4,4,7,5,8,5,4,3,5,4,3,5,4,4,7,4,4], grossSource: "reconstructed" },
           { courseKey: "luffenhamHeath", gross: null },
         ],
         playoff: null,
@@ -270,7 +275,7 @@ const years = {
         playerId: "james-hall",
         handicapIndex: 8.1,
         rounds: [
-          { courseKey: "luffenhamHeath", gross: [6,5,4,4,5,8,4,5,3,5,6,3,6,5,7,7,3,6] },
+          { courseKey: "luffenhamHeath", gross: [6,5,3,5,5,8,4,5,3,5,6,3,6,5,7,7,2,6], grossSource: "reconstructed" },
           { courseKey: "luffenhamHeath", gross: null },
         ],
         playoff: null,
@@ -279,8 +284,8 @@ const years = {
         playerId: "sam-dynes",
         handicapIndex: 20.6,
         rounds: [
-          { courseKey: "luffenhamHeath", gross: [7,6,7,5,4,6,8,7,6,7,4,4,6,5,8,8,5,8] },
-          { courseKey: "luffenhamHeath", gross: [7,8,7,7,6,9,6,6,4,7,6,6,8,5,6,4,4,8] },
+          { courseKey: "luffenhamHeath", gross: [8,6,6,5,4,6,8,7,7,8,4,4,6,6,8,8,4,9], grossSource: "reconstructed" },
+          { courseKey: "luffenhamHeath", gross: [8,8,7,8,6,9,6,6,5,8,6,6,8,6,6,4,4,9], grossSource: "reconstructed" },
         ],
         playoff: null,
       },
@@ -329,7 +334,7 @@ const years = {
         handicapIndex: 21, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "sauntonEast", gross: [7,6,6,5,3,4,5,4,5,7,5,4,4,5,5,7,6,6] },
-          { courseKey: "sauntonWest", gross: [5,7,7,4,6,7,6,4,3,7,6,4,7,7,7,4,8,4] },
+          { courseKey: "sauntonWest", gross: [5,7,7,4,6,7,6,4,3,6,6,4,7,7,7,4,8,4], grossSource: "reconstructed" },
         ],
         playoff: null,
       },
@@ -441,6 +446,83 @@ const years = {
     },
   },
 };
+
+function calculateCourseHandicap(handicapIndex, course) {
+  if (handicapIndex === null || handicapIndex === undefined || !course) return null;
+  const par = course.par[course.par.length - 1];
+  return Math.round(
+    handicapIndex * course.slope / 113 + course.courseRating - par
+  );
+}
+
+// Merge workbook-authoritative historical results into the migrated score data.
+// Existing gross arrays are deliberately preserved for later reconstruction.
+for (const [yearKey, records] of Object.entries(historicalLeaderboardRecords)) {
+  const year = years[yearKey];
+  if (!year) continue;
+
+  for (const result of year.results) {
+    const historical = records[result.playerId];
+    if (!historical) continue;
+
+    result.handicapIndex = historical.handicapIndex;
+    result.handicapIndexSource = historical.handicapIndexSource;
+    result.points = historical.points;
+    result.pointsSource = historical.pointsSource;
+    result.position = historical.position;
+    result.positionSource = historical.positionSource;
+    result.playoff = historical.playoff;
+
+    result.rounds.forEach((round, roundIndex) => {
+      const historicalRound = historical.rounds[roundIndex];
+      if (!historicalRound) return;
+
+      let courseHandicap = historicalRound.courseHandicap;
+      let courseHandicapSource = historicalRound.courseHandicapSource;
+      if (courseHandicap === null && result.handicapIndex !== null) {
+        courseHandicap = calculateCourseHandicap(
+          result.handicapIndex,
+          courses[round.courseKey]
+        );
+        courseHandicapSource = "derived";
+      }
+
+      Object.assign(round, historicalRound, {
+        courseHandicap,
+        courseHandicapSource: courseHandicapSource || "unknown",
+        grossSource: round.grossSource || (round.gross === null
+          ? "missing"
+          : "existing-provenance-unknown"),
+      });
+    });
+
+    const hcpChecks = result.rounds.map((round) => {
+      if (result.handicapIndex === null || round.courseHandicap === null) return null;
+      return calculateCourseHandicap(
+        result.handicapIndex,
+        courses[round.courseKey]
+      ) === round.courseHandicap;
+    });
+    result.handicapConsistency = hcpChecks.some((value) => value === null)
+      ? "unknown"
+      : hcpChecks.every(Boolean)
+        ? "pass"
+        : "warning";
+  }
+}
+
+years[2020].summary.winner = "sam-lewis";
+years[2020].summary.runnerUp = "james-hall";
+years[2021].summary.winner = "sam-dynes";
+years[2021].summary.runnerUp = "sam-lewis";
+years[2022].summary.winner = "felipe-milo";
+years[2022].summary.runnerUp = "sam-lewis";
+years[2023].summary.winner = "sam-lewis";
+years[2023].summary.runnerUp = "tom-sutehall";
+years[2024].summary.winner = "sam-lewis";
+years[2024].summary.runnerUp = "james-hall";
+years[2025].summary.winner = null;
+years[2025].summary.runnerUp = null;
 
 const yearOrder = [2020, 2021, 2022, 2023, 2024, 2025];
 
