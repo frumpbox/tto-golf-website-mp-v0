@@ -69,8 +69,15 @@ uncertain origin remain `existing-provenance-unknown`. George Stinton's known
 2023 HI is 2.7 and derives HCP 6 for both Luffenham rounds. Approved 2024
 evidence-based HIs and HCPs are marked `estimated`. Sam Lewis's reconstructed
 2022 R1 hole-18 point is separately documented because the workbook holes
-totalled 41 while the authoritative round total is 42. Fully missing gross
-cards remain unresolved for a later reconstruction phase.
+totalled 41 while the authoritative round total is 42. High-confidence missing
+gross cards may be reconstructed only when the canonical course, agreed round
+HCP, all 18 hole Stableford values, and authoritative round total are present.
+For a positive hole value, gross is derived as canonical par plus allocated
+strokes plus two, minus Stableford points. For a zero-point hole, reconstruction
+uses canonical par plus allocated strokes plus two: the minimum gross score
+that produces zero under the application rules. Reconstructed cards retain the
+agreed historical HCP and are marked `reconstructed`; rounds without complete
+hole-level scoring remain unresolved.
 
 Last verified: 31 August 2026
 
