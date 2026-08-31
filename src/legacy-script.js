@@ -60,6 +60,17 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
   table.className = "scorecard-table";
   table.style.marginTop = "8px";
 
+  const colgroup = document.createElement("colgroup");
+  const labelColumn = document.createElement("col");
+  labelColumn.className = "scorecard-label-col";
+  colgroup.appendChild(labelColumn);
+  holeLabels.forEach((label) => {
+    const column = document.createElement("col");
+    column.className = typeof label === "number" ? "scorecard-hole-col" : "scorecard-total-col";
+    colgroup.appendChild(column);
+  });
+  table.appendChild(colgroup);
+
   // Build thead
   const thead = document.createElement("thead");
   const headerRow = document.createElement("tr");
@@ -70,6 +81,7 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
   for (let i = 0; i < holeLabels.length; i++) {
     const th = document.createElement("th");
     th.textContent = holeLabels[i];
+    if (typeof holeLabels[i] !== "number") th.classList.add("total-col");
     headerRow.appendChild(th);
   }
 
@@ -87,6 +99,7 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
   courseData.distance.forEach((value) => {
     const td = document.createElement("td");
     td.textContent = value;
+    if (typeof holeLabels[distRow.children.length - 1] !== "number") td.classList.add("total-col");
     distRow.appendChild(td);
   });
   tbody.appendChild(distRow);
@@ -99,6 +112,7 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
   courseData.par.forEach((value) => {
     const td = document.createElement("td");
     td.textContent = value;
+    if (typeof holeLabels[parRow.children.length - 1] !== "number") td.classList.add("total-col");
     parRow.appendChild(td);
   });
   tbody.appendChild(parRow);
@@ -111,6 +125,7 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
   courseData.strokeIndex.forEach((value) => {
     const td = document.createElement("td");
     td.textContent = value || "";
+    if (typeof holeLabels[siRow.children.length - 1] !== "number") td.classList.add("total-col");
     siRow.appendChild(td);
   });
   tbody.appendChild(siRow);
@@ -124,6 +139,7 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
   for (let i = 0; i < holeLabels.length; i++) {
     const td = document.createElement("td");
     td.className = "gross-score";
+    if (typeof holeLabels[i] !== "number") td.classList.add("total-col");
     scoreRow.appendChild(td);
   }
 
@@ -162,19 +178,38 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
   for (let i = 0; i < holeLabels.length; i++) {
     const td = scoreRow.children[i + 1];
     const val = grossScores[i];
-    td.textContent = val === 0 || val === null ? "" : val;
+    const isHole = typeof holeLabels[i] === "number" && typeof courseData.par[i] === "number";
+    const hasScore = val !== null && val !== 0;
     const annotation = grossAnnotations.find((item) => item.hole === holeLabels[i]);
-    if (annotation && val !== null && val !== 0) {
-      const marker = document.createElement("span");
-      marker.className = "gross-score-marker";
-      marker.textContent = annotation.marker;
-      marker.setAttribute("aria-label", " historically adjusted");
-      td.appendChild(marker);
-    }
-    if (val !== null && val !== 0 && i !== 9 && i !== 19 && i !== 20 && typeof courseData.par[i] === 'number') {
+    let scoreClass = "score-par";
+
+    if (hasScore && isHole) {
       const diff = val - courseData.par[i];
-      if (diff < 0) td.classList.add('under-par');
-      else if (diff > 0) td.classList.add('over-par');
+      if (diff <= -2) scoreClass = "score-eagle";
+      else if (diff === -1) scoreClass = "score-birdie";
+      else if (diff === 1) scoreClass = "score-bogey";
+      else if (diff >= 2) scoreClass = "score-double-bogey";
+
+      const wrap = document.createElement("span");
+      wrap.className = "gross-score-wrap";
+      const symbol = document.createElement("span");
+      symbol.className = `score-symbol ${scoreClass}`;
+      const number = document.createElement("span");
+      number.className = "score-number";
+      number.textContent = val;
+      symbol.appendChild(number);
+      wrap.appendChild(symbol);
+
+      if (annotation) {
+        const marker = document.createElement("span");
+        marker.className = "gross-score-marker";
+        marker.textContent = annotation.marker;
+        marker.setAttribute("aria-label", " historically adjusted");
+        wrap.appendChild(marker);
+      }
+      td.appendChild(wrap);
+    } else if (hasScore) {
+      td.textContent = val;
     }
   }
   tbody.appendChild(scoreRow);
@@ -191,6 +226,7 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
   for (let i = 0; i < holeLabels.length; i++) {
     const td = document.createElement("td");
     td.className = "points-hole";
+    if (typeof holeLabels[i] !== "number") td.classList.add("total-col");
 
     // Only calculate points for actual holes (not Out/In/Tot) when we have data
     const strokeIndex = courseData.strokeIndex[i];
@@ -229,11 +265,6 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
       }
 
       td.textContent = points;
-      if (points === 3) td.classList.add('point-birdie');
-      else if (points === 4) td.classList.add('point-eagle');
-      else if (points === 5) td.classList.add('point-albatross');
-      else if (points === 1) td.classList.add('point-bogey');
-      else if (points === 0) td.classList.add('point-double');
       if (i <= 8) outPoints += points;
       if (i >= 10 && i <= 18) inPoints += points;
       totalPoints += points;

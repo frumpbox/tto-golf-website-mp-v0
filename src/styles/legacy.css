@@ -14,6 +14,15 @@ body {
   padding: 20px;
 }
 
+/* The annual results and expanded scorecards need more room than other pages. */
+.leaderboard-page {
+  box-sizing: border-box;
+  width: calc(100% - 48px);
+  max-width: 1400px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 /* Navigation bar */
 nav {
   background: #062512;
@@ -615,120 +624,135 @@ table[id^="table-"] td:nth-child(2) {
 }
 
 /* ---------- Scorecard table ---------- */
-.scorecard-table {
+.leaderboard-page .scorecard-table {
   margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1072px;
+  min-width: 1072px;
+  table-layout: fixed;
   background: transparent;
   border: none;
   border-radius: 0;
 }
 
-.scorecard-table th,
-.scorecard-table td {
-  padding: 5px 4px;
-  font-size: 0.7rem;
+.leaderboard-page .scorecard-label-col {
+  width: 130px;
+}
+
+.leaderboard-page .scorecard-hole-col {
+  width: 44px;
+}
+
+.leaderboard-page .scorecard-total-col {
+  width: 50px;
+}
+
+.leaderboard-page .scorecard-table th,
+.leaderboard-page .scorecard-table td {
+  box-sizing: border-box;
+  height: 36px;
+  padding: 6px 4px;
+  font-size: 0.78rem;
+  line-height: 1;
+  text-align: center;
+  vertical-align: middle;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.scorecard-table th {
+.leaderboard-page .scorecard-table th {
   background: rgba(0, 0, 0, 0.15);
 }
 
-.scorecard-table th:first-child {
+.leaderboard-page .scorecard-table th:first-child {
   text-align: left;
   background: rgba(0, 0, 0, 0.2);
   white-space: nowrap;
   font-weight: 600;
-  min-width: 90px;
 }
 
-.scorecard-table .total-col {
+.leaderboard-page .scorecard-table .total-col {
   border-left: 2px solid rgba(255, 255, 255, 0.12);
   font-weight: 700;
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* ---------- Visual score markers: Points ---------- */
+/* ---------- Stableford points ---------- */
 .points-hole {
   text-align: center;
   font-weight: 600;
-  font-size: 0.75rem;
-  transition: all 0.15s ease;
-}
-
-/* Par — subtle */
-.point-par {
-  color: rgba(240, 240, 234, 0.55);
-}
-
-/* Birdie — cool green with dot */
-.point-birdie {
-  color: #6abf69;
-}
-.point-birdie::after {
-  content: '';
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  background: #6abf69;
-  border-radius: 50%;
-  margin-left: 3px;
-  vertical-align: middle;
-}
-
-/* Eagle — purple */
-.point-eagle {
-  color: #b388ff;
-}
-.point-eagle::after {
-  content: '';
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  background: #b388ff;
-  border-radius: 50%;
-  margin-left: 3px;
-  vertical-align: middle;
-}
-
-/* Albatross+ — gold */
-.point-albatross {
-  color: #ffd54f;
-}
-.point-albatross::after {
-  content: '';
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  background: #ffd54f;
-  border-radius: 50%;
-  margin-left: 3px;
-  vertical-align: middle;
-}
-
-/* Bogey — warm amber */
-.point-bogey {
-  color: #ff8a65;
-}
-
-/* Double bogey+ — red */
-.point-double {
-  color: #ef5350;
+  font-size: 0.8rem;
+  color: rgba(240, 240, 234, 0.9);
 }
 
 /* ---------- Visual score markers: Gross score relative to par ---------- */
-.gross-score {
+.leaderboard-page .gross-score {
   font-variant-numeric: tabular-nums;
   text-align: center;
+  color: rgba(240, 240, 234, 0.9);
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
-.gross-score.under-par {
-  color: #6abf69;
-  font-weight: 700;
+.leaderboard-page .gross-score-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
 }
 
-.gross-score.over-par {
-  color: #ef5350;
-  font-weight: 500;
+.leaderboard-page .score-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  color: rgba(240, 240, 234, 0.9);
+  line-height: 1;
+}
+
+.leaderboard-page .score-number {
+  position: relative;
+  z-index: 1;
+}
+
+.leaderboard-page .score-symbol.score-birdie::before,
+.leaderboard-page .score-symbol.score-eagle::before,
+.leaderboard-page .score-symbol.score-bogey::before,
+.leaderboard-page .score-symbol.score-double-bogey::before,
+.leaderboard-page .score-symbol.score-eagle::after,
+.leaderboard-page .score-symbol.score-double-bogey::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  border: 1px solid rgba(240, 240, 234, 0.72);
+  pointer-events: none;
+}
+
+.leaderboard-page .score-symbol.score-birdie::before,
+.leaderboard-page .score-symbol.score-eagle::before,
+.leaderboard-page .score-symbol.score-eagle::after {
+  border-radius: 50%;
+}
+
+.leaderboard-page .score-symbol.score-eagle::after,
+.leaderboard-page .score-symbol.score-double-bogey::after {
+  inset: 3px;
+  border-color: rgba(240, 240, 234, 0.64);
+}
+
+.leaderboard-page .gross-score-marker {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  z-index: 1;
+  margin-left: 1px;
 }
 
 /* ---------- Mobile adjustments ---------- */
@@ -1138,40 +1162,60 @@ table[id^="table-"] td:nth-child(2) {
     padding: 12px 8px 16px;
   }
 
-  .scorecard-table {
+  .leaderboard-page .scorecard-table {
     margin-top: 4px;
+    width: 920px;
+    min-width: 920px;
   }
 
-  .scorecard-table th,
-  .scorecard-table td {
-    padding: 2px 2px;
-    font-size: 0.6rem;
+  .leaderboard-page .scorecard-label-col {
+    width: 104px;
+  }
+
+  .leaderboard-page .scorecard-hole-col {
+    width: 38px;
+  }
+
+  .leaderboard-page .scorecard-total-col {
+    width: 44px;
+  }
+
+  .leaderboard-page .scorecard-table th,
+  .leaderboard-page .scorecard-table td {
+    height: 30px;
+    padding: 4px 2px;
+    font-size: 0.68rem;
     font-variant-numeric: tabular-nums;
   }
 
-  .scorecard-table th:first-child {
-    min-width: 55px;
-    font-size: 0.55rem;
+  .leaderboard-page .scorecard-table th:first-child {
+    font-size: 0.64rem;
   }
 
-  .scorecard-table td:first-child {
-    font-size: 0.55rem;
+  .leaderboard-page .scorecard-table td:first-child {
+    font-size: 0.64rem;
   }
 
-  .scorecard-table .total-col {
+  .leaderboard-page .scorecard-table .total-col {
     border-left-width: 1px;
   }
 
   .points-hole {
-    font-size: 0.6rem;
+    font-size: 0.68rem;
   }
 
-  .point-birdie::after,
-  .point-eagle::after,
-  .point-albatross::after {
-    width: 3px;
-    height: 3px;
-    margin-left: 2px;
+  .leaderboard-page .gross-score {
+    font-size: 0.76rem;
+  }
+
+  .leaderboard-page .score-symbol {
+    width: 22px;
+    height: 22px;
+  }
+
+  .leaderboard-page .gross-score-wrap {
+    width: 22px;
+    height: 22px;
   }
 
   .yir-player-cards {
@@ -1885,10 +1929,6 @@ nav ul li a.active {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.gross-score-marker {
-  margin-left: 1px;
 }
 
 .scorecard-historical-note {
