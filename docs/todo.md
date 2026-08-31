@@ -17,6 +17,7 @@ This is the living checklist for finishing The Tyrrells Open website.
 - [x] Mark reconstructed/estimated historical values with provenance.
 - [ ] Complete missing historical scorecards/results.
 - [ ] Complete remaining Year in Review content when available.
+- [ ] Source and use a real photo from each specific TTO tournament year for Year in Review and potential year-specific leaderboard presentation.
 - [ ] Complete remaining course descriptions/photos/content.
 - [ ] Perform final desktop/mobile visual QA across all six pages.
 - [ ] Run final leaderboard verification and `npm run build` before publication.

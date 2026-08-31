@@ -77,7 +77,8 @@ Unknown results are stored as `null`, including Felipe Milo's 2024 second round
 and final result, and every 2025 first round and final result. Approved
 populated-card corrections are marked `reconstructed`; unchanged cards with
 uncertain origin remain `existing-provenance-unknown`. George Stinton's known
-2023 HI is 2.7 and derives HCP 6 for both Luffenham rounds. Approved 2024
+2023 historical handicap value is 2.7 and his approved playing HCP is 6 for
+both Luffenham rounds. Approved 2024
 evidence-based HIs and HCPs are marked `estimated`. Sam Lewis's reconstructed
 2022 R1 hole-18 point is separately documented because the workbook holes
 totalled 41 while the authoritative round total is 42. High-confidence missing
@@ -89,6 +90,12 @@ uses canonical par plus allocated strokes plus two: the minimum gross score
 that produces zero under the application rules. Reconstructed cards retain the
 agreed historical HCP and are marked `reconstructed`; rounds without complete
 hole-level scoring remain unresolved.
+
+Separately approved plausible synthetic cards may be generated from an agreed
+HCP and authoritative or explicitly approved round total when the original
+gross and hole Stableford are both unavailable. Those generated gross and hole
+patterns must carry `plausible-synthetic` reconstruction metadata and remain
+supporting detail rather than historical evidence.
 
 ### 2020 plausible synthetic scorecards
 
@@ -145,6 +152,40 @@ historical cards. Neither adjustment changed any authoritative hole
 Stableford value, round total, Points, or position. Sam Lewis's separate R1
 Hole 18 reconciliation (workbook 0, reconstructed 1, authoritative R1 total
 42) also remains unchanged.
+
+Last verified: 31 August 2026
+
+### 2023 historical handicap and synthetic R2 interpretation
+
+The 2023 TTO did not use modern Handicap Index / Course Handicap methodology.
+Its historical workbook values and approved playing HCPs are therefore
+preserved without forcing them through the current canonical Luffenham Heath
+Blue-tee WHS formula: Sam Lewis 12.1 and 15/15, Tom Sutehall 13.6 and 17/17,
+Felipe Milo 11.0 and 14/14, James Hall 10.0 and 10/10, Samuel 'Dynesy' Dynes
+25.3 and 31/31, and George Stinton 2.7 and 6/6. James personally confirmed
+George's 2.7 historical value. Canonical-formula differences remain visible as
+historical methodology context and do not invalidate the recorded playing
+HCPs or historical scoring.
+
+Original gross and hole Stableford records are unavailable for George
+Stinton R2, Felipe Milo R2, and James Hall R2. James approved plausible
+synthetic supporting reconstructions using the canonical Luffenham Heath par
+and stroke-index card, the approved playing HCP, and the authoritative or
+approved round total. The generated gross and hole Stableford patterns are not
+recovered historical scorecards.
+
+George's approved R2 total is 32, supplied by James. His synthetic HCP-6 card
+totals 32 and contains exactly one gross eagle, on a par 5, with no albatross
+or better score. His result is consequently 27 + 32 = 59 and position 5,
+consistent with James's memory that George finished second-last. Felipe's
+synthetic HCP-14 R2 card totals 31 with no gross eagle or better and no more
+than two gross birdies. James Hall's synthetic HCP-10 R2 card totals 36 under
+the same no-eagle and maximum-two-birdie constraints.
+
+The revised final positions are Sam Lewis first on 69, Tom Sutehall second on
+64, Felipe Milo and James Hall joint third on 61 with no playoff evidence,
+George Stinton fifth on 59, and Dynesy sixth on 40. These resolved positions
+feed the Overall leaderboard without separately hard-coded Overall values.
 
 Last verified: 31 August 2026
 

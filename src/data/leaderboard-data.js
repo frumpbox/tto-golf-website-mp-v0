@@ -263,6 +263,10 @@ const years = {
     courses: ["Luffenham Heath", "Luffenham Heath"],
     courseKeys: ["luffenhamHeath", "luffenhamHeath"],
     roundLabels: ["Round 1 - LH", "Round 2 - LH"],
+    historicalHandicapMethodology: {
+      type: "pre-modern-playing-handicap",
+      reason: "The 2023 competition did not use modern Handicap Index / Course Handicap methodology; preserve the workbook handicap values and approved playing HCPs without forcing them through the current canonical Blue-tee WHS formula.",
+    },
     conditions: "Good",
     status: "completed",
     results: [
@@ -289,7 +293,16 @@ const years = {
         handicapIndex: 0.9,
         rounds: [
           { courseKey: "luffenhamHeath", gross: [6,4,4,7,5,8,5,4,3,5,4,3,5,4,4,7,4,4], grossSource: "reconstructed" },
-          { courseKey: "luffenhamHeath", gross: null },
+          {
+            courseKey: "luffenhamHeath",
+            gross: [4,5,6,4,4,3,5,5,3,5,4,4,4,5,5,4,4,6],
+            grossSource: "reconstructed",
+            grossReconstruction: {
+              type: "plausible-synthetic",
+              reason: "Original gross and hole Stableford were unavailable; a plausible card was generated from the approved HCP 6 and round Stableford total 32 supplied by James",
+              constraint: "Exactly one gross eagle, on a par 5; no albatross or score better than eagle",
+            },
+          },
         ],
         playoff: null,
       },
@@ -298,7 +311,16 @@ const years = {
         handicapIndex: 8.8,
         rounds: [
           { courseKey: "luffenhamHeath", gross: [7,6,4,5,5,8,6,4,4,5,4,3,6,7,4,5,3,4], grossSource: "reconstructed" },
-          { courseKey: "luffenhamHeath", gross: null },
+          {
+            courseKey: "luffenhamHeath",
+            gross: [5,5,4,5,5,6,5,5,3,5,5,5,6,4,5,5,5,6],
+            grossSource: "reconstructed",
+            grossReconstruction: {
+              type: "plausible-synthetic",
+              reason: "Original gross and hole Stableford were unavailable; a plausible card was generated from the authoritative HCP 14 and round Stableford total 31",
+              constraint: "No gross eagle or better; no more than two gross birdies",
+            },
+          },
         ],
         playoff: null,
       },
@@ -307,7 +329,16 @@ const years = {
         handicapIndex: 8.1,
         rounds: [
           { courseKey: "luffenhamHeath", gross: [6,5,3,5,5,8,4,5,3,5,6,3,6,5,7,7,2,6], grossSource: "reconstructed" },
-          { courseKey: "luffenhamHeath", gross: null },
+          {
+            courseKey: "luffenhamHeath",
+            gross: [4,5,4,4,3,5,5,4,5,4,5,3,6,4,4,5,3,7],
+            grossSource: "reconstructed",
+            grossReconstruction: {
+              type: "plausible-synthetic",
+              reason: "Original gross and hole Stableford were unavailable; a plausible card was generated from the authoritative HCP 10 and round Stableford total 36",
+              constraint: "No gross eagle or better; no more than two gross birdies",
+            },
+          },
         ],
         playoff: null,
       },
@@ -539,7 +570,9 @@ for (const [yearKey, records] of Object.entries(historicalLeaderboardRecords)) {
       ? "unknown"
       : hcpChecks.every(Boolean)
         ? "pass"
-        : "warning";
+        : year.historicalHandicapMethodology?.type === "pre-modern-playing-handicap"
+          ? "historical-context"
+          : "warning";
   }
 }
 

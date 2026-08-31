@@ -959,7 +959,7 @@ export const historicalLeaderboardRecords = {
       ],
       "points": 40,
       "pointsSource": "exact",
-      "position": 5,
+      "position": 6,
       "positionSource": "derived",
       "playoff": null
     },
@@ -999,8 +999,13 @@ export const historicalLeaderboardRecords = {
           "courseHandicapSource": "recorded",
           "stablefordPoints": 36,
           "stablefordPointsSource": "exact",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "holeStableford": [3, 2, 2, 3, 2, 3, 2, 2, 0, 3, 2, 2, 1, 2, 3, 2, 2, 0],
+          "holeStablefordSource": "reconstructed",
+          "holeStablefordReconstruction": {
+            "type": "plausible-synthetic",
+            "reason": "Original gross and hole Stableford were unavailable; generated from the authoritative HCP 10 and round Stableford total 36 using a plausible compatible gross card",
+            "constraint": "No gross eagle or better; no more than two gross birdies"
+          }
         }
       ],
       "points": 61,
@@ -1110,8 +1115,13 @@ export const historicalLeaderboardRecords = {
           "courseHandicapSource": "recorded",
           "stablefordPoints": 31,
           "stablefordPointsSource": "exact",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "holeStableford": [2, 2, 3, 2, 0, 2, 2, 1, 3, 2, 2, 0, 1, 3, 2, 2, 0, 2],
+          "holeStablefordSource": "reconstructed",
+          "holeStablefordReconstruction": {
+            "type": "plausible-synthetic",
+            "reason": "Original gross and hole Stableford were unavailable; generated from the authoritative HCP 14 and round Stableford total 31 using a plausible compatible gross card",
+            "constraint": "No gross eagle or better; no more than two gross birdies"
+          }
         }
       ],
       "points": 61,
@@ -1125,8 +1135,8 @@ export const historicalLeaderboardRecords = {
       "handicapIndexSource": "recorded",
       "rounds": [
         {
-          "courseHandicap": null,
-          "courseHandicapSource": null,
+          "courseHandicap": 6,
+          "courseHandicapSource": "recorded",
           "stablefordPoints": 27,
           "stablefordPointsSource": "exact",
           "holeStableford": [
@@ -1152,17 +1162,22 @@ export const historicalLeaderboardRecords = {
           "holeStablefordSource": "recorded"
         },
         {
-          "courseHandicap": null,
-          "courseHandicapSource": null,
-          "stablefordPoints": 0,
+          "courseHandicap": 6,
+          "courseHandicapSource": "recorded",
+          "stablefordPoints": 32,
           "stablefordPointsSource": "exact",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "holeStableford": [2, 2, 0, 3, 1, 4, 2, 1, 2, 1, 3, 1, 3, 1, 1, 3, 1, 1],
+          "holeStablefordSource": "reconstructed",
+          "holeStablefordReconstruction": {
+            "type": "plausible-synthetic",
+            "reason": "Original gross and hole Stableford were unavailable; generated from the approved HCP 6 and round Stableford total 32 supplied by James using a plausible compatible gross card",
+            "constraint": "Exactly one gross eagle, on a par 5; no albatross or score better than eagle"
+          }
         }
       ],
-      "points": 27,
+      "points": 59,
       "pointsSource": "exact",
-      "position": 6,
+      "position": 5,
       "positionSource": "derived",
       "playoff": null
     },

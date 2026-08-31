@@ -96,6 +96,9 @@ for (const yearKey of leaderboardData.yearOrder) {
         } else if (round.courseHandicapSource === 'derived') {
           record(STATUS.FAIL, `${roundPrefix} HI -> HCP`,
             `derived HCP ${round.courseHandicap}, calculated ${calculated}`);
+        } else if (year.historicalHandicapMethodology?.type === 'pre-modern-playing-handicap') {
+          record(STATUS.PASS, `${roundPrefix} HI -> historical playing HCP`,
+            `preserved ${round.courseHandicap}; modern canonical comparison ${calculated} is not the historical competition methodology`);
         } else {
           record(STATUS.WARNING, `${roundPrefix} HI -> recorded HCP`,
             `recorded ${round.courseHandicap}, modern canonical calculation ${calculated}`);
@@ -147,7 +150,9 @@ for (const yearKey of leaderboardData.yearOrder) {
       ? 'unknown'
       : consistencyChecks.every(Boolean)
         ? 'pass'
-        : 'warning';
+        : year.historicalHandicapMethodology?.type === 'pre-modern-playing-handicap'
+          ? 'historical-context'
+          : 'warning';
     record(
       result.handicapConsistency === expectedConsistency ? STATUS.PASS : STATUS.FAIL,
       `${prefix} handicapConsistency`,
