@@ -566,12 +566,12 @@ export const historicalLeaderboardRecords = {
   },
   "2022": {
     "sam-dynes": {
-      "handicapIndex": null,
-      "handicapIndexSource": "unknown",
+      "handicapIndex": 31.1,
+      "handicapIndexSource": "restored-legacy",
       "rounds": [
         {
-          "courseHandicap": 32,
-          "courseHandicapSource": "recorded",
+          "courseHandicap": 33,
+          "courseHandicapSource": "reconstructed",
           "stablefordPoints": 40,
           "stablefordPointsSource": "exact",
           "holeStableford": [
@@ -631,8 +631,8 @@ export const historicalLeaderboardRecords = {
       "playoff": null
     },
     "james-hall": {
-      "handicapIndex": null,
-      "handicapIndexSource": "unknown",
+      "handicapIndex": 12.8,
+      "handicapIndexSource": "restored-legacy",
       "rounds": [
         {
           "courseHandicap": 12,
@@ -696,8 +696,8 @@ export const historicalLeaderboardRecords = {
       "playoff": null
     },
     "sam-lewis": {
-      "handicapIndex": null,
-      "handicapIndexSource": "unknown",
+      "handicapIndex": 16.8,
+      "handicapIndexSource": "restored-legacy",
       "rounds": [
         {
           "courseHandicap": 16,
@@ -767,8 +767,8 @@ export const historicalLeaderboardRecords = {
       "playoff": null
     },
     "felipe-milo": {
-      "handicapIndex": null,
-      "handicapIndexSource": "unknown",
+      "handicapIndex": 16.8,
+      "handicapIndexSource": "restored-legacy",
       "rounds": [
         {
           "courseHandicap": 16,
@@ -832,8 +832,8 @@ export const historicalLeaderboardRecords = {
       "playoff": null
     },
     "george-stinton": {
-      "handicapIndex": null,
-      "handicapIndexSource": "unknown",
+      "handicapIndex": 4.9,
+      "handicapIndexSource": "restored-legacy",
       "rounds": [
         {
           "courseHandicap": 3,

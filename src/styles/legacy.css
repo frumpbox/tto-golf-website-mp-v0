@@ -1887,6 +1887,16 @@ nav ul li a.active {
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
+.gross-score-marker {
+  margin-left: 1px;
+}
+
+.scorecard-historical-note {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
 .scorecard-unavailable {
   margin: 8px 0 0;
   padding: 18px;

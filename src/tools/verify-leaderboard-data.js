@@ -1,7 +1,7 @@
 import { leaderboardData } from '../data/leaderboard-data.js';
 
 const STATUS = Object.freeze({ PASS: 'PASS', WARNING: 'WARNING', UNKNOWN: 'UNKNOWN', FAIL: 'FAIL' });
-const GENERAL_SOURCES = new Set(['exact', 'recorded', 'derived', 'estimated', 'reconstructed', 'unknown']);
+const GENERAL_SOURCES = new Set(['exact', 'recorded', 'derived', 'estimated', 'reconstructed', 'restored-legacy', 'unknown']);
 const GROSS_SOURCES = new Set(['known', 'existing-provenance-unknown', 'reconstructed', 'missing']);
 const checks = [];
 
@@ -9,7 +9,7 @@ function record(status, label, detail = '') { checks.push({ status, label, detai
 
 function calculateCourseHandicap(handicapIndex, course) {
   if (handicapIndex === null || !course) return null;
-  const par = course.par[course.par.length - 1];
+  const par = Array.isArray(course.par) ? course.par[course.par.length - 1] : course.par;
   return Math.round(handicapIndex * course.slope / 113 + course.courseRating - par);
 }
 
@@ -90,7 +90,7 @@ for (const yearKey of leaderboardData.yearOrder) {
         record(STATUS.UNKNOWN, `${roundPrefix} HI -> HCP`,
           result.handicapIndex === null ? 'handicap index unknown' : 'course handicap unknown');
       } else {
-        const calculated = calculateCourseHandicap(result.handicapIndex, course);
+        const calculated = calculateCourseHandicap(result.handicapIndex, round.historicalTeeContext || course);
         if (calculated === round.courseHandicap) {
           record(STATUS.PASS, `${roundPrefix} HI -> HCP`, String(calculated));
         } else if (round.courseHandicapSource === 'derived') {
@@ -122,7 +122,11 @@ for (const yearKey of leaderboardData.yearOrder) {
       } else if (round.holeStableford === null) {
         record(STATUS.UNKNOWN, `${roundPrefix} historical scoring`, 'authoritative hole Stableford unknown');
       } else {
-        const calculatedHoles = calculateHoleStableford(round.gross, course, round.courseHandicap);
+        const scoringGross = round.gross.map((score, holeIndex) => {
+          const annotation = round.grossAnnotations?.find((item) => item.hole === holeIndex + 1);
+          return score - (annotation?.grossDisplayAdjustment || 0);
+        });
+        const calculatedHoles = calculateHoleStableford(scoringGross, course, round.courseHandicap);
         const mismatchedHoles = calculatedHoles.map((points, holeIndex) =>
           points === round.holeStableford[holeIndex] ? null : holeIndex + 1).filter(Boolean);
         const calculatedTotal = calculatedHoles.reduce((sum, points) => sum + points, 0);
@@ -137,7 +141,7 @@ for (const yearKey of leaderboardData.yearOrder) {
     const consistencyChecks = result.rounds.map((round) => {
       const course = leaderboardData.courses[round.courseKey];
       if (result.handicapIndex === null || round.courseHandicap === null || !course) return null;
-      return calculateCourseHandicap(result.handicapIndex, course) === round.courseHandicap;
+      return calculateCourseHandicap(result.handicapIndex, round.historicalTeeContext || course) === round.courseHandicap;
     });
     const expectedConsistency = consistencyChecks.some((value) => value === null)
       ? 'unknown'

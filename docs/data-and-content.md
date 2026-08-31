@@ -109,6 +109,45 @@ marked `reconstructed` with synthetic reconstruction metadata in the dataset.
 
 Last verified: 31 August 2026
 
+### 2022 restored handicap and scorecard interpretation
+
+The 2022 event predates The Tyrrells Open's use of modern WHS Handicap Index
+and Course Handicap handling. The surviving legacy handicap values have been
+restored as historically meaningful evidence, not asserted as independently
+verified modern WHS Handicap Indexes: Felipe Milo 16.8, Sam Lewis 16.8, Samuel
+'Dynesy' Dynes 31.1, George Stinton 4.9, and James Hall 12.8. Their provenance
+is stored as `restored-legacy`.
+
+Modern reconstruction uses round-specific historical tee context rather than
+changing the global canonical course records: R1 Silvertip tee, par 72,
+Course Rating 69.0, Slope 129; R2 Stewart Creek White tee, par 71, Course
+Rating 68.7, Slope 123. This produces reconstructed modern R1/R2 HCPs of
+16/16 for Felipe, 16/16 for Sam Lewis, 33/32 for Dynesy, 3/3 for George, and
+12/12 for James. These calculations interpret the restored legacy values for
+the website; they do not claim that the 2022 competition itself used the same
+methodology.
+
+Dynesy's reconstructed R1 HCP consequently changed from 32 to 33. Silvertip
+Hole 12 has Stroke Index 15 and receives the extra stroke; its reconstructed
+gross was increased from 3 to 4 so the net score and recorded Stableford value
+remain unchanged.
+
+Silvertip Hole 14 was played as a par 3 during the 2022 TTO, while the current
+canonical scorecard represents it as par 5. Each of the five reconstructed R1
+gross scores is stored and displayed with a +2 normalisation against the
+current representation. Metadata adds an asterisk without changing the
+numeric score, and an explanatory note appears below only those five R1
+scorecards. The +2 is treated as a display normalisation when validating the
+unchanged authoritative hole Stableford values.
+
+The exact gross scorecards are reconstructed supporting detail, not original
+historical cards. Neither adjustment changed any authoritative hole
+Stableford value, round total, Points, or position. Sam Lewis's separate R1
+Hole 18 reconciliation (workbook 0, reconstructed 1, authoritative R1 total
+42) also remains unchanged.
+
+Last verified: 31 August 2026
+
 ## Course Ratings
 
 The authoritative source for subjective Course Ratings is

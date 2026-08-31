@@ -196,6 +196,10 @@ const years = {
     courses: ["Silvertip", "Stewart Creek"],
     courseKeys: ["silvertip", "stewartCreek"],
     roundLabels: ["Round 1 - ST", "Round 2 - SC"],
+    historicalRoundContexts: [
+      { tee: "Silvertip", par: 72, courseRating: 69.0, slope: 129 },
+      { tee: "White", par: 71, courseRating: 68.7, slope: 123 },
+    ],
     conditions: "Good",
     status: "completed",
     results: [
@@ -203,7 +207,7 @@ const years = {
         playerId: "felipe-milo",
         handicapIndex: 16.8,
         rounds: [
-          { courseKey: "silvertip", gross: [4,4,4,4,4,4,5,7,7,5,7,3,4,3,4,5,3,4], grossSource: "reconstructed" },
+          { courseKey: "silvertip", gross: [4,4,4,4,4,4,5,7,7,5,7,3,4,5,4,5,3,4], grossSource: "reconstructed", grossAnnotations: [{ hole: 14, marker: "*", grossDisplayAdjustment: 2, type: "historical-par-normalisation" }] },
           { courseKey: "stewartCreek", gross: [4,6,5,5,4,5,5,3,4,5,6,5,5,3,5,4,3,6], grossSource: "reconstructed" },
         ],
         playoff: null,
@@ -212,7 +216,7 @@ const years = {
         playerId: "sam-dynes",
         handicapIndex: 31.1,
         rounds: [
-          { courseKey: "silvertip", gross: [5,8,6,7,3,6,5,8,5,6,5,3,6,6,6,4,5,6], grossSource: "reconstructed" },
+          { courseKey: "silvertip", gross: [5,8,6,7,3,6,5,8,5,6,5,4,6,8,6,4,5,6], grossSource: "reconstructed", grossAnnotations: [{ hole: 14, marker: "*", grossDisplayAdjustment: 2, type: "historical-par-normalisation" }] },
           { courseKey: "stewartCreek", gross: [6,9,6,7,6,7,6,4,4,6,8,5,6,5,5,4,4,9], grossSource: "reconstructed" },
         ],
         playoff: null,
@@ -221,7 +225,7 @@ const years = {
         playerId: "sam-lewis",
         handicapIndex: 16.8,
         rounds: [
-          { courseKey: "silvertip", gross: [4,6,3,5,4,3,5,6,5,5,5,4,6,3,3,6,3,6], grossSource: "reconstructed" },
+          { courseKey: "silvertip", gross: [4,6,3,5,4,3,5,6,5,5,5,4,6,5,3,6,3,6], grossSource: "reconstructed", grossAnnotations: [{ hole: 14, marker: "*", grossDisplayAdjustment: 2, type: "historical-par-normalisation" }] },
           { courseKey: "stewartCreek", gross: [5,6,4,5,7,5,5,3,5,5,6,3,5,6,4,3,4,7], grossSource: "reconstructed" },
         ],
         playoff: null,
@@ -230,7 +234,7 @@ const years = {
         playerId: "james-hall",
         handicapIndex: 12.8,
         rounds: [
-          { courseKey: "silvertip", gross: [4,5,4,4,4,3,7,8,6,7,4,4,6,3,3,7,5,6], grossSource: "reconstructed" },
+          { courseKey: "silvertip", gross: [4,5,4,4,4,3,7,8,6,7,4,4,6,5,3,7,5,6], grossSource: "reconstructed", grossAnnotations: [{ hole: 14, marker: "*", grossDisplayAdjustment: 2, type: "historical-par-normalisation" }] },
           { courseKey: "stewartCreek", gross: [6,5,4,5,5,5,5,2,4,5,5,5,6,5,4,4,4,5], grossSource: "reconstructed" },
         ],
         playoff: null,
@@ -239,7 +243,7 @@ const years = {
         playerId: "george-stinton",
         handicapIndex: 4.9,
         rounds: [
-          { courseKey: "silvertip", gross: [5,5,5,6,4,3,4,5,4,4,4,2,5,3,3,4,3,5], grossSource: "reconstructed" },
+          { courseKey: "silvertip", gross: [5,5,5,6,4,3,4,5,4,4,4,2,5,5,3,4,3,5], grossSource: "reconstructed", grossAnnotations: [{ hole: 14, marker: "*", grossDisplayAdjustment: 2, type: "historical-par-normalisation" }] },
           { courseKey: "stewartCreek", gross: [4,5,4,4,5,5,4,5,3,5,4,4,5,6,4,4,3,4], grossSource: "reconstructed" },
         ],
         playoff: null,
@@ -476,7 +480,7 @@ const years = {
 
 function calculateCourseHandicap(handicapIndex, course) {
   if (handicapIndex === null || handicapIndex === undefined || !course) return null;
-  const par = course.par[course.par.length - 1];
+  const par = Array.isArray(course.par) ? course.par[course.par.length - 1] : course.par;
   return Math.round(
     handicapIndex * course.slope / 113 + course.courseRating - par
   );
@@ -504,12 +508,13 @@ for (const [yearKey, records] of Object.entries(historicalLeaderboardRecords)) {
       const historicalRound = historical.rounds[roundIndex];
       if (!historicalRound) return;
 
+      round.historicalTeeContext = year.historicalRoundContexts?.[roundIndex] || null;
       let courseHandicap = historicalRound.courseHandicap;
       let courseHandicapSource = historicalRound.courseHandicapSource;
       if (courseHandicap === null && result.handicapIndex !== null) {
         courseHandicap = calculateCourseHandicap(
           result.handicapIndex,
-          courses[round.courseKey]
+          round.historicalTeeContext || courses[round.courseKey]
         );
         courseHandicapSource = "derived";
       }
@@ -527,7 +532,7 @@ for (const [yearKey, records] of Object.entries(historicalLeaderboardRecords)) {
       if (result.handicapIndex === null || round.courseHandicap === null) return null;
       return calculateCourseHandicap(
         result.handicapIndex,
-        courses[round.courseKey]
+        round.historicalTeeContext || courses[round.courseKey]
       ) === round.courseHandicap;
     });
     result.handicapConsistency = hcpChecks.some((value) => value === null)

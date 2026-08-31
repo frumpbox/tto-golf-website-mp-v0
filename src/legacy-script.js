@@ -7,6 +7,8 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
   const handicap = options.handicapOverride ?? null;
   const grossMode = "blank";
   const grossOverrides = options.grossOverrides;
+  const grossAnnotations = Array.isArray(options.grossAnnotations) ? options.grossAnnotations : [];
+  const pointsOverrides = Array.isArray(options.pointsOverrides) ? options.pointsOverrides : null;
   const blankMode = grossMode === "blank" && !grossOverrides;
   // Accept overrides as either 18-hole arrays or legacy 21-length arrays (with Out/In/Tot).
   const normalizeGrossOverrides = (overrides) => {
@@ -161,6 +163,14 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
     const td = scoreRow.children[i + 1];
     const val = grossScores[i];
     td.textContent = val === 0 || val === null ? "" : val;
+    const annotation = grossAnnotations.find((item) => item.hole === holeLabels[i]);
+    if (annotation && val !== null && val !== 0) {
+      const marker = document.createElement("span");
+      marker.className = "gross-score-marker";
+      marker.textContent = annotation.marker;
+      marker.setAttribute("aria-label", " historically adjusted");
+      td.appendChild(marker);
+    }
     if (val !== null && val !== 0 && i !== 9 && i !== 19 && i !== 20 && typeof courseData.par[i] === 'number') {
       const diff = val - courseData.par[i];
       if (diff < 0) td.classList.add('under-par');
@@ -212,6 +222,12 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
       else if (diffFromPar === 1) points = 1; // bogey
       else points = 0; // double bogey or worse
 
+      const holeNumber = holeLabels[i];
+      const annotation = grossAnnotations.find((item) => item.hole === holeNumber);
+      if (annotation?.grossDisplayAdjustment && pointsOverrides && typeof holeNumber === "number") {
+        points = pointsOverrides[holeNumber - 1];
+      }
+
       td.textContent = points;
       if (points === 3) td.classList.add('point-birdie');
       else if (points === 4) td.classList.add('point-eagle');
@@ -251,10 +267,23 @@ function renderResolvedScorecards(year, rowData, detailRow) {
   const panels = rowData.rounds.map((round, roundIndex) => {
     let panel;
     if (Array.isArray(round.gross)) {
-      panel = buildScorecardTable(round.courseKey, rowData.member, year, {
+      const table = buildScorecardTable(round.courseKey, rowData.member, year, {
         handicapOverride: round.courseHandicap,
         grossOverrides: round.gross,
+        grossAnnotations: round.grossAnnotations,
+        pointsOverrides: round.holeStableford,
       });
+      if (round.grossAnnotations?.some((item) => item.type === "historical-par-normalisation")) {
+        panel = document.createElement("div");
+        panel.className = "scorecard-with-note";
+        panel.appendChild(table);
+        const note = document.createElement("p");
+        note.className = "scorecard-historical-note";
+        note.textContent = "* Hole 14 was played as a par 3 during the 2022 TTO. The gross score shown has been adjusted +2 to align with the current par-5 course representation; Stableford points are unchanged.";
+        panel.appendChild(note);
+      } else {
+        panel = table;
+      }
     } else {
       panel = document.createElement("p");
       panel.className = "scorecard-unavailable";
