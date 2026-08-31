@@ -90,6 +90,23 @@ that produces zero under the application rules. Reconstructed cards retain the
 agreed historical HCP and are marked `reconstructed`; rounds without complete
 hole-level scoring remain unresolved.
 
+### 2020 plausible synthetic scorecards
+
+Three 2020 scorecards are plausible synthetic reconstructions, not recorded or
+original historical gross cards: George Stinton R1, George Stinton R2, and
+Samuel 'Dynesy' Dynes R1. Their authoritative historical facts remain the
+recorded HI, course HCP, round Stableford totals, final Points, and positions.
+Only the exact hole-by-hole gross scores and the resulting hole Stableford
+patterns are reconstructed supporting detail.
+
+The original gross cards and hole-by-hole Stableford were unavailable. The
+reconstructed cards use the canonical Tyrrells Wood par and stroke index with
+the authoritative round HCP to generate plausible compatible scorecards that
+reproduce the known round totals. George's cards were constrained to no gross
+score better than birdie; Dynesy's card was constrained to no gross score
+better than par. All three cards and their derived hole Stableford patterns are
+marked `reconstructed` with synthetic reconstruction metadata in the dataset.
+
 Last verified: 31 August 2026
 
 ## Course Ratings

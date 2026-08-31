@@ -80,8 +80,26 @@ const years = {
         playerId: "george-stinton",
         handicapIndex: 5.2,
         rounds: [
-          { courseKey: "tyrrellsWood", gross: null },
-          { courseKey: "tyrrellsWood", gross: null },
+          {
+            courseKey: "tyrrellsWood",
+            gross: [4,6,4,3,5,7,6,4,4,4,6,5,6,4,4,3,5,6],
+            grossSource: "reconstructed",
+            grossReconstruction: {
+              type: "plausible-synthetic",
+              reason: "Original gross and hole Stableford were unavailable; a plausible card was generated from the authoritative HCP 6 and round Stableford total 27",
+              constraint: "No gross score better than birdie",
+            },
+          },
+          {
+            courseKey: "tyrrellsWood",
+            gross: [4,5,4,2,4,4,6,4,3,3,4,5,5,4,4,3,3,5],
+            grossSource: "reconstructed",
+            grossReconstruction: {
+              type: "plausible-synthetic",
+              reason: "Original gross and hole Stableford were unavailable; a plausible card was generated from the authoritative HCP 6 and round Stableford total 41",
+              constraint: "No gross score better than birdie",
+            },
+          },
         ],
         playoff: null,
       },
@@ -89,7 +107,16 @@ const years = {
         playerId: "sam-dynes",
         handicapIndex: 44.8,
         rounds: [
-          { courseKey: "tyrrellsWood", gross: null },
+          {
+            courseKey: "tyrrellsWood",
+            gross: [9,8,7,7,7,9,7,8,3,9,8,10,7,9,8,7,9,7],
+            grossSource: "reconstructed",
+            grossReconstruction: {
+              type: "plausible-synthetic",
+              reason: "Original gross and hole Stableford were unavailable; a plausible card was generated from the authoritative HCP 54 and round Stableford total 22",
+              constraint: "No gross score better than par",
+            },
+          },
           { courseKey: "tyrrellsWood", gross: [9,6,7,5,8,9,6,7,4,8,5,9,8,8,8,7,9,8], grossSource: "reconstructed" },
         ],
         playoff: null,

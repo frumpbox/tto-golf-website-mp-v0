@@ -11,8 +11,13 @@ export const historicalLeaderboardRecords = {
           "courseHandicapSource": "recorded",
           "stablefordPoints": 22,
           "stablefordPointsSource": "exact",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "holeStableford": [0, 1, 2, 1, 2, 0, 3, 1, 5, 0, 1, 0, 2, 0, 1, 1, 0, 2],
+          "holeStablefordSource": "reconstructed",
+          "holeStablefordReconstruction": {
+            "type": "plausible-synthetic",
+            "reason": "Original gross and hole Stableford were unavailable; generated from the authoritative HCP 54 and round Stableford total 22 using a plausible compatible gross card",
+            "constraint": "No gross score better than par"
+          }
         },
         {
           "courseHandicap": 54,
@@ -268,16 +273,26 @@ export const historicalLeaderboardRecords = {
           "courseHandicapSource": "recorded",
           "stablefordPoints": 27,
           "stablefordPointsSource": "exact",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "holeStableford": [2, 1, 2, 2, 2, 0, 1, 2, 1, 2, 0, 2, 1, 3, 2, 2, 2, 0],
+          "holeStablefordSource": "reconstructed",
+          "holeStablefordReconstruction": {
+            "type": "plausible-synthetic",
+            "reason": "Original gross and hole Stableford were unavailable; generated from the authoritative HCP 6 and round Stableford total 27 using a plausible compatible gross card",
+            "constraint": "No gross score better than birdie"
+          }
         },
         {
           "courseHandicap": 6,
           "courseHandicapSource": "recorded",
           "stablefordPoints": 41,
           "stablefordPointsSource": "exact",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "holeStableford": [2, 2, 2, 3, 3, 3, 1, 2, 2, 3, 2, 2, 2, 3, 2, 2, 4, 1],
+          "holeStablefordSource": "reconstructed",
+          "holeStablefordReconstruction": {
+            "type": "plausible-synthetic",
+            "reason": "Original gross and hole Stableford were unavailable; generated from the authoritative HCP 6 and round Stableford total 41 using a plausible compatible gross card",
+            "constraint": "No gross score better than birdie"
+          }
         }
       ],
       "points": 68,
