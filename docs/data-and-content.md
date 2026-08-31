@@ -73,8 +73,8 @@ Historical leaderboard expectations are normalized from the authoritative
 priority over recalculation from an uncertain handicap index. The verifier
 checks result integrity, historical scoring, handicap consistency, and
 playoff-derived positions independently using PASS, WARNING, UNKNOWN, and FAIL.
-Unknown results are stored as `null`, including Felipe Milo's 2024 second round
-and final result, and every 2025 first round and final result. Approved
+Unknown results are stored as `null`, including every 2025 first round and
+final result. Approved
 populated-card corrections are marked `reconstructed`; unchanged cards with
 uncertain origin remain `existing-provenance-unknown`. George Stinton's known
 2023 historical handicap value is 2.7 and his approved playing HCP is 6 for
@@ -186,6 +186,33 @@ The revised final positions are Sam Lewis first on 69, Tom Sutehall second on
 64, Felipe Milo and James Hall joint third on 61 with no playoff evidence,
 George Stinton fifth on 59, and Dynesy sixth on 40. These resolved positions
 feed the Overall leaderboard without separately hard-coded Overall values.
+
+Last verified: 31 August 2026
+
+### 2024 remembered results and synthetic R2 scorecards
+
+Felipe Milo's R2 Stableford total of 26 comes from James's remembered
+historical evidence, together with the remembered constraint that Felipe made
+no gross birdies. The original gross and hole Stableford pattern does not
+survive. A plausible synthetic Saunton West card was generated from the
+estimated HCP 11 and target total 26 with zero gross birdies and zero gross
+eagles or better. The exact hole scores and derived hole Stableford values are
+reconstructed supporting detail, not an original historical scorecard.
+Felipe's completed result is 29 + 26 = 55 and position 4.
+
+James Hall's authoritative R2 total remains 28. James separately remembers a
+gross triple bogey on Saunton West Hole 17 and a gross bogey on Hole 18, stored
+as gross 8 on the par-5 17th and gross 4 on the par-3 18th. Those two gross
+facts are stronger remembered detail; the exact gross values on Holes 1-16 and
+their derived hole Stableford pattern are a plausible synthetic reconstruction
+using the estimated HCP 8. The complete card is marked `reconstructed` and is
+not presented as historically recovered. James remains on 60 and position 2
+as playoff runner-up to Sam Lewis.
+
+The revised final positions are Sam Lewis first on 60 after the existing
+sudden-death playoff, James Hall second on 60, Dynesy third on 59, Felipe Milo
+fourth on 55, and George Stinton fifth on 53. These resolved positions feed the
+Overall leaderboard without separately hard-coded Overall values.
 
 Last verified: 31 August 2026
 

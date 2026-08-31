@@ -1349,8 +1349,14 @@ export const historicalLeaderboardRecords = {
           "courseHandicapSource": "estimated",
           "stablefordPoints": 28,
           "stablefordPointsSource": "exact",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "holeStableford": [3, 2, 2, 1, 2, 2, 2, 2, 0, 2, 1, 2, 2, 2, 1, 1, 0, 1],
+          "holeStablefordSource": "reconstructed",
+          "holeStablefordReconstruction": {
+            "type": "plausible-synthetic",
+            "reason": "Original gross and hole Stableford were unavailable; Holes 1-16 were generated from the estimated HCP 8 and authoritative round Stableford total 28, while Holes 17-18 preserve gross scores remembered by James",
+            "rememberedDetail": "Hole 17 gross triple bogey (8); Hole 18 gross bogey (4)",
+            "syntheticDetail": "Exact gross and derived Stableford values on Holes 1-16"
+          }
         }
       ],
       "points": 60,
@@ -1474,16 +1480,22 @@ export const historicalLeaderboardRecords = {
         {
           "courseHandicap": 11,
           "courseHandicapSource": "estimated",
-          "stablefordPoints": null,
-          "stablefordPointsSource": "unknown",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "stablefordPoints": 26,
+          "stablefordPointsSource": "exact",
+          "holeStableford": [2, 2, 0, 1, 2, 2, 2, 0, 1, 2, 1, 2, 2, 2, 2, 1, 1, 1],
+          "holeStablefordSource": "reconstructed",
+          "holeStablefordReconstruction": {
+            "type": "plausible-synthetic",
+            "reason": "Original gross and hole Stableford were unavailable; generated from the estimated HCP 11 and remembered round Stableford total 26 supplied by James using a plausible compatible gross card",
+            "rememberedDetail": "Felipe made no gross birdies during the round",
+            "constraint": "Zero gross birdies and zero gross eagles or better"
+          }
         }
       ],
-      "points": null,
-      "pointsSource": "unknown",
-      "position": null,
-      "positionSource": "unknown",
+      "points": 55,
+      "pointsSource": "exact",
+      "position": 4,
+      "positionSource": "derived",
       "playoff": null
     },
     "george-stinton": {
@@ -1547,7 +1559,7 @@ export const historicalLeaderboardRecords = {
       ],
       "points": 53,
       "pointsSource": "exact",
-      "position": 4,
+      "position": 5,
       "positionSource": "derived",
       "playoff": null
     }

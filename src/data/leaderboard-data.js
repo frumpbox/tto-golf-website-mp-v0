@@ -387,7 +387,17 @@ const years = {
         handicapIndex: 9, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "sauntonEast", gross: [5,6,4,5,3,5,5,4,4,5,5,4,5,4,6,5,4,5] },
-          { courseKey: "sauntonWest", gross: null },
+          {
+            courseKey: "sauntonWest",
+            gross: [3,5,5,4,5,5,5,4,5,6,4,5,5,5,5,4,8,4],
+            grossSource: "reconstructed",
+            grossReconstruction: {
+              type: "plausible-synthetic",
+              reason: "Original gross and hole Stableford were unavailable; Holes 1-16 were generated from the estimated HCP 8 and authoritative round Stableford total 28, while Holes 17-18 preserve gross scores remembered by James",
+              rememberedDetail: "Hole 17 gross triple bogey (8); Hole 18 gross bogey (4)",
+              syntheticDetail: "Exact gross scores on Holes 1-16",
+            },
+          },
         ],
         playoff: null,
       },
@@ -405,7 +415,17 @@ const years = {
         handicapIndex: 12, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
           { courseKey: "sauntonEast", gross: [5,5,7,6,2,6,5,7,4,5,4,4,4,5,7,6,3,5] },
-          { courseKey: "sauntonWest", gross: null },
+          {
+            courseKey: "sauntonWest",
+            gross: [5,5,7,4,5,5,5,6,4,6,4,6,5,5,5,4,7,4],
+            grossSource: "reconstructed",
+            grossReconstruction: {
+              type: "plausible-synthetic",
+              reason: "Original gross and hole Stableford were unavailable; a plausible card was generated from the estimated HCP 11 and remembered round Stableford total 26 supplied by James",
+              rememberedDetail: "Felipe made no gross birdies during the round",
+              constraint: "Zero gross birdies and zero gross eagles or better",
+            },
+          },
         ],
         playoff: null,
       },
