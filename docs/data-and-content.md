@@ -6,8 +6,8 @@ Last verified: 6 August 2026
 
 | Area | Live source | Transitional or reference source |
 | --- | --- | --- |
-| Leaderboard structure | `leaderboard.html` | `src/data/leaderboard-data.js` |
-| Scores and calculations | `src/legacy-script.js` | `src/tools/verify-leaderboard-data.js` |
+| Leaderboard structure | `leaderboard.html`, `src/leaderboard-renderer.js` | Table shells remain in HTML |
+| Historical leaderboard results | `src/data/leaderboard-data.js` | `src/tools/verify-leaderboard-data.js` validates resolved data |
 | Course and rating data | `src/data/course-data.js` | Root `course-data.js` is divergent |
 | Handicap data | `src/data/handicap-data.js` | Root `handicap-data.js` is divergent |
 | Player profiles | `src/data/player-data.js` | Supplied Player Profile DOCX files |
@@ -17,11 +17,16 @@ Last verified: 6 August 2026
 
 ### Live implementation
 
-`leaderboard.html` contains the hard-coded overall table and repeated annual
-table shells. `src/legacy-script.js` fills scorecards, calculates points,
-sorts annual results, and updates positions. It reads course information from
-`src/data/course-data.js` and handicap information from
-`src/data/handicap-data.js`.
+`leaderboard.html` contains the overall and repeated annual table shells.
+`src/leaderboard-renderer.js` fills and orders overall and annual summaries
+directly from resolved `src/data/leaderboard-data.js` values. It does not
+recalculate historical HCP, Stableford totals, Points, or positions. Unknown
+values remain `null` in data and display as an en dash; genuine zero values
+remain visible.
+
+`src/legacy-script.js` builds optional scorecard details only when a resolved
+round has a gross card. Missing gross cards show an unavailable message and do
+not affect the annual summary.
 
 Course handicap is calculated as:
 
@@ -38,19 +43,25 @@ Handicap strokes are assigned by stroke index. Stableford scoring is:
 - net bogey: 1
 - net double bogey or worse: 0
 
-Annual rows are sorted by total points, with hard-coded playoff handling for
-known ties. The overall ranking table is currently static rather than
-calculated at runtime.
+Overall Rank Score is the sum of known resolved annual positions and Avg Rank
+divides that score by known finishes only. Unknown positions do not contribute.
+Played remains the independently recorded event-attendance count. Overall rows
+sort by Avg Rank, retaining player source order when averages are equal.
 
-Some missing gross rounds use legacy par, bogey, or blank fallback modes.
-Those generated values must not be mistaken for confirmed scorecards.
+Annual rows are sorted by resolved position, retaining source order for genuine
+ties and placing unknown positions last. Playoff-adjusted positions therefore
+come directly from the reviewed historical data.
+
+The bypassed legacy path contains historical par, bogey, and blank fallback
+modes. The active annual renderer does not use those fallbacks: missing gross
+rounds remain unavailable.
 
 ### Consolidated migration dataset
 
-`src/data/leaderboard-data.js` is intended to become a consolidated source
-for players, years, courses, rounds, results, and playoff metadata. It is
-currently used for homepage counts and standalone verification, but it does
-not render the live leaderboard.
+`src/data/leaderboard-data.js` is the consolidated source for annual leaderboard
+players, years, courses, rounds, results, and playoff metadata. It renders the
+live annual summaries, supplies homepage counts, and supports standalone
+verification.
 
 It still contains null rounds, placeholder handicap indexes, incomplete
 summaries, and discrepancies with the legacy implementation. The consolidated

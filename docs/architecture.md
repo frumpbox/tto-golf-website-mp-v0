@@ -35,8 +35,10 @@ These six page URLs are stable and should be preserved.
   mobile menu, supplies homepage counts, and loads the legacy leaderboard
   behavior.
 - `src/styles/legacy.css` is the active shared stylesheet.
-- `src/legacy-script.js` contains the current scorecard and leaderboard
-  calculation behavior.
+- `src/leaderboard-renderer.js` renders the overall and annual leaderboards from
+  the consolidated resolved historical data.
+- `src/legacy-script.js` retains scorecard-detail behavior for rounds with
+  available gross cards; annual summary values are no longer calculated there.
 - `src/player-profiles.js` adds the About Us profile accordion and handles
   stable player deep links.
 - `src/data/` contains the active course, handicap, leaderboard migration,
@@ -49,10 +51,11 @@ The codebase is partway between legacy global DOM code and ES modules.
 helpers on `window`. `src/legacy-script.js` and the inline Course Ratings
 script consume those globals.
 
-The live leaderboard still combines hard-coded HTML with legacy calculation
-code. Course Ratings has a page-local inline renderer. Year in Review has a
-page-local module renderer. This structure is a maintenance constraint, not a
-reason to introduce a framework.
+The live leaderboard retains its hard-coded page shell and table templates,
+while the overall and annual rows are populated from the consolidated data.
+Course Ratings has a page-local inline renderer. Year in Review has a page-local
+module renderer. This structure is a maintenance constraint, not a reason to
+introduce a framework.
 
 ## Repeated page shells
 

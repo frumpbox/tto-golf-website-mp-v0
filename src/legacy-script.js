@@ -1,17 +1,11 @@
-// Function to build scorecard table from course data
-// Requires course-data.js and handicap-data.js to be loaded before this script
+import { renderHistoricalLeaderboards, renderOverallLeaderboard } from "./leaderboard-renderer.js";
+
+// Function to build scorecard detail from the resolved leaderboard round.
 function buildScorecardTable(courseName, playerName, year, options = {}) {
   const courseData = getCourseData(courseName);
   if (!courseData) return null;
-  const baseHandicap =
-    typeof getPlayerHandicap === "function"
-      ? getPlayerHandicap(year, playerName)
-      : null;
-  const handicap =
-    options.handicapOverride !== undefined && options.handicapOverride !== null
-      ? options.handicapOverride
-      : baseHandicap;
-  const grossMode = options.grossMode || "par"; // par, bogey, blank
+  const handicap = options.handicapOverride ?? null;
+  const grossMode = "blank";
   const grossOverrides = options.grossOverrides;
   const blankMode = grossMode === "blank" && !grossOverrides;
   // Accept overrides as either 18-hole arrays or legacy 21-length arrays (with Out/In/Tot).
@@ -249,8 +243,62 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
   return table;
 }
 
+function renderResolvedScorecards(year, rowData, detailRow) {
+  const container = detailRow.querySelector(`[id="scorecard-${year}-${rowData.playerId}"]`);
+  if (!container) return;
+  container.replaceChildren();
+
+  const panels = rowData.rounds.map((round, roundIndex) => {
+    let panel;
+    if (Array.isArray(round.gross)) {
+      panel = buildScorecardTable(round.courseKey, rowData.member, year, {
+        handicapOverride: round.courseHandicap,
+        grossOverrides: round.gross,
+      });
+    } else {
+      panel = document.createElement("p");
+      panel.className = "scorecard-unavailable";
+      panel.textContent = "Detailed scorecard unavailable for this round.";
+    }
+
+    panel.dataset.round = String(roundIndex + 1);
+    panel.hidden = roundIndex !== 0;
+    container.appendChild(panel);
+    return panel;
+  });
+
+  const buttons = detailRow.querySelectorAll(".round-btn");
+  buttons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      buttons.forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.round !== button.dataset.round;
+      });
+    });
+  });
+}
+
+function initializeDetailToggles() {
+  document.querySelectorAll(".details-toggle").forEach((row) => {
+    row.style.cursor = "pointer";
+    row.addEventListener("click", () => {
+      const detailsRow = document.getElementById(row.dataset.target);
+      if (!detailsRow) return;
+      const isHidden = detailsRow.style.display === "none" || detailsRow.style.display === "";
+      detailsRow.style.display = isHidden ? "table-row" : "none";
+    });
+  });
+}
+
 // Initialize scorecards on page load
 document.addEventListener("DOMContentLoaded", function () {
+  renderOverallLeaderboard();
+  renderHistoricalLeaderboards(renderResolvedScorecards);
+  initializeDetailToggles();
+  return;
+
   initYear({
     year: 2020,
     courseNames: ["tyrrellsWood", "tyrrellsWood"],

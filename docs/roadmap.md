@@ -13,12 +13,11 @@ This is a lightweight sequencing guide, not a fixed delivery schedule.
 
 ## Next — Data and content foundations
 
-- Continue missing-card historical leaderboard reconstruction using the
-  workbook-normalized schema and link-by-link verifier; preserve the resolved
-  populated-card corrections and authoritative results.
+- Preserve the reviewed historical leaderboard values and continue resolving
+  missing source material only as separately approved work.
 - Confirm missing leaderboard gross scores and handicap indexes from
   authoritative information.
-- Keep renderer replacement behind successful data verification.
+- Maintain the annual renderer against the verified consolidated data model.
 - Maintain the validated Course Ratings workbook import and normalized
   hole-tier schema.
 - Populate Year in Review articles and galleries as approved content becomes
@@ -29,9 +28,7 @@ feature build.
 
 ## Later — Focused feature improvements
 
-- Replace the manual leaderboard renderer only after the consolidated dataset
-  passes verification.
-- Calculate overall rankings from verified data.
+- Continue reviewing overall rankings as unresolved annual positions are verified.
 - Improve Course Ratings presentation after data normalization.
 - Continue general visual, responsive, semantic, and accessibility polish.
 - Replace About and Shop placeholders when real content is available.

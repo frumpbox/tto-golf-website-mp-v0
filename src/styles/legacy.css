@@ -525,6 +525,29 @@ table[id^="table-"] td:first-child {
   text-align: center;
 }
 
+table[id^="table-"] {
+  min-width: 720px;
+}
+
+table[id^="table-"] th:nth-child(n + 3),
+table[id^="table-"] td:nth-child(n + 3) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+table[id^="table-"] th:nth-child(6),
+table[id^="table-"] td:nth-child(6) {
+  color: #d8bd6a;
+  font-weight: 700;
+}
+
+table[id^="table-"] th:nth-child(2),
+table[id^="table-"] td:nth-child(2) {
+  min-width: 180px;
+  white-space: nowrap;
+}
+
 /* ---------- Leaderboard subtitle ---------- */
 .leaderboard-subtitle {
   font-size: 0.78rem;
@@ -1862,6 +1885,15 @@ nav ul li a.active {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.scorecard-unavailable {
+  margin: 8px 0 0;
+  padding: 18px;
+  color: rgba(240, 240, 234, 0.55);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.025);
+  border-radius: 8px;
 }
 
 .member-card-photo img {
