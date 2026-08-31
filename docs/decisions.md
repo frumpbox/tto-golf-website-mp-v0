@@ -86,3 +86,16 @@ automatically current instructions.
 
 **Consequence:** Verify their claims against the current implementation before
 using them.
+
+## Historical leaderboard scoring basis
+
+**Decision:** Historical Stableford scoring uses the recorded round course
+handicap when one exists. An uncertain handicap index that does not reproduce a
+recorded handicap against today's canonical course card creates a consistency
+warning, not grounds to change the historical handicap or result.
+
+**Consequence:** Store handicap-index, course-handicap, Stableford, gross-score,
+and result provenance separately. Preserve unknown values as `null`; do not
+convert missing historical information to zero. Validate authoritative results,
+historical scoring, handicap consistency, and playoff positions as separate
+links.

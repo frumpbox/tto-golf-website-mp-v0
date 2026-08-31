@@ -6,8 +6,8 @@ Last verified: 6 August 2026
 
 | Area | Live source | Transitional or reference source |
 | --- | --- | --- |
-| Leaderboard structure | `leaderboard.html` | `src/data/leaderboard-data.js` |
-| Scores and calculations | `src/legacy-script.js` | `src/tools/verify-leaderboard-data.js` |
+| Leaderboard structure | `leaderboard.html`, `src/leaderboard-renderer.js` | Table shells remain in HTML |
+| Historical leaderboard results | `src/data/leaderboard-data.js` | `src/tools/verify-leaderboard-data.js` validates resolved data |
 | Course and rating data | `src/data/course-data.js` | Root `course-data.js` is divergent |
 | Handicap data | `src/data/handicap-data.js` | Root `handicap-data.js` is divergent |
 | Player profiles | `src/data/player-data.js` | Supplied Player Profile DOCX files |
@@ -17,11 +17,16 @@ Last verified: 6 August 2026
 
 ### Live implementation
 
-`leaderboard.html` contains the hard-coded overall table and repeated annual
-table shells. `src/legacy-script.js` fills scorecards, calculates points,
-sorts annual results, and updates positions. It reads course information from
-`src/data/course-data.js` and handicap information from
-`src/data/handicap-data.js`.
+`leaderboard.html` contains the overall and repeated annual table shells.
+`src/leaderboard-renderer.js` fills and orders overall and annual summaries
+directly from resolved `src/data/leaderboard-data.js` values. It does not
+recalculate historical HCP, Stableford totals, Points, or positions. Unknown
+values remain `null` in data and display as an en dash; genuine zero values
+remain visible.
+
+`src/legacy-script.js` builds optional scorecard details only when a resolved
+round has a gross card. Missing gross cards show an unavailable message and do
+not affect the annual summary.
 
 Course handicap is calculated as:
 
@@ -38,30 +43,178 @@ Handicap strokes are assigned by stroke index. Stableford scoring is:
 - net bogey: 1
 - net double bogey or worse: 0
 
-Annual rows are sorted by total points, with hard-coded playoff handling for
-known ties. The overall ranking table is currently static rather than
-calculated at runtime.
+Overall Rank Score is the sum of known resolved annual positions and Avg Rank
+divides that score by known finishes only. Unknown positions do not contribute.
+Played remains the independently recorded event-attendance count. Overall rows
+sort by Avg Rank, retaining player source order when averages are equal.
 
-Some missing gross rounds use legacy par, bogey, or blank fallback modes.
-Those generated values must not be mistaken for confirmed scorecards.
+Annual rows are sorted by resolved position, retaining source order for genuine
+ties and placing unknown positions last. Playoff-adjusted positions therefore
+come directly from the reviewed historical data.
+
+The bypassed legacy path contains historical par, bogey, and blank fallback
+modes. The active annual renderer does not use those fallbacks: missing gross
+rounds remain unavailable.
 
 ### Consolidated migration dataset
 
-`src/data/leaderboard-data.js` is intended to become a consolidated source
-for players, years, courses, rounds, results, and playoff metadata. It is
-currently used for homepage counts and standalone verification, but it does
-not render the live leaderboard.
+`src/data/leaderboard-data.js` is the consolidated source for annual leaderboard
+players, years, courses, rounds, results, and playoff metadata. It renders the
+live annual summaries, supplies homepage counts, and supports standalone
+verification.
 
 It still contains null rounds, placeholder handicap indexes, incomplete
 summaries, and discrepancies with the legacy implementation. The consolidated
 dataset cannot replace the live source until verification passes.
 
-The existing verifier currently reports **ten failures**: five 2024 total
-failures and five 2023 total failures. The canonical Luffenham Heath update
-added the George Stinton 2023 mismatch; historical points remain authoritative
-pending separately identified scorecard reconstruction work.
+Historical leaderboard expectations are normalized from the authoritative
+`~/Downloads/TTO Workbook.xlsx` source into
+`src/data/historical-leaderboard-data.js`. Recorded round course handicaps take
+priority over recalculation from an uncertain handicap index. The verifier
+checks result integrity, historical scoring, handicap consistency, and
+playoff-derived positions independently using PASS, WARNING, UNKNOWN, and FAIL.
+Unknown results are stored as `null`, including every 2025 first round and
+final result. Approved
+populated-card corrections are marked `reconstructed`; unchanged cards with
+uncertain origin remain `existing-provenance-unknown`. George Stinton's known
+2023 historical handicap value is 2.7 and his approved playing HCP is 6 for
+both Luffenham rounds. Approved 2024
+evidence-based HIs and HCPs are marked `estimated`. Sam Lewis's reconstructed
+2022 R1 hole-18 point is separately documented because the workbook holes
+totalled 41 while the authoritative round total is 42. High-confidence missing
+gross cards may be reconstructed only when the canonical course, agreed round
+HCP, all 18 hole Stableford values, and authoritative round total are present.
+For a positive hole value, gross is derived as canonical par plus allocated
+strokes plus two, minus Stableford points. For a zero-point hole, reconstruction
+uses canonical par plus allocated strokes plus two: the minimum gross score
+that produces zero under the application rules. Reconstructed cards retain the
+agreed historical HCP and are marked `reconstructed`; rounds without complete
+hole-level scoring remain unresolved.
 
-Last verified: 23 August 2026
+Separately approved plausible synthetic cards may be generated from an agreed
+HCP and authoritative or explicitly approved round total when the original
+gross and hole Stableford are both unavailable. Those generated gross and hole
+patterns must carry `plausible-synthetic` reconstruction metadata and remain
+supporting detail rather than historical evidence.
+
+### 2020 plausible synthetic scorecards
+
+Three 2020 scorecards are plausible synthetic reconstructions, not recorded or
+original historical gross cards: George Stinton R1, George Stinton R2, and
+Samuel 'Dynesy' Dynes R1. Their authoritative historical facts remain the
+recorded HI, course HCP, round Stableford totals, final Points, and positions.
+Only the exact hole-by-hole gross scores and the resulting hole Stableford
+patterns are reconstructed supporting detail.
+
+The original gross cards and hole-by-hole Stableford were unavailable. The
+reconstructed cards use the canonical Tyrrells Wood par and stroke index with
+the authoritative round HCP to generate plausible compatible scorecards that
+reproduce the known round totals. George's cards were constrained to no gross
+score better than birdie; Dynesy's card was constrained to no gross score
+better than par. All three cards and their derived hole Stableford patterns are
+marked `reconstructed` with synthetic reconstruction metadata in the dataset.
+
+Last verified: 31 August 2026
+
+### 2022 restored handicap and scorecard interpretation
+
+The 2022 event predates The Tyrrells Open's use of modern WHS Handicap Index
+and Course Handicap handling. The surviving legacy handicap values have been
+restored as historically meaningful evidence, not asserted as independently
+verified modern WHS Handicap Indexes: Felipe Milo 16.8, Sam Lewis 16.8, Samuel
+'Dynesy' Dynes 31.1, George Stinton 4.9, and James Hall 12.8. Their provenance
+is stored as `restored-legacy`.
+
+Modern reconstruction uses round-specific historical tee context rather than
+changing the global canonical course records: R1 Silvertip tee, par 72,
+Course Rating 69.0, Slope 129; R2 Stewart Creek White tee, par 71, Course
+Rating 68.7, Slope 123. This produces reconstructed modern R1/R2 HCPs of
+16/16 for Felipe, 16/16 for Sam Lewis, 33/32 for Dynesy, 3/3 for George, and
+12/12 for James. These calculations interpret the restored legacy values for
+the website; they do not claim that the 2022 competition itself used the same
+methodology.
+
+Dynesy's reconstructed R1 HCP consequently changed from 32 to 33. Silvertip
+Hole 12 has Stroke Index 15 and receives the extra stroke; its reconstructed
+gross was increased from 3 to 4 so the net score and recorded Stableford value
+remain unchanged.
+
+Silvertip Hole 14 was played as a par 3 during the 2022 TTO, while the current
+canonical scorecard represents it as par 5. Each of the five reconstructed R1
+gross scores is stored and displayed with a +2 normalisation against the
+current representation. Metadata adds an asterisk without changing the
+numeric score, and an explanatory note appears below only those five R1
+scorecards. The +2 is treated as a display normalisation when validating the
+unchanged authoritative hole Stableford values.
+
+The exact gross scorecards are reconstructed supporting detail, not original
+historical cards. Neither adjustment changed any authoritative hole
+Stableford value, round total, Points, or position. Sam Lewis's separate R1
+Hole 18 reconciliation (workbook 0, reconstructed 1, authoritative R1 total
+42) also remains unchanged.
+
+Last verified: 31 August 2026
+
+### 2023 historical handicap and synthetic R2 interpretation
+
+The 2023 TTO did not use modern Handicap Index / Course Handicap methodology.
+Its historical workbook values and approved playing HCPs are therefore
+preserved without forcing them through the current canonical Luffenham Heath
+Blue-tee WHS formula: Sam Lewis 12.1 and 15/15, Tom Sutehall 13.6 and 17/17,
+Felipe Milo 11.0 and 14/14, James Hall 10.0 and 10/10, Samuel 'Dynesy' Dynes
+25.3 and 31/31, and George Stinton 2.7 and 6/6. James personally confirmed
+George's 2.7 historical value. Canonical-formula differences remain visible as
+historical methodology context and do not invalidate the recorded playing
+HCPs or historical scoring.
+
+Original gross and hole Stableford records are unavailable for George
+Stinton R2, Felipe Milo R2, and James Hall R2. James approved plausible
+synthetic supporting reconstructions using the canonical Luffenham Heath par
+and stroke-index card, the approved playing HCP, and the authoritative or
+approved round total. The generated gross and hole Stableford patterns are not
+recovered historical scorecards.
+
+George's approved R2 total is 32, supplied by James. His synthetic HCP-6 card
+totals 32 and contains exactly one gross eagle, on a par 5, with no albatross
+or better score. His result is consequently 27 + 32 = 59 and position 5,
+consistent with James's memory that George finished second-last. Felipe's
+synthetic HCP-14 R2 card totals 31 with no gross eagle or better and no more
+than two gross birdies. James Hall's synthetic HCP-10 R2 card totals 36 under
+the same no-eagle and maximum-two-birdie constraints.
+
+The revised final positions are Sam Lewis first on 69, Tom Sutehall second on
+64, Felipe Milo and James Hall joint third on 61 with no playoff evidence,
+George Stinton fifth on 59, and Dynesy sixth on 40. These resolved positions
+feed the Overall leaderboard without separately hard-coded Overall values.
+
+Last verified: 31 August 2026
+
+### 2024 remembered results and synthetic R2 scorecards
+
+Felipe Milo's R2 Stableford total of 26 comes from James's remembered
+historical evidence, together with the remembered constraint that Felipe made
+no gross birdies. The original gross and hole Stableford pattern does not
+survive. A plausible synthetic Saunton West card was generated from the
+estimated HCP 11 and target total 26 with zero gross birdies and zero gross
+eagles or better. The exact hole scores and derived hole Stableford values are
+reconstructed supporting detail, not an original historical scorecard.
+Felipe's completed result is 29 + 26 = 55 and position 4.
+
+James Hall's authoritative R2 total remains 28. James separately remembers a
+gross triple bogey on Saunton West Hole 17 and a gross bogey on Hole 18, stored
+as gross 8 on the par-5 17th and gross 4 on the par-3 18th. Those two gross
+facts are stronger remembered detail; the exact gross values on Holes 1-16 and
+their derived hole Stableford pattern are a plausible synthetic reconstruction
+using the estimated HCP 8. The complete card is marked `reconstructed` and is
+not presented as historically recovered. James remains on 60 and position 2
+as playoff runner-up to Sam Lewis.
+
+The revised final positions are Sam Lewis first on 60 after the existing
+sudden-death playoff, James Hall second on 60, Dynesy third on 59, Felipe Milo
+fourth on 55, and George Stinton fifth on 53. These resolved positions feed the
+Overall leaderboard without separately hard-coded Overall values.
+
+Last verified: 31 August 2026
 
 ## Course Ratings
 
@@ -119,8 +272,9 @@ authoritative subjective rating data and name/hole count; unknown metadata was
 not invented. Canonical factual validation is complete: all 28 courses now
 have deliberately selected and verified canonical factual cards. Pastures
 remains a genuine nine-hole White - Front card; it is not duplicated into an
-artificial 18-hole configuration. Historical leaderboard reconstruction and
-its ten known verifier mismatches remain separate, unfinished work.
+artificial 18-hole configuration. Missing-card historical leaderboard
+reconstruction remains separate, unfinished work; the populated-data
+leaderboard verifier currently has no FAIL checks.
 
 Last verified: 23 August 2026
 
