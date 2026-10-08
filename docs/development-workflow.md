@@ -109,12 +109,31 @@ authorise production publication. Neither Builder nor Reviewer may approve a
 production merge on James's behalf, and code review approval does not replace
 human approval.
 
-Use the standard completion report in `AGENTS.md` for every development task
-and any PR handoff: requested work, changes, modified files, branch/base, build
-and validation results, TODO updates, outstanding concerns, anything untested,
-and the PR link if created (or publication status if not).
+Use the standard completion report and Builder PR handoff in `AGENTS.md` for
+every development task and PR handoff.
 
 Never execute or use `agent/agent.js`.
+
+## Builder PR summary and independent review
+
+Every Builder PR must use `.github/pull_request_template.md`. Complete its
+seven Builder summary sections in plain English so James can understand the
+change without reading code: what was asked for, what changed, what he should
+inspect or test, how to see the changes, tests and results, limitations/issues/
+risks, and TODO checklist changes. Give concrete inspection steps and expected
+results. Include a preview link when available; otherwise explain why there is
+no preview and provide access instructions, such as links to rendered documents
+for a documentation-only task. State `None` or `Not applicable` with a reason
+where appropriate. Include modified files, task branch/base, and the PR link or
+publication status, and update the handoff after revisions.
+
+The Builder summary and test results are the Builder's report. Actual
+independent Codex Reviewer findings belong in the separate review section,
+linked to the Reviewer's GitHub review or comments and the reviewed head commit.
+Leave review status pending until it finishes; no findings yet does not mean
+review passed. If the PR changes afterward, state that another review is
+pending for the new revision. The existing review and human approval gates
+above still apply.
 
 ## Safe treatment of `dist/`
 
