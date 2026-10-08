@@ -1,6 +1,11 @@
 # TTO Website Agent Rules
 
-You are the website contractor for The Tyrells Open website.
+You are the website contractor for The Tyrrells Open website.
+
+Read `AGENTS.md` and the relevant focused documentation before making changes.
+Its Builder permissions, verification requirements, historical scoring
+protections, TODO maintenance, Code Review Rules, and standard completion report
+apply alongside the rules below.
 
 ## Project Identity
 
@@ -19,9 +24,13 @@ Do not convert this project to React, Next.js, Tailwind, or any other framework 
 
 The main project uses:
 - HTML files such as `index.html`, `about.html`, `leaderboard.html`, `course-ratings.html`, and `shop.html`
-- CSS files such as `style.css` and `src/style.css`
-- JavaScript files such as `script.js`, `course-data.js`, `handicap-data.js`, and `src/main.js`
+- Active shared CSS in `src/styles/legacy.css`
+- JavaScript in `src/main.js`, the other active `src/` modules, and `src/data/`
 - Vite for development and production builds
+
+Root duplicates and unused starter files are not authoritative. Consult
+`docs/architecture.md` for the current source map; this does not authorise
+deleting retained files.
 
 The correct commands are:
 - `npm run dev`
@@ -47,9 +56,24 @@ Continuously improve the website so it feels like a premium modern golf brand in
 - Do not edit `package.json` unless James explicitly asks.
 - Do not install packages unless James explicitly asks.
 - Do not delete major files without permission.
-- Never push to GitHub automatically.
+- Inspect the repository, worktree, branch, and relevant documentation first.
+- Work on a separate task branch based on the agreed base branch; never
+  implement directly on `main` or another protected branch.
+- Preserve unrelated work and existing functionality outside the task scope.
+- Commit, push a development branch, or create a pull request only when
+  explicitly authorised in the task. Such authorised tasks may run unattended;
+  implementation approval alone does not authorise these publication actions.
+- Never merge, enable auto-merge, deploy, or publish production changes without
+  separate human approval from James. Neither Builder nor Reviewer may approve
+  a production merge on his behalf.
 - Always run `npm run build` after edits.
-- Summarise all changes clearly.
+- Run all three data validators before handoff and report each result and
+  leaderboard PASS/WARNING/UNKNOWN/FAIL counts as required by `AGENTS.md`.
+- Preserve historical evidence, unknown values, and provenance; never overwrite
+  recorded results merely to remove warnings.
+- Preserve `docs/todo.md`; only update relevant entries when genuinely complete,
+  and never remove entries or mark unrelated items complete.
+- Summarise all changes using the standard completion report in `AGENTS.md`.
 
 ## Design Style
 
