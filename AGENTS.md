@@ -103,6 +103,32 @@ exact name and spelling.
 - Never remove entries or mark unrelated items complete; preserve unrelated
   wording, ordering, and checkbox states.
 
+## Builder PR handoff
+
+- Every Builder PR must use `.github/pull_request_template.md` and include a
+  clear, non-technical summary James can understand without reading the code.
+  Complete every section; explicitly write `None` or `Not applicable` with a
+  reason where appropriate, rather than leaving placeholders or blank sections.
+- Label the summary as the Builder's report and include:
+  - what James asked for;
+  - what changed, explained in plain English;
+  - what James should personally inspect or test, with steps and expected results;
+  - how to see the changes, including a preview link when available, or clear
+    access instructions and an explanation when no preview is available;
+  - tests performed and their results, including the required checks and
+    comparison with the baseline;
+  - known limitations, unresolved issues or risks, and anything untested; and
+  - changes to `docs/todo.md`, or an explicit statement that none were made.
+- Retain the standard completion report's modified files, branch/base, and PR
+  link or publication status alongside this handoff. Keep it current after
+  revisions.
+- Keep independent Codex Reviewer findings separate from the Builder's summary
+  and tests. Until the review finishes, report it as pending; never claim that
+  review passed based on Builder checks or the absence of findings so far.
+  When reporting a completed review, link the actual Reviewer findings and
+  identify the reviewed head commit. A review of an older revision does not
+  approve the current revision.
+
 ## Code Review Rules
 
 - The independent Codex Code Review Agent must examine the final PR revision
@@ -128,6 +154,9 @@ For every development task, report:
 
 - what was requested;
 - what changed;
+- what James should personally inspect or test, with expected results;
+- how to see the changes, including a preview link when available or access
+  instructions and why no preview is available;
 - files modified;
 - task branch and base branch;
 - build and individual validation results, including leaderboard status counts
