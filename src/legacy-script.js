@@ -322,6 +322,7 @@ function renderResolvedScorecards(year, rowData, detailRow) {
     }
 
     panel.dataset.round = String(roundIndex + 1);
+    panel.id = `${container.id}-round-${roundIndex + 1}`;
     panel.hidden = roundIndex !== 0;
     container.appendChild(panel);
     return panel;
@@ -329,9 +330,14 @@ function renderResolvedScorecards(year, rowData, detailRow) {
 
   const buttons = detailRow.querySelectorAll(".round-btn");
   buttons.forEach((button) => {
+    button.setAttribute("aria-controls", `${container.id}-round-${button.dataset.round}`);
+    button.setAttribute("aria-pressed", String(button.dataset.round === "1"));
     button.addEventListener("click", (event) => {
       event.stopPropagation();
-      buttons.forEach((item) => item.classList.remove("active"));
+      buttons.forEach((item) => {
+        item.classList.remove("active");
+        item.setAttribute("aria-pressed", String(item === button));
+      });
       button.classList.add("active");
       panels.forEach((panel) => {
         panel.hidden = panel.dataset.round !== button.dataset.round;
@@ -341,13 +347,37 @@ function renderResolvedScorecards(year, rowData, detailRow) {
 }
 
 function initializeDetailToggles() {
-  document.querySelectorAll(".details-toggle").forEach((row) => {
+  document.querySelectorAll(".leaderboard-page tr.details-toggle").forEach((row) => {
+    const detailsRow = document.getElementById(row.dataset.target);
+    if (!detailsRow) return;
+
+    // Keep table semantics and the player link; native buttons handle Enter and Space.
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "scorecard-toggle";
+    button.textContent = row.cells[0].textContent;
+    const year = detailsRow.id.split("-")[1];
+    button.setAttribute("aria-label", `Scorecards for ${row.cells[1].textContent}, ${year}`);
+    button.setAttribute("aria-controls", detailsRow.id);
+    const isExpanded = detailsRow.style.display === "table-row";
+    button.setAttribute("aria-expanded", String(isExpanded));
+    detailsRow.hidden = !isExpanded;
+    row.cells[0].replaceChildren(button);
+
+    const toggle = () => {
+      const expanded = button.getAttribute("aria-expanded") !== "true";
+      detailsRow.hidden = !expanded;
+      detailsRow.style.display = expanded ? "table-row" : "none";
+      button.setAttribute("aria-expanded", String(expanded));
+    };
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggle();
+    });
     row.style.cursor = "pointer";
-    row.addEventListener("click", () => {
-      const detailsRow = document.getElementById(row.dataset.target);
-      if (!detailsRow) return;
-      const isHidden = detailsRow.style.display === "none" || detailsRow.style.display === "";
-      detailsRow.style.display = isHidden ? "table-row" : "none";
+    row.addEventListener("click", (event) => {
+      if (event.target.closest("a, button")) return;
+      toggle();
     });
   });
 }
