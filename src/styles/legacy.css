@@ -2300,3 +2300,26 @@ nav ul li a.active {
     animation: none;
   }
 }
+
+/* Leaderboard scorecard disclosure: retain position-cell geometry. */
+.leaderboard-page .scorecard-toggle {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-decoration: underline;
+  text-decoration-color: #c9a84c;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.leaderboard-page .scorecard-toggle:focus-visible,
+.leaderboard-page .round-btn:focus-visible,
+.leaderboard-page .leaderboard-player-link:focus-visible {
+  outline: 2px solid #c9a84c;
+  outline-offset: 3px;
+}
