@@ -90,6 +90,33 @@ For relevant UI changes, use a local development server or production preview
 for visual and interaction checks on desktop and mobile where possible.
 Explicitly report anything that could not be tested or verified.
 
+## Automated GitHub checks
+
+`.github/workflows/ci.yml` runs on every pull request opened, reopened, or
+updated with new commits, and on pushes to `main`. It uses Node.js 24 LTS and
+`npm ci` with the existing `package-lock.json`, without adding dependencies.
+Four independent jobs run the build and the three data validators listed above;
+all jobs run even if another check fails.
+
+Open the pull request's **Checks** tab to see **Build**, **Leaderboard data**,
+**Course data**, and **Course ratings data**, including each job's output.
+A nonzero command exit marks its check as failed. Inspect the failing log,
+fix the cause on the task branch, and push a new commit to rerun the checks.
+Do not merge with failed checks. Branch protection is unchanged, so these
+checks do not yet enforce a merge block through GitHub settings.
+
+The initial leaderboard baseline is **679 PASS, 7 WARNING, 33 UNKNOWN, and
+0 FAIL**. Warnings and unknown historical values remain visible in the log
+and do not fail CI; the unchanged validator exits unsuccessfully when it
+finds a FAIL. A green check does not establish that unknown historical values
+are verified. Compare diagnostic counts during review and preserve historical
+evidence rather than changing data or weakening validators to obtain a pass.
+
+CI uses only read access to repository contents and does not retain checkout
+credentials. It requires no external API keys or configured secrets, and
+does not merge or deploy. Automated checks supplement the independent Codex
+Reviewer and James's human approval; they do not replace either.
+
 ## Review and publication
 
 Commits, development-branch pushes, and PR creation require explicit task
