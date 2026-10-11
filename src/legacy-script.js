@@ -304,16 +304,20 @@ function renderResolvedScorecards(year, rowData, detailRow) {
         grossAnnotations: round.grossAnnotations,
         pointsOverrides: round.holeStableford,
       });
+      panel = document.createElement("div");
+      panel.className = "scorecard-panel";
+      const scroll = document.createElement("div");
+      scroll.className = "scorecard-scroll";
+      scroll.setAttribute("role", "region");
+      scroll.setAttribute("aria-label", `${round.courseKey}, round ${roundIndex + 1} scorecard`);
+      scroll.tabIndex = 0;
+      scroll.appendChild(table);
+      panel.appendChild(scroll);
       if (round.grossAnnotations?.some((item) => item.type === "historical-par-normalisation")) {
-        panel = document.createElement("div");
-        panel.className = "scorecard-with-note";
-        panel.appendChild(table);
         const note = document.createElement("p");
         note.className = "scorecard-historical-note";
         note.textContent = "* Hole 14 was played as a par 3 during the 2022 TTO. The gross score shown has been adjusted +2 to align with the current par-5 course representation; Stableford points are unchanged.";
         panel.appendChild(note);
-      } else {
-        panel = table;
       }
     } else {
       panel = document.createElement("p");
