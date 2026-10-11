@@ -8,6 +8,7 @@ const players = {
   "george-stinton": { displayName: "George Stinton" },
   "felipe-milo": { displayName: "Felipe Milo" },
   "tom-sutehall": { displayName: "Tom Sutehall" },
+  "fraser-hall": { displayName: "Fraser Hall" },
 };
 
 const years = {
@@ -529,6 +530,45 @@ const years = {
   },
 };
 
+
+// Attendance and courses confirmed by James; results have not been supplied.
+years[2026] = {
+  location: "England",
+  courses: ["Hollinwell", "Coxmoor"],
+  courseKeys: ["hollinwell", "coxmoor"],
+  roundLabels: ["Round 1 - Hollinwell", "Round 2 - Coxmoor"],
+  roundTees: [
+    { name: "White", source: "remembered", confirmed: false },
+    { name: "White", source: "remembered", confirmed: false },
+  ],
+  conditions: null,
+  status: "completed",
+  attendees: Object.keys(players),
+  results: Object.keys(players).map((playerId) => ({
+    playerId,
+    handicapIndex: null,
+    handicapIndexSource: "unknown",
+    points: null,
+    pointsSource: "unknown",
+    position: null,
+    positionSource: "unknown",
+    playoff: null,
+    handicapConsistency: "unknown",
+    rounds: ["hollinwell", "coxmoor"].map((courseKey) => ({
+      courseKey,
+      courseHandicap: null,
+      courseHandicapSource: "unknown",
+      stablefordPoints: null,
+      stablefordPointsSource: "unknown",
+      holeStableford: null,
+      holeStablefordSource: "unknown",
+      gross: null,
+      grossSource: "missing",
+    })),
+  })),
+  summary: { winner: null, runnerUp: null, margin: null, writeup: "", photos: [] },
+};
+
 function calculateCourseHandicap(handicapIndex, course) {
   if (handicapIndex === null || handicapIndex === undefined || !course) return null;
   const par = Array.isArray(course.par) ? course.par[course.par.length - 1] : course.par;
@@ -609,7 +649,7 @@ years[2024].summary.runnerUp = "james-hall";
 years[2025].summary.winner = null;
 years[2025].summary.runnerUp = null;
 
-const yearOrder = [2020, 2021, 2022, 2023, 2024, 2025];
+const yearOrder = [2020, 2021, 2022, 2023, 2024, 2025, 2026];
 
 export const leaderboardData = {
   yearOrder,

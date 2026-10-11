@@ -31,7 +31,7 @@ const completeCourseKeys = new Set([
   "royalQueensland",
 ]);
 
-const unresolvedCourseKeys = new Set([]);
+const unresolvedCourseKeys = new Set(["coxmoor"]);
 
 const failures = [];
 const fail = (key, message) => failures.push(`${key}: ${message}`);
@@ -121,9 +121,9 @@ const totalCount = Object.keys(courses).length;
 const completeCount = Object.keys(courses).filter((key) => completeCourseKeys.has(key)).length;
 const unresolvedCount = Object.keys(courses).filter((key) => unresolvedCourseKeys.has(key)).length;
 
-if (totalCount !== 28) failures.push(`dataset: expected 28 total courses; found ${totalCount}`);
+if (totalCount !== 29) failures.push(`dataset: expected 29 total courses; found ${totalCount}`);
 if (completeCount !== 28) failures.push(`dataset: expected 28 complete factual courses; found ${completeCount}`);
-if (unresolvedCount !== 0) failures.push(`dataset: expected 0 unresolved factual courses; found ${unresolvedCount}`);
+if (unresolvedCount !== 1) failures.push(`dataset: expected 1 unresolved factual course; found ${unresolvedCount}`);
 
 console.log("");
 console.log(`Total courses: ${totalCount}`);

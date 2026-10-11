@@ -70,7 +70,8 @@ function renderPlayer(player) {
   const backgroundHeading = document.createElement('h3');
   backgroundHeading.textContent = 'Background';
   background.append(backgroundHeading);
-  player.background.forEach((paragraph) => {
+  const paragraphs = player.background.length ? player.background : ['Profile coming soon.'];
+  paragraphs.forEach((paragraph) => {
     const text = document.createElement('p');
     text.textContent = paragraph;
     background.append(text);

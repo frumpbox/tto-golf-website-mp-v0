@@ -18,7 +18,7 @@ const workbookCourseKeys = [
   "pastures",
 ];
 const addedCourseKeys = ["broadstone", "hayling", "aldeburgh", "hollinwell", "pastures"];
-const requiredUnratedKeys = ["royalZoute", "stewartCreek", "silvertip"];
+const requiredUnratedKeys = ["royalZoute", "stewartCreek", "silvertip", "coxmoor"];
 const expectedScores = {
   broadstone: [34, 32, 66], hayling: [35, 34, 69], aldeburgh: [33, 22, 55],
   tyrrellsWood: [29, 31, 60], luffenhamHeath: [30, 33, 63],
@@ -34,7 +34,7 @@ const expectedScores = {
 const failures = [];
 const fail = (message) => failures.push(message);
 
-if (Object.keys(courses).length !== 28) fail(`Expected 28 website courses; found ${Object.keys(courses).length}.`);
+if (Object.keys(courses).length !== 29) fail(`Expected 29 website courses; found ${Object.keys(courses).length}.`);
 
 for (const key of workbookCourseKeys) {
   if (!courses[key]) fail(`Workbook course is missing: ${key}.`);
@@ -111,7 +111,7 @@ if (failures.length) {
   process.exitCode = 1;
 } else {
   console.log("Course Ratings verification passed.");
-  console.log(`28 website courses: ${ratedCount} rated, ${unratedCount} unrated.`);
+  console.log(`29 website courses: ${ratedCount} rated, ${unratedCount} unrated.`);
   console.log("26 authoritative workbook courses represented; 5 workbook-only courses added.");
   console.log("Derived systems verified: 18 holes /54 + /46 = /100; 9 holes /27 + /46 = /73.");
 }

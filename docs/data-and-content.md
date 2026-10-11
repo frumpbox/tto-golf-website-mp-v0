@@ -321,3 +321,25 @@ Last verified: 6 August 2026
 Before editing data, confirm which code currently consumes it. Divergent root
 copies are not authoritative. Do not invent scores, handicaps, ratings,
 biographies, images, or publication facts.
+
+## 2026 event placeholders
+
+Added 11 October 2026 from James's confirmation: seven attendees (the existing
+six plus Fraser Hall), round 1 Hollinwell and round 2 Coxmoor, England. White
+tees at both courses are remembered rather than independently verified; this
+context does not change Hollinwell's canonical factual card or supply a
+Coxmoor handicap calculation.
+
+All 2026 positions, points, handicaps, gross cards, and hole Stableford values
+remain `null` with unknown/missing provenance. Attendance contributes to Played,
+but missing positions do not change existing rank scores or averages. Fraser
+has one attendance and no overall position until a result is supplied. His
+profile contains his name and confirmed 2026 debut; other details and photo
+remain unknown. Year in Review has TBC winner/runner-up, article, and gallery.
+
+Coxmoor is the 29th course, explicitly unrated and factually unresolved. All
+28 previously complete canonical cards remain unchanged. Coxmoor's hole
+values, course rating, and slope must be sourced before scorecard or handicap
+calculations can use them. Validators now expect 29 courses, 28 complete and
+one intentionally unresolved, with 25 rated and four unrated. No historical
+results or authoritative subjective ratings were changed.

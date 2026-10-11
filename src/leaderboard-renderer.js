@@ -49,7 +49,7 @@ export function getOverallLeaderboardRows() {
       if (b.averageRank === null) return -1;
       return a.averageRank - b.averageRank || a.sourceOrder - b.sourceOrder;
     })
-    .map((row, index) => ({ ...row, overallPosition: index + 1 }));
+    .map((row, index) => ({ ...row, overallPosition: row.averageRank === null ? null : index + 1 }));
 }
 
 export function getResolvedHistoricalRows(yearKey) {
