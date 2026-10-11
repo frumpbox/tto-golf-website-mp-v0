@@ -39,6 +39,8 @@ These six page URLs are stable and should be preserved.
   the consolidated resolved historical data.
 - `src/legacy-script.js` retains scorecard-detail behavior for rounds with
   available gross cards; annual summary values are no longer calculated there.
+  Each available round has its own keyboard-focusable horizontal scroll region;
+  historical notes sit outside that region and wrap within the mobile panel.
 - `src/player-profiles.js` adds the About Us profile accordion and handles
   stable player deep links.
 - `src/data/` contains the active course, handicap, leaderboard migration,

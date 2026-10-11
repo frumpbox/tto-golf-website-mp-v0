@@ -528,8 +528,8 @@ main > table:first-of-type tbody tr:first-child td:first-child {
 }
 
 /* ---------- Year-by-year section tables ---------- */
-table[id^="table-"] th:first-child,
-table[id^="table-"] td:first-child {
+table[id^="table-"] > thead > tr > th:first-child,
+table[id^="table-"] > tbody > tr > td:first-child {
   width: 52px;
   text-align: center;
 }
@@ -538,9 +538,9 @@ table[id^="table-"] {
   min-width: 720px;
 }
 
-table[id^="table-"] th:nth-child(n + 3),
-table[id^="table-"] td:nth-child(n + 3) {
-  text-align: right;
+table[id^="table-"] > thead > tr > th:nth-child(n + 3),
+table[id^="table-"] > tbody > tr > td:nth-child(n + 3) {
+  text-align: center;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -551,8 +551,8 @@ table[id^="table-"] > tbody > tr > td:nth-child(6) {
   font-weight: 700;
 }
 
-table[id^="table-"] th:nth-child(2),
-table[id^="table-"] td:nth-child(2) {
+table[id^="table-"] > thead > tr > th:nth-child(2),
+table[id^="table-"] > tbody > tr > td:nth-child(2) {
   min-width: 180px;
   white-space: nowrap;
 }
@@ -654,7 +654,9 @@ table[id^="table-"] td:nth-child(2) {
   height: 36px;
   padding: 6px 4px;
   font-size: 0.78rem;
-  line-height: 1;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
   text-align: center;
   vertical-align: middle;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -1162,6 +1164,19 @@ table[id^="table-"] td:nth-child(2) {
     padding: 12px 8px 16px;
   }
 
+  .leaderboard-page .details-row .round-toggle,
+  .leaderboard-page .scorecard-panel,
+  .leaderboard-page .scorecard-unavailable {
+    box-sizing: border-box;
+    width: calc(100vw - 66px);
+    max-width: 100%;
+  }
+
+  .leaderboard-page .scorecard-scroll:focus-visible {
+    outline: 2px solid #c9a84c;
+    outline-offset: 2px;
+  }
+
   .leaderboard-page .scorecard-table {
     margin-top: 4px;
     width: 920px;
@@ -1182,18 +1197,18 @@ table[id^="table-"] td:nth-child(2) {
 
   .leaderboard-page .scorecard-table th,
   .leaderboard-page .scorecard-table td {
-    height: 30px;
-    padding: 4px 2px;
-    font-size: 0.68rem;
+    height: 36px;
+    padding: 6px 2px;
+    font-size: 0.75rem;
     font-variant-numeric: tabular-nums;
   }
 
   .leaderboard-page .scorecard-table th:first-child {
-    font-size: 0.64rem;
+    font-size: 0.7rem;
   }
 
   .leaderboard-page .scorecard-table td:first-child {
-    font-size: 0.64rem;
+    font-size: 0.7rem;
   }
 
   .leaderboard-page .scorecard-table .total-col {
@@ -1931,10 +1946,47 @@ nav ul li a.active {
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.scorecard-historical-note {
-  margin: 0.5rem 0 0;
-  font-size: 0.9rem;
-  font-style: italic;
+.leaderboard-page .scorecard-historical-note {
+  margin: 12px 0 0;
+  padding: 12px 14px;
+  font-size: 0.78rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.6;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  color: rgba(240, 240, 234, 0.68);
+  border-left: 2px solid rgba(201, 168, 76, 0.4);
+  background: rgba(201, 168, 76, 0.035);
+}
+
+.leaderboard-page .details-row > td {
+  font-weight: 400;
+  text-align: left;
+}
+
+.leaderboard-page .scorecard-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  contain: inline-size;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+
+.leaderboard-page #overall-leaderboard th:not(:nth-child(2)),
+.leaderboard-page #overall-leaderboard td:not(:nth-child(2)) {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.leaderboard-page .scorecard-table tbody th {
+  letter-spacing: 0.03em;
+}
+
+.leaderboard-page .scorecard-table .points-hole {
+  background: rgba(201, 168, 76, 0.045);
+  font-weight: 600;
 }
 
 .scorecard-unavailable {
