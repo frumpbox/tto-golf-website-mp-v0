@@ -545,8 +545,8 @@ table[id^="table-"] td:nth-child(n + 3) {
   white-space: nowrap;
 }
 
-table[id^="table-"] th:nth-child(6),
-table[id^="table-"] td:nth-child(6) {
+table[id^="table-"] > thead > tr > th:nth-child(6),
+table[id^="table-"] > tbody > tr > td:nth-child(6) {
   color: #d8bd6a;
   font-weight: 700;
 }
