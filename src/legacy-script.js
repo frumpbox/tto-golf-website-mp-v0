@@ -308,6 +308,12 @@ function renderResolvedScorecards(year, rowData, detailRow) {
       scroll.tabIndex = 0;
       scroll.appendChild(table);
       panel.appendChild(scroll);
+      if (Number(year) === 2025 && round.grossReconstruction?.type === "plausible-synthetic") {
+        const note = document.createElement("p");
+        note.className = "scorecard-historical-note";
+        note.textContent = "Reconstructed scorecard: these hole scores are an agreed estimate matching the recorded round total. Original hole scores are unavailable.";
+        panel.appendChild(note);
+      }
       if (round.pickedUpHoles?.length) {
         const note = document.createElement("p");
         note.className = "scorecard-historical-note";
