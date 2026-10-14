@@ -947,7 +947,7 @@ export const courses = {
     name: "Coxmoor",
     holeCount: 18,
     location: "England",
-    teePlayed: "White (recalled; confirmation pending)",
+    teePlayed: "White",
     playedIn: ['2026'],
     ratings: {
       status: "unrated",
@@ -968,8 +968,8 @@ export const courses = {
     courseRating: null,
     slope: null,
     distance: Array(21).fill(null),
-    par: Array(21).fill(null),
-    strokeIndex: Array(21).fill(null),
+    par: [4, 3, 5, 4, 4, 5, 3, 4, 4, 36, 3, 4, 4, 5, 4, 4, 5, 3, 5, 37, 73],
+    strokeIndex: [4, 11, 18, 14, 2, 8, 16, 6, 12, null, 13, 7, 1, 17, 3, 15, 5, 10, 9, null, null],
     holeRating: Array(21).fill(null),
   },
 

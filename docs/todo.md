@@ -21,3 +21,6 @@ This is the living checklist for finishing The Tyrrells Open website.
 - [ ] Complete remaining course descriptions/photos/content.
 - [ ] Perform final desktop/mobile visual QA across all six pages.
 - [ ] Run final leaderboard verification and `npm run build` before publication.
+
+- [x] Add and validate the complete 2026 tournament results, recorded playing handicaps, Scratch override and PU scorecards.
+- [ ] Complete Coxmoor's factual White-tee card with verified distances, course rating and slope (2026 par and SI are supplied).

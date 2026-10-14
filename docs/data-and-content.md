@@ -322,24 +322,63 @@ Before editing data, confirm which code currently consumes it. Divergent root
 copies are not authoritative. Do not invent scores, handicaps, ratings,
 biographies, images, or publication facts.
 
-## 2026 event placeholders
+## 2026 recorded tournament results
 
-Added 11 October 2026 from James's confirmation: seven attendees (the existing
-six plus Fraser Hall), round 1 Hollinwell and round 2 Coxmoor, England. White
-tees at both courses are remembered rather than independently verified; this
-context does not change Hollinwell's canonical factual card or supply a
-Coxmoor handicap calculation.
+James supplied the authoritative 2026 White-tee gross cards, playing handicaps,
+pars and stroke indexes on 14 October 2026. The seven existing player IDs are
+reused, including James/Jim as `james-hall`, Felipe/Fel as `felipe-milo`, Dynes
+as `sam-dynes`, and Sam as `sam-lewis`. No duplicate player records were added.
+Round 1 is Hollinwell; Round 2 is Coxmoor. Both use individual Stableford with
+100% handicap allowance.
 
-All 2026 positions, points, handicaps, gross cards, and hole Stableford values
-remain `null` with unknown/missing provenance. Attendance contributes to Played,
-but missing positions do not change existing rank scores or averages. Fraser
-has one attendance and no overall position until a result is supplied. His
-profile contains his name and confirmed 2026 debut; other details and photo
-remain unknown. Year in Review has TBC winner/runner-up, article, and gallery.
+`src/data/results-2026.js` stores the transcribed gross cards and fixed recorded
+playing handicaps. `src/scoring.js` computes points at hole level, and the round
+totals, combined totals and positions are derived from those points. Expected
+totals live only in regression tests, never as replacement scoring data. The
+2026 formula is `max(0, 2 + par - net score)`. Earlier tournaments retain their
+existing five-point cap. Equal totals share a position with subsequent places
+skipped, consistent with existing historical ranking; no 2026 playoff or tie
+occurs.
 
-Coxmoor is the 29th course, explicitly unrated and factually unresolved. All
-28 previously complete canonical cards remain unchanged. Coxmoor's hole
-values, course rating, and slope must be sourced before scorecard or handicap
-calculations can use them. Validators now expect 29 courses, 28 complete and
-one intentionally unresolved, with 25 rated and four unrated. No historical
-results or authoritative subjective ratings were changed.
+Fraser's numeric index remains null, with the separate display label `Scratch`
+and an explicit recorded-playing-handicap override. His fixed 2/1 handicaps
+allocate strokes; neither the display label nor a fabricated numeric index is
+used in calculations. Other players retain numeric indexes. Felipe is 7.1 with
+recorded playing handicaps 12/8. All fourteen playing handicaps are recorded
+facts and are never replaced by modern course-rating calculations.
+
+PU holes are null gross entries with an explicit `pickedUpHoles` list, scoring
+zero points. Scorecards display PU with an accessible picked-up label. Gross
+Out/In totals are unavailable for a nine containing a PU, and the overall gross
+total is unavailable if either nine is incomplete. Stableford totals remain
+complete and include genuine zeroes.
+
+Hollinwell's canonical White-tee par/SI already match the supplied card (par 72).
+Coxmoor now has the supplied White-tee par 73 and full SI card. Its distances,
+course rating and slope remain unknown; its factual card stays intentionally
+unresolved, and its subjective rating stays unrated. Scoring does not depend
+on those unknown fields. The course validator checks the supplied scoring
+fields while enforcing null for unverified fields. Other canonical cards and
+all previous years' results remain unchanged.
+
+| Position | Player | Hollinwell | Coxmoor | Combined |
+| --- | --- | --- | --- | --- |
+| 1 | Sam Lewis | 43 | 33 | 76 |
+| 2 | George Stinton | 33 | 38 | 71 |
+| 3 | Felipe Milo | 27 | 37 | 64 |
+| 4 | James Hall | 35 | 28 | 63 |
+| 5 | Fraser Hall | 35 | 27 | 62 |
+| 6 | Samuel 'Dynesy' Dynes | 26 | 34 | 60 |
+| 7 | Tom Sutehall | 30 | 29 | 59 |
+
+The annual finishes now contribute to Overall rank scores and average ranks.
+Year in Review selects 2026 using the existing tabs/query parameter and shows
+Sam Lewis as winner, George Stinton as runner-up and the five-point margin;
+article, gallery and weather remain unknown. No publication is implied.
+
+Run `node --test tests/results-2026.test.js` for independent per-hole allocation,
+252-hole integrity, all fourteen target totals, Scratch override, PU handling,
+rank integration and pre-2026 resolved-data snapshot checks. Historical hashes
+are pinned to the pre-change `feat/tto-2026-placeholders` baseline (31f2110),
+which does not contain the separate, uncommitted 2025 reconstruction work in
+the main local preview checkout. That local work is preserved separately.

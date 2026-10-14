@@ -1,4 +1,5 @@
 import { courses } from './course-data.js';
+import { create2026Results } from './results-2026.js';
 import { historicalLeaderboardRecords } from './historical-leaderboard-data.js';
 
 const players = {
@@ -531,42 +532,24 @@ const years = {
 };
 
 
-// Attendance and courses confirmed by James; results have not been supplied.
+// Recorded 2026 playing handicaps are fixed tournament evidence.
 years[2026] = {
   location: "England",
   courses: ["Hollinwell", "Coxmoor"],
   courseKeys: ["hollinwell", "coxmoor"],
   roundLabels: ["Round 1 - Hollinwell", "Round 2 - Coxmoor"],
   roundTees: [
-    { name: "White", source: "remembered", confirmed: false },
-    { name: "White", source: "remembered", confirmed: false },
+    { name: "White", source: "recorded", confirmed: true },
+    { name: "White", source: "recorded", confirmed: true },
   ],
+  handicapAllowance: 100,
+  scoring: "individual-stableford",
+  stablefordMaxPoints: null,
   conditions: null,
   status: "completed",
   attendees: Object.keys(players),
-  results: Object.keys(players).map((playerId) => ({
-    playerId,
-    handicapIndex: null,
-    handicapIndexSource: "unknown",
-    points: null,
-    pointsSource: "unknown",
-    position: null,
-    positionSource: "unknown",
-    playoff: null,
-    handicapConsistency: "unknown",
-    rounds: ["hollinwell", "coxmoor"].map((courseKey) => ({
-      courseKey,
-      courseHandicap: null,
-      courseHandicapSource: "unknown",
-      stablefordPoints: null,
-      stablefordPointsSource: "unknown",
-      holeStableford: null,
-      holeStablefordSource: "unknown",
-      gross: null,
-      grossSource: "missing",
-    })),
-  })),
-  summary: { winner: null, runnerUp: null, margin: null, writeup: "", photos: [] },
+  results: create2026Results(),
+  summary: { winner: "sam-lewis", runnerUp: "george-stinton", margin: "5 points", writeup: "", photos: [] },
 };
 
 function calculateCourseHandicap(handicapIndex, course) {

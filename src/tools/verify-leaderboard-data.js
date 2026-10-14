@@ -8,14 +8,15 @@ const checks = [];
 function record(status, label, detail = '') { checks.push({ status, label, detail }); }
 
 function calculateCourseHandicap(handicapIndex, course) {
-  if (handicapIndex === null || !course) return null;
+  if (handicapIndex === null || !course || !Number.isFinite(course.slope) || !Number.isFinite(course.courseRating)) return null;
   const par = Array.isArray(course.par) ? course.par[course.par.length - 1] : course.par;
   return Math.round(handicapIndex * course.slope / 113 + course.courseRating - par);
 }
 
-function calculateHoleStableford(gross, course, courseHandicap) {
+function calculateHoleStableford(gross, course, courseHandicap, round, year) {
   if (!Array.isArray(gross) || courseHandicap === null) return null;
   return gross.map((grossScore, holeIndex) => {
+    if (round.pickedUpHoles?.includes(holeIndex + 1)) return 0;
     const dataIndex = holeIndex < 9 ? holeIndex : holeIndex + 1;
     const strokeIndex = course.strokeIndex[dataIndex];
     const par = course.par[dataIndex];
@@ -23,6 +24,7 @@ function calculateHoleStableford(gross, course, courseHandicap) {
     const extraStrokes = courseHandicap % 18;
     const strokesReceived = baseStrokes + (strokeIndex <= extraStrokes ? 1 : 0);
     const differenceFromPar = grossScore - strokesReceived - par;
+    if (year.scoring === "individual-stableford" && year.stablefordMaxPoints === null) return Math.max(0, 2 - differenceFromPar);
     if (differenceFromPar <= -3) return 5;
     if (differenceFromPar === -2) return 4;
     if (differenceFromPar === -1) return 3;
@@ -73,7 +75,9 @@ for (const yearKey of leaderboardData.yearOrder) {
     validateSource(result.handicapIndexSource, GENERAL_SOURCES, `${prefix} handicapIndexSource`);
     validateSource(result.pointsSource, GENERAL_SOURCES, `${prefix} pointsSource`);
     validateSource(result.positionSource, GENERAL_SOURCES, `${prefix} positionSource`);
-    record(result.handicapIndex === null ? STATUS.UNKNOWN : STATUS.PASS,
+    const manualOverride = result.handicapOverride?.type === 'recorded-playing-handicap';
+    if (manualOverride) record(yearKey === 2026 && result.playerId === 'fraser-hall' && result.handicapIndex === null && result.handicapIndexLabel === 'Scratch' && result.rounds.every((r, i) => r.courseHandicapSource === 'recorded' && r.courseHandicap === [2, 1][i]) ? STATUS.PASS : STATUS.FAIL, `${prefix} manual override`, 'recorded scratch playing handicaps');
+    record(result.handicapIndex === null && !manualOverride ? STATUS.UNKNOWN : STATUS.PASS,
       `${prefix} handicap index`, result.handicapIndex === null ? 'historically unknown' : String(result.handicapIndex));
 
     result.rounds.forEach((round, roundIndex) => {
@@ -86,12 +90,16 @@ for (const yearKey of leaderboardData.yearOrder) {
       validateSource(round.holeStablefordSource, GENERAL_SOURCES, `${roundPrefix} holeStablefordSource`);
       validateSource(round.grossSource, GROSS_SOURCES, `${roundPrefix} grossSource`);
 
-      if (result.handicapIndex === null || round.courseHandicap === null) {
+      if (manualOverride) {
+        record(STATUS.PASS, `${roundPrefix} fixed playing handicap`, String(round.courseHandicap));
+      } else if (result.handicapIndex === null || round.courseHandicap === null) {
         record(STATUS.UNKNOWN, `${roundPrefix} HI -> HCP`,
           result.handicapIndex === null ? 'handicap index unknown' : 'course handicap unknown');
       } else {
         const calculated = calculateCourseHandicap(result.handicapIndex, round.historicalTeeContext || course);
-        if (calculated === round.courseHandicap) {
+        if (calculated === null) {
+          record(STATUS.UNKNOWN, `${roundPrefix} HI -> HCP`, "course rating/slope unavailable; recorded playing handicap preserved");
+        } else if (calculated === round.courseHandicap) {
           record(STATUS.PASS, `${roundPrefix} HI -> HCP`, String(calculated));
         } else if (round.courseHandicapSource === 'derived') {
           record(STATUS.FAIL, `${roundPrefix} HI -> HCP`,
@@ -127,9 +135,9 @@ for (const yearKey of leaderboardData.yearOrder) {
       } else {
         const scoringGross = round.gross.map((score, holeIndex) => {
           const annotation = round.grossAnnotations?.find((item) => item.hole === holeIndex + 1);
-          return score - (annotation?.grossDisplayAdjustment || 0);
+          return score === null ? null : score - (annotation?.grossDisplayAdjustment || 0);
         });
-        const calculatedHoles = calculateHoleStableford(scoringGross, course, round.courseHandicap);
+        const calculatedHoles = calculateHoleStableford(scoringGross, course, round.courseHandicap, round, year);
         const mismatchedHoles = calculatedHoles.map((points, holeIndex) =>
           points === round.holeStableford[holeIndex] ? null : holeIndex + 1).filter(Boolean);
         const calculatedTotal = calculatedHoles.reduce((sum, points) => sum + points, 0);
@@ -144,9 +152,10 @@ for (const yearKey of leaderboardData.yearOrder) {
     const consistencyChecks = result.rounds.map((round) => {
       const course = leaderboardData.courses[round.courseKey];
       if (result.handicapIndex === null || round.courseHandicap === null || !course) return null;
-      return calculateCourseHandicap(result.handicapIndex, round.historicalTeeContext || course) === round.courseHandicap;
+      const calculated = calculateCourseHandicap(result.handicapIndex, round.historicalTeeContext || course);
+      return calculated === null ? null : calculated === round.courseHandicap;
     });
-    const expectedConsistency = consistencyChecks.some((value) => value === null)
+    const expectedConsistency = manualOverride ? "manual-override" : consistencyChecks.some((value) => value === null)
       ? 'unknown'
       : consistencyChecks.every(Boolean)
         ? 'pass'

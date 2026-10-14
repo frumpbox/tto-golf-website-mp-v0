@@ -92,9 +92,9 @@ export const yearReviews = {
   2026: {
     location: 'England',
     courses: ['Hollinwell', 'Coxmoor'],
-    winner: null,
-    runnerUp: null,
-    margin: '',
+    winner: 'Sam Lewis',
+    runnerUp: 'George Stinton',
+    margin: '5 points',
     hasWriteup: false,
     writeup: '',
     photos: [],

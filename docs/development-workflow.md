@@ -95,7 +95,8 @@ Explicitly report anything that could not be tested or verified.
 `.github/workflows/ci.yml` runs on every pull request opened, reopened, or
 updated with new commits, and on pushes to `main`. It uses Node.js 24 LTS and
 `npm ci` with the existing `package-lock.json`, without adding dependencies.
-Four independent jobs run the build and the three data validators listed above;
+Five independent jobs run the build, the three data validators listed above,
+and `node --test tests/results-2026.test.js`;
 all jobs run even if another check fails.
 
 Open the pull request's **Checks** tab to see **Build**, **Leaderboard data**,
