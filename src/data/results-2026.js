@@ -1,8 +1,9 @@
 import { courses } from './course-data.js';
-import { calculateRoundStableford } from '../scoring.js';
+import { calculateRoundStableford, zeroPointGross } from '../scoring.js';
 
 // James's authoritative transcription, supplied 14 October 2026.
-// null gross entries are explicitly identified as PU, never zero strokes.
+// Original PU entries stay null in the transcription and recordedGross.
+// James approved numeric net-double-bogey replacements for display on 14 October 2026.
 const cards = [
   {
     playerId: 'james-hall', handicapIndex: 5.4, handicaps: [9, 6],
@@ -60,10 +61,22 @@ const cards = [
 export function create2026Results() {
   const results = cards.map(({ handicaps, gross, ...player }) => {
     const rounds = ['hollinwell', 'coxmoor'].map((courseKey, index) => {
+      const course = courses[courseKey];
+      const sourcePickedUpHoles = gross[index].flatMap((score, hole) => score === null ? [hole + 1] : []);
+      const displayGross = gross[index].map((score, hole) => {
+        if (score !== null) return score;
+        const cardIndex = hole < 9 ? hole : hole + 1;
+        return zeroPointGross(course.par[cardIndex], course.strokeIndex[cardIndex], handicaps[index]);
+      });
       const round = {
         courseKey, courseHandicap: handicaps[index], courseHandicapSource: 'recorded',
-        gross: [...gross[index]], grossSource: 'known',
-        pickedUpHoles: gross[index].flatMap((score, hole) => score === null ? [hole + 1] : []),
+        gross: displayGross, grossSource: sourcePickedUpHoles.length ? 'reconstructed' : 'known',
+        recordedGross: [...gross[index]], sourcePickedUpHoles,
+        pickedUpHoles: [],
+        ...(sourcePickedUpHoles.length ? { grossReconstruction: {
+          type: 'zero-point-normalisation', holes: sourcePickedUpHoles,
+          reason: 'Original PU holes preserved in recordedGross; James approved net-double-bogey replacements (par + allocated strokes + 2) for numeric scorecard display. These are not recorded completed gross scores.',
+        } } : {}),
         holeStablefordSource: 'derived', stablefordPointsSource: 'derived',
       };
       round.holeStableford = calculateRoundStableford(round, courses[courseKey], { maxPoints: null });

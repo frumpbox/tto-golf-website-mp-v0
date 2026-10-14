@@ -545,7 +545,7 @@ years[2026] = {
   handicapAllowance: 100,
   scoring: "individual-stableford",
   stablefordMaxPoints: null,
-  conditions: null,
+  conditions: "Good",
   status: "completed",
   attendees: Object.keys(players),
   results: create2026Results(),

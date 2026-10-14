@@ -348,11 +348,24 @@ used in calculations. Other players retain numeric indexes. Felipe is 7.1 with
 recorded playing handicaps 12/8. All fourteen playing handicaps are recorded
 facts and are never replaced by modern course-rating calculations.
 
-PU holes are null gross entries with an explicit `pickedUpHoles` list, scoring
-zero points. Scorecards display PU with an accessible picked-up label. Gross
-Out/In totals are unavailable for a nine containing a PU, and the overall gross
-total is unavailable if either nine is incomplete. Stableford totals remain
-complete and include genuine zeroes.
+James approved numeric replacements for all nine 2026 PU entries on 14 October
+2026. The original transcription and each round's `recordedGross` retain nulls
+for those holes, with `sourcePickedUpHoles` recording their identities. The
+numeric `gross` card uses net double bogey: canonical par + allocated handicap
+strokes + 2. This is the lowest gross score earning zero Stableford points;
+there is no highest zero-point gross because larger values also earn zero.
+Affected rounds have reconstructed gross provenance and
+`zero-point-normalisation` metadata identifying the exact replaced holes.
+Completed gross scores are unchanged. These replacement values are supporting
+detail, not recovered completed scores.
+
+Scorecards show numeric gross values and numeric Out/In/Total sums, with no PU
+labels or PU explanatory notes. All hole Stableford values, round/combined
+totals, playing handicaps and final positions remain unchanged. Generic PU
+handling remains available for other cards. The 2026 leaderboard header now
+shows only `Conditions: GOOD`, with the extra tee/allowance/scoring sentence
+and player-count/PU footnote removed. White tees and 100% allowance remain in
+the underlying event data; James confirmed conditions as Good.
 
 Hollinwell's canonical White-tee par/SI already match the supplied card (par 72).
 Coxmoor now has the supplied White-tee par 73 and full SI card. Its distances,
@@ -375,10 +388,10 @@ all previous years' results remain unchanged.
 The annual finishes now contribute to Overall rank scores and average ranks.
 Year in Review selects 2026 using the existing tabs/query parameter and shows
 Sam Lewis as winner, George Stinton as runner-up and the five-point margin;
-article, gallery and weather remain unknown. No publication is implied.
+article and gallery remain unknown. Conditions are Good. No publication is implied.
 
 Run `node --test tests/results-2026.test.js` for independent per-hole allocation,
-252-hole integrity, all fourteen target totals, Scratch override, PU handling,
+252-hole integrity, all fourteen target totals, Scratch override, numeric zero-point replacements and retained PU evidence,
 rank integration and pre-2026 resolved-data snapshot checks. Historical hashes
 are pinned to the pre-change `feat/tto-2026-placeholders` baseline (31f2110),
 which does not contain the separate, uncommitted 2025 reconstruction work in
