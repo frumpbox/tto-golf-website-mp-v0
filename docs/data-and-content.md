@@ -325,8 +325,9 @@ biographies, images, or publication facts.
 
 ### 2025 approved R1 synthetic scorecards
 
-Expanded R1 cards display a reconstruction notice, and estimated Handicap
-Indexes display an `(est.)` label in the leaderboard.
+Expanded R1 cards display a reconstruction notice. At James’s request,
+Handicap Indexes display without an estimate suffix; estimated provenance
+remains in the data.
 
 James approved six synthetic Royal Ostend R1 hole Stableford patterns on
 13 October 2026 against the supplied results photograph: Dynes 34, Hall 27,
@@ -420,3 +421,13 @@ rank integration and approved resolved-data snapshot checks. Snapshots for
 hole patterns, estimated index and results James explicitly approved. The
 2026 snapshot preserves the deployed numeric zero-point scorecards unchanged.
 Run `node --test tests/*.test.js` for both years' scoring and regression checks.
+
+## Shared crest artwork
+
+All six page headers and the homepage hero use `crest/tto-crest-gold.svg`.
+It embeds James’s corrected reference JPEG supplied on 14 October 2026.
+The SVG viewBox excludes the screenshot’s black top and bottom bars without
+altering the reference artwork. An SVG luminance filter renders ink in the existing gold
+(`#cfa94a`) with transparent white areas. Original raster assets are retained.
+The supplied reference lettering is retained exactly. Header and hero images
+use contain sizing to preserve the shield proportions and have home-link alt text.

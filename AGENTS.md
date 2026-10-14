@@ -3,6 +3,16 @@
 This repository contains **The Tyrrells Open (TTO)** website. Always use that
 exact name and spelling.
 
+## Pending production batch — James’s instruction, 14 October 2026
+
+Keep subsequent approved local website changes together on branch
+`feat/publish-approved-2025` in `/tmp/tto-approved-2025` until James requests
+publication of the batch. Reuse that checkout and branch; do not split each
+change into a new task branch. It contains the site version published by PR #10.
+The original checkout on `review/2025-scorecards` contains older uncommitted
+work and must be preserved, not used as the next release source.
+Do not commit, push, merge or deploy this pending batch without authorisation.
+
 ## Before substantial work
 
 - Read `AGENT_RULES.md` and `docs/todo.md`, and inspect any applicable nested

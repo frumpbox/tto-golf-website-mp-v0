@@ -4,6 +4,16 @@ The Tyrrells Open (TTO) must remain independently maintainable without
 Frumpbox, Discord, or another automation service. Direct repository
 development is the primary path.
 
+## Pending production batch — James’s instruction, 14 October 2026
+
+Keep subsequent approved local website changes together on branch
+`feat/publish-approved-2025` in `/tmp/tto-approved-2025` until James requests
+publication of the batch. Reuse that checkout and branch; do not split each
+change into a new task branch. It contains the site version published by PR #10.
+The original checkout on `review/2025-scorecards` contains older uncommitted
+work and must be preserved, not used as the next release source.
+Do not commit, push, merge or deploy this pending batch without authorisation.
+
 ## Standard workflow
 
 ```text
