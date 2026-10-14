@@ -127,6 +127,22 @@ export const players = [
       'A pound and gouge style is typified by an outstanding wedge game, complimented nicely by a mastery of 2 foot putts.'
     ],
     photo: '/images/players/george-stinton.jpeg'
+  },
+  {
+    id: 'fraser-hall',
+    displayName: 'Fraser Hall',
+    fullName: null,
+    dateOfBirth: null,
+    height: null,
+    spouse: null,
+    homeClub: null,
+    lowestWhsIndex: null,
+    bestGrossScore: null,
+    ttoDebut: '2026',
+    candaCupDebut: null,
+    bestResults: { tto: null, candaCup: null },
+    background: [],
+    photo: null
   }
 ];
 

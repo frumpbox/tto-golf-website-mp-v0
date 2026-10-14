@@ -29,6 +29,8 @@ jobs:
             command: node src/tools/verify-course-data.js
           - name: Course ratings data
             command: node src/tools/verify-course-ratings-data.js
+          - name: 2026 scoring regression tests
+            command: node --test tests/results-2026.test.js
     steps:
       - name: Check out repository
         uses: actions/checkout@v5

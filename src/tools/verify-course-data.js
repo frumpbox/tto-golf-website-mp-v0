@@ -31,7 +31,7 @@ const completeCourseKeys = new Set([
   "royalQueensland",
 ]);
 
-const unresolvedCourseKeys = new Set([]);
+const unresolvedCourseKeys = new Set(["coxmoor"]);
 
 const failures = [];
 const fail = (key, message) => failures.push(`${key}: ${message}`);
@@ -104,10 +104,15 @@ for (const [key, course] of Object.entries(courses)) {
   } else if (unresolvedCourseKeys.has(key)) {
     console.log(`UNRESOLVED: ${key} (${course.name})`);
 
-    const hasScorecardValues = [course.distance, course.par, course.strokeIndex].some(
-      (values) => Array.isArray(values) && values.some((value) => value !== null),
-    );
-    if (hasScorecardValues) fail(key, "intentionally unresolved course has partial scorecard values");
+    // Coxmoor's scoring card is supplied; distances and rating/slope remain unknown.
+    const indexes = [0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18];
+    if (course.distance.length !== 21 || course.distance.some((value) => value !== null)) fail(key, "unverified distances must remain null");
+    if (course.courseRating !== null || course.slope !== null) fail(key, "unverified rating/slope must remain null");
+    if (course.par.length !== 21 || indexes.some((i) => !Number.isInteger(course.par[i]) || course.par[i] < 3 || course.par[i] > 5)) fail(key, "partial card must have all 18 supplied pars");
+    if (course.strokeIndex.length !== 21 || indexes.map((i) => course.strokeIndex[i]).sort((a,b) => a-b).some((value,i) => value !== i+1)) fail(key, "partial card must have stroke indexes 1-18 exactly once");
+    if ([9,19,20].some((i) => course.strokeIndex[i] !== null)) fail(key, "stroke-index totals must remain null");
+    if (course.par[9] !== sum(course.par, indexes.slice(0,9)) || course.par[19] !== sum(course.par, indexes.slice(9)) || course.par[20] !== 73 || course.par[20] !== course.par[9]+course.par[19]) fail(key, "partial par totals must reconcile to 73");
+
   } else {
     fail(key, "course is not classified as complete or intentionally unresolved");
   }
@@ -121,9 +126,9 @@ const totalCount = Object.keys(courses).length;
 const completeCount = Object.keys(courses).filter((key) => completeCourseKeys.has(key)).length;
 const unresolvedCount = Object.keys(courses).filter((key) => unresolvedCourseKeys.has(key)).length;
 
-if (totalCount !== 28) failures.push(`dataset: expected 28 total courses; found ${totalCount}`);
+if (totalCount !== 29) failures.push(`dataset: expected 29 total courses; found ${totalCount}`);
 if (completeCount !== 28) failures.push(`dataset: expected 28 complete factual courses; found ${completeCount}`);
-if (unresolvedCount !== 0) failures.push(`dataset: expected 0 unresolved factual courses; found ${unresolvedCount}`);
+if (unresolvedCount !== 1) failures.push(`dataset: expected 1 unresolved factual course; found ${unresolvedCount}`);
 
 console.log("");
 console.log(`Total courses: ${totalCount}`);

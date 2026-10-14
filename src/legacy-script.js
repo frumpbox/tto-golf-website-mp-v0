@@ -1,3 +1,4 @@
+import { calculateStablefordHole } from "./scoring.js";
 import { renderHistoricalLeaderboards, renderOverallLeaderboard } from "./leaderboard-renderer.js";
 
 // Function to build scorecard detail from the resolved leaderboard round.
@@ -9,6 +10,7 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
   const grossOverrides = options.grossOverrides;
   const grossAnnotations = Array.isArray(options.grossAnnotations) ? options.grossAnnotations : [];
   const pointsOverrides = Array.isArray(options.pointsOverrides) ? options.pointsOverrides : null;
+  const pickedUpHoles = options.pickedUpHoles || [];
   const blankMode = grossMode === "blank" && !grossOverrides;
   // Accept overrides as either 18-hole arrays or legacy 21-length arrays (with Out/In/Tot).
   const normalizeGrossOverrides = (overrides) => {
@@ -20,7 +22,7 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
       // Legacy shape: pick values where the header is a hole number; ignore supplied Out/In/Tot.
       holeLabels.forEach((label, idx) => {
         if (typeof label === "number") {
-          const n = Number(overrides[idx]);
+          const n = overrides[idx];
           if (Number.isFinite(n)) {
             scores[idx] = n;
             hasValue = true;
@@ -32,7 +34,7 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
       let holePtr = 0;
       holeLabels.forEach((label, idx) => {
         if (typeof label === "number" && holePtr < overrides.length) {
-          const n = Number(overrides[holePtr]);
+          const n = overrides[holePtr];
           if (Number.isFinite(n)) {
             scores[idx] = n;
             hasValue = true;
@@ -47,11 +49,10 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
     const sumRange = (start, end) =>
       scores
         .slice(start, end + 1)
-        .map((n) => Number(n) || 0)
-        .reduce((a, b) => a + b, 0);
+        .reduce((total, score) => total === null || score === null ? null : total + score, 0);
     scores[9] = sumRange(0, 8);
     scores[19] = sumRange(10, 18);
-    scores[20] = scores[9] + scores[19];
+    scores[20] = scores[9] === null || scores[19] === null ? null : scores[9] + scores[19];
     return scores;
   };
   const normalizedOverrides = normalizeGrossOverrides(grossOverrides);
@@ -98,7 +99,7 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
   distRow.appendChild(distLabel);
   courseData.distance.forEach((value) => {
     const td = document.createElement("td");
-    td.textContent = value;
+    td.textContent = value ?? "–";
     if (typeof holeLabels[distRow.children.length - 1] !== "number") td.classList.add("total-col");
     distRow.appendChild(td);
   });
@@ -111,7 +112,7 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
   parRow.appendChild(parLabel);
   courseData.par.forEach((value) => {
     const td = document.createElement("td");
-    td.textContent = value;
+    td.textContent = value ?? "–";
     if (typeof holeLabels[parRow.children.length - 1] !== "number") td.classList.add("total-col");
     parRow.appendChild(td);
   });
@@ -210,6 +211,12 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
       td.appendChild(wrap);
     } else if (hasScore) {
       td.textContent = val;
+    } else if (pickedUpHoles.includes(holeLabels[i])) {
+      td.textContent = "PU";
+      td.setAttribute("aria-label", "Picked up");
+    } else if (typeof holeLabels[i] !== "number" && normalizedOverrides) {
+      td.textContent = "–";
+      td.setAttribute("aria-label", "Incomplete gross total");
     }
   }
   tbody.appendChild(scoreRow);
@@ -231,32 +238,18 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
     // Only calculate points for actual holes (not Out/In/Tot) when we have data
     const strokeIndex = courseData.strokeIndex[i];
     const parValue = courseData.par[i];
-    const grossValue = parseInt(
-      scoreRow.children[i + 1] && scoreRow.children[i + 1].textContent,
-      10
-    );
-
+    const grossValue = grossScores[i];
+    const pickedUp = pickedUpHoles.includes(holeLabels[i]);
     if (
+      typeof holeLabels[i] === "number" &&
       handicap !== null &&
-      strokeIndex !== null &&
-      strokeIndex !== undefined &&
-      !Number.isNaN(grossValue) &&
-      parValue !== undefined
+      Number.isFinite(strokeIndex) &&
+      (Number.isFinite(grossValue) || pickedUp) &&
+      Number.isFinite(parValue)
     ) {
-      const baseShots = Math.floor(handicap / 18);
-      const extraShots = handicap % 18;
-      const shotsReceived = baseShots + (strokeIndex <= extraShots ? 1 : 0);
-
-      const netScore = grossValue - shotsReceived;
-      const diffFromPar = netScore - parValue;
-
-      let points = 0;
-      if (diffFromPar <= -3) points = 5; // albatross or better
-      else if (diffFromPar === -2) points = 4; // eagle
-      else if (diffFromPar === -1) points = 3; // birdie
-      else if (diffFromPar === 0) points = 2; // par
-      else if (diffFromPar === 1) points = 1; // bogey
-      else points = 0; // double bogey or worse
+      let points = calculateStablefordHole(grossValue, parValue, strokeIndex, handicap, {
+        pickedUp, maxPoints: options.maxPoints === undefined ? 5 : options.maxPoints,
+      });
 
       const holeNumber = holeLabels[i];
       const annotation = grossAnnotations.find((item) => item.hole === holeNumber);
@@ -273,11 +266,11 @@ function buildScorecardTable(courseName, playerName, year, options = {}) {
     }
 
     if (holeLabels[i] === "Out") {
-      td.textContent = outPoints || "";
+      td.textContent = normalizedOverrides ? outPoints : "";
     } else if (holeLabels[i] === "In") {
-      td.textContent = inPoints || "";
+      td.textContent = normalizedOverrides ? inPoints : "";
     } else if (holeLabels[i] === "Tot") {
-      td.textContent = totalPoints || "";
+      td.textContent = normalizedOverrides ? totalPoints : "";
     }
     pointsRow.appendChild(td);
   }
@@ -303,6 +296,8 @@ function renderResolvedScorecards(year, rowData, detailRow) {
         grossOverrides: round.gross,
         grossAnnotations: round.grossAnnotations,
         pointsOverrides: round.holeStableford,
+        pickedUpHoles: round.pickedUpHoles,
+        maxPoints: rowData.stablefordMaxPoints,
       });
       panel = document.createElement("div");
       panel.className = "scorecard-panel";
@@ -313,6 +308,12 @@ function renderResolvedScorecards(year, rowData, detailRow) {
       scroll.tabIndex = 0;
       scroll.appendChild(table);
       panel.appendChild(scroll);
+      if (round.pickedUpHoles?.length) {
+        const note = document.createElement("p");
+        note.className = "scorecard-historical-note";
+        note.textContent = "PU = picked up; zero Stableford points. Gross totals are unavailable for any nine containing a PU.";
+        panel.appendChild(note);
+      }
       if (round.grossAnnotations?.some((item) => item.type === "historical-par-normalisation")) {
         const note = document.createElement("p");
         note.className = "scorecard-historical-note";

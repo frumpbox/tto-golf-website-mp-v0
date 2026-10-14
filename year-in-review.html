@@ -105,12 +105,12 @@
           <div class="yir-player-cards">
             <div class="yir-player-card winner">
               <span class="yir-card-label">Champion</span>
-              <span class="yir-card-name">${review.winner}</span>
+              <span class="yir-card-name">${review.winner || 'TBC'}</span>
               ${review.margin ? `<span class="yir-card-margin">${review.margin}</span>` : ''}
             </div>
             <div class="yir-player-card runner-up">
               <span class="yir-card-label">Runner-Up</span>
-              <span class="yir-card-name">${review.runnerUp}</span>
+              <span class="yir-card-name">${review.runnerUp || 'TBC'}</span>
             </div>
           </div>
       `;

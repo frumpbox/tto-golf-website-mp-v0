@@ -49,7 +49,7 @@ export function getOverallLeaderboardRows() {
       if (b.averageRank === null) return -1;
       return a.averageRank - b.averageRank || a.sourceOrder - b.sourceOrder;
     })
-    .map((row, index) => ({ ...row, overallPosition: index + 1 }));
+    .map((row, index) => ({ ...row, overallPosition: row.averageRank === null ? null : index + 1 }));
 }
 
 export function getResolvedHistoricalRows(yearKey) {
@@ -63,11 +63,13 @@ export function getResolvedHistoricalRows(yearKey) {
       member: leaderboardData.players[result.playerId].displayName,
       position: result.position,
       handicapIndex: result.handicapIndex,
+      handicapIndexLabel: result.handicapIndexLabel,
       round1Handicap: result.rounds[0].courseHandicap,
       round2Handicap: result.rounds[1].courseHandicap,
       points: result.points,
       round1Points: result.rounds[0].stablefordPoints,
       round2Points: result.rounds[1].stablefordPoints,
+      stablefordMaxPoints: year.stablefordMaxPoints,
       rounds: result.rounds,
       playoff: result.playoff,
     }))
@@ -109,7 +111,7 @@ export function renderHistoricalLeaderboards(renderScorecards) {
       memberLink.textContent = rowData.member;
       memberLink.addEventListener("click", (event) => event.stopPropagation());
       cells[1].replaceChildren(memberLink);
-      setCell(group.summary, ".handicap-index", rowData.handicapIndex);
+      setCell(group.summary, ".handicap-index", rowData.handicapIndexLabel ?? rowData.handicapIndex);
       setCell(group.summary, ".handicap", rowData.round1Handicap);
       setCell(group.summary, ".handicap-r2", rowData.round2Handicap);
       setCell(group.summary, ".points", rowData.points);
