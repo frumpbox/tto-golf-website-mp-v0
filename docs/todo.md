@@ -24,3 +24,5 @@ This is the living checklist for finishing The Tyrrells Open website.
 
 - [x] Add and validate the complete 2026 tournament results, recorded playing handicaps, Scratch override and PU scorecards.
 - [ ] Complete Coxmoor's factual White-tee card with verified distances, course rating and slope (2026 par and SI are supplied).
+
+- [x] Simplify the 2026 conditions header to GOOD and replace displayed PU entries with documented net-double-bogey gross values, preserving zero points and original evidence.

@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 import { leaderboardData } from '../src/data/leaderboard-data.js';
 import { getResolvedHistoricalRows, getOverallLeaderboardRows } from '../src/leaderboard-renderer.js';
-import { calculateStablefordHole, calculateRoundStableford } from '../src/scoring.js';
+import { calculateStablefordHole, calculateRoundStableford, zeroPointGross } from '../src/scoring.js';
 const year = leaderboardData.years[2026];
 const expected = {
   'james-hall': [5.4,9,6,35,28,63,4],
@@ -67,17 +67,44 @@ test('independent per-hole allocation verifies every point and all expected tota
   }
 });
 
-test('PU remains null gross, zero points and explicitly listed; never zero strokes', () => {
-  let pickedUp=0;
-  for (const r of year.results) for (const round of r.rounds) {
-    assert.ok(!round.gross.includes(0));
-    const missing=round.gross.flatMap((score,i)=>score===null?[i+1]:[]);
-    assert.deepEqual(round.pickedUpHoles,missing);
-    for (const hole of missing) { pickedUp++;assert.equal(round.holeStableford[hole-1],0); }
-  }
-  assert.equal(pickedUp,9);
-  assert.equal(calculateStablefordHole(null,4,1,9,{pickedUp:true}),0);
+test('original PU evidence is preserved and nine display replacements are minimum zero-point gross', () => {
+  let replaced=0;
+  const expectedReplacements = {
+    'james-hall': [[18,7],[1,7]],
+    'sam-dynes': [[4,8,11,7,12,8],[]],
+    'felipe-milo': [[14,7],[]],
+    'fraser-hall': [[],[15,6,16,7]],
+    'tom-sutehall': [[],[18,8]],
+  };
+  for (const r of year.results) r.rounds.forEach((round,i) => {
+    assert.ok(round.gross.every(score=>Number.isInteger(score)&&score>0));
+    assert.deepEqual(round.pickedUpHoles,[],'numeric display must not render PU labels or notes');
+    const missing=round.recordedGross.flatMap((score,h)=>score===null?[h+1]:[]);
+    assert.deepEqual(round.sourcePickedUpHoles,missing);
+    const replacements=[];
+    round.recordedGross.forEach((score,h)=>{
+      if(score!==null) {assert.equal(round.gross[h],score,'recorded completed score unchanged');return;}
+      replaced++;
+      const gross=round.gross[h];
+      const received=Math.floor(round.courseHandicap/18)+(indexes[i][h]<=round.courseHandicap%18?1:0);
+      assert.equal(gross,pars[i][h]+received+2);
+      assert.equal(round.holeStableford[h],0);
+      assert.equal(Math.max(0,2+pars[i][h]-gross+received),0);
+      assert.equal(Math.max(0,2+pars[i][h]-(gross-1)+received),1,'one fewer stroke would earn a point');
+      assert.equal(zeroPointGross(pars[i][h],indexes[i][h],round.courseHandicap),gross);
+      replacements.push(h+1,gross);
+    });
+    assert.deepEqual(replacements,expectedReplacements[r.playerId]?.[i]||[]);
+    assert.equal(round.grossSource,missing.length?'reconstructed':'known');
+    if(missing.length) {
+      assert.equal(round.grossReconstruction.type,'zero-point-normalisation');
+      assert.deepEqual(round.grossReconstruction.holes,missing);
+    }
+  });
+  assert.equal(replaced,9);
+  assert.equal(calculateStablefordHole(null,4,1,9,{pickedUp:true}),0,'generic PU support remains available');
   assert.equal(calculateStablefordHole(null,4,1,9),null);
+  assert.equal(year.conditions,'Good');
 });
 
 test('Fraser Scratch label is separate from numeric index and preserves manual HCP 2/1', () => {
