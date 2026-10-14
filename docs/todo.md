@@ -2,7 +2,7 @@
 
 This is the living checklist for finishing The Tyrrells Open website.
 
-- [ ] Fix spelling on the TTO badge/crest graphic.
+- [x] Fix spelling on the TTO badge/crest graphic using James’s corrected reference (TYRRELLS).
 - [x] Complete the naming consistency cleanup.
 - [x] Correct Samuel 'Dynesy' Dynes throughout the active website.
 - [x] Import the complete Course Ratings workbook.
@@ -28,3 +28,8 @@ This is the living checklist for finishing The Tyrrells Open website.
 - [x] Simplify the 2026 conditions header to GOOD and replace displayed PU entries with documented net-double-bogey gross values, preserving zero points and original evidence.
 
 - [x] Integrate the approved 2025 R1 synthetic cards, James’s estimated 7.6 index and 7/9 handicaps, totals and final positions with the current site; retain missing R2 gross cards as unknown.
+
+- [x] Remove visible handicap estimate suffixes at James’s request; retain source provenance internally.
+- [ ] Publish the accumulated local changes on `feat/publish-approved-2025` together when James authorises the next release.
+
+- [x] Use James’s supplied reference crest across all six headers and the homepage hero, retaining site gold and transparent backgrounds.
