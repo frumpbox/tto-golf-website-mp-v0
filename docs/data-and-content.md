@@ -325,6 +325,9 @@ biographies, images, or publication facts.
 
 ### 2025 approved R1 synthetic scorecards
 
+Expanded R1 cards display a reconstruction notice, and estimated Handicap
+Indexes display an `(est.)` label in the leaderboard.
+
 James approved six synthetic Royal Ostend R1 hole Stableford patterns on
 13 October 2026 against the supplied results photograph: Dynes 34, Hall 27,
 Lewis 30, Milo 24, Stinton 31, and Sutehall 28. Exact original hole scores

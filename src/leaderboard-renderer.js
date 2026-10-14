@@ -63,7 +63,7 @@ export function getResolvedHistoricalRows(yearKey) {
       member: leaderboardData.players[result.playerId].displayName,
       position: result.position,
       handicapIndex: result.handicapIndex,
-      handicapIndexLabel: result.handicapIndexLabel,
+      handicapIndexLabel: result.handicapIndexLabel ?? (result.handicapIndexSource === "estimated" ? `${result.handicapIndex} (est.)` : undefined),
       round1Handicap: result.rounds[0].courseHandicap,
       round2Handicap: result.rounds[1].courseHandicap,
       points: result.points,
