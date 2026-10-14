@@ -1572,10 +1572,29 @@ export const historicalLeaderboardRecords = {
         {
           "courseHandicap": 16,
           "courseHandicapSource": "recorded",
-          "stablefordPoints": null,
-          "stablefordPointsSource": "unknown",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "stablefordPoints": 34,
+          "stablefordPointsSource": "recorded",
+          "holeStableford": [
+            2,
+            1,
+            3,
+            2,
+            2,
+            1,
+            2,
+            3,
+            2,
+            1,
+            2,
+            2,
+            0,
+            3,
+            2,
+            1,
+            2,
+            3
+          ],
+          "holeStablefordSource": "reconstructed"
         },
         {
           "courseHandicap": 16,
@@ -1605,27 +1624,46 @@ export const historicalLeaderboardRecords = {
           "holeStablefordSource": "recorded"
         }
       ],
-      "points": null,
-      "pointsSource": "unknown",
-      "position": null,
-      "positionSource": "unknown",
+      "points": 56,
+      "pointsSource": "derived",
+      "position": 3,
+      "positionSource": "derived",
       "playoff": null
     },
     "james-hall": {
-      "handicapIndex": null,
-      "handicapIndexSource": "unknown",
+      "handicapIndex": 7.6,
+      "handicapIndexSource": "estimated",
       "rounds": [
         {
-          "courseHandicap": null,
-          "courseHandicapSource": null,
-          "stablefordPoints": null,
-          "stablefordPointsSource": "unknown",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "courseHandicap": 7,
+          "courseHandicapSource": "derived",
+          "stablefordPoints": 27,
+          "stablefordPointsSource": "recorded",
+          "holeStableford": [
+            1,
+            2,
+            2,
+            1,
+            3,
+            0,
+            2,
+            1,
+            2,
+            2,
+            1,
+            2,
+            0,
+            2,
+            1,
+            2,
+            1,
+            2
+          ],
+          "holeStablefordSource": "reconstructed"
         },
         {
-          "courseHandicap": null,
-          "courseHandicapSource": null,
+          "courseHandicap": 9,
+          "courseHandicapSource": "derived",
           "stablefordPoints": 30,
           "stablefordPointsSource": "exact",
           "holeStableford": [
@@ -1651,10 +1689,10 @@ export const historicalLeaderboardRecords = {
           "holeStablefordSource": "recorded"
         }
       ],
-      "points": null,
-      "pointsSource": "unknown",
-      "position": null,
-      "positionSource": "unknown",
+      "points": 57,
+      "pointsSource": "derived",
+      "position": 2,
+      "positionSource": "derived",
       "playoff": null
     },
     "sam-lewis": {
@@ -1664,10 +1702,29 @@ export const historicalLeaderboardRecords = {
         {
           "courseHandicap": 9,
           "courseHandicapSource": "recorded",
-          "stablefordPoints": null,
-          "stablefordPointsSource": "unknown",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "stablefordPoints": 30,
+          "stablefordPointsSource": "recorded",
+          "holeStableford": [
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            0,
+            2,
+            2,
+            3,
+            1,
+            2,
+            2,
+            1,
+            2,
+            0,
+            2,
+            2
+          ],
+          "holeStablefordSource": "reconstructed"
         },
         {
           "courseHandicap": 11,
@@ -1697,10 +1754,10 @@ export const historicalLeaderboardRecords = {
           "holeStablefordSource": "recorded"
         }
       ],
-      "points": null,
-      "pointsSource": "unknown",
-      "position": null,
-      "positionSource": "unknown",
+      "points": 52,
+      "pointsSource": "derived",
+      "position": 4,
+      "positionSource": "derived",
       "playoff": null
     },
     "felipe-milo": {
@@ -1710,10 +1767,29 @@ export const historicalLeaderboardRecords = {
         {
           "courseHandicap": 8,
           "courseHandicapSource": "recorded",
-          "stablefordPoints": null,
-          "stablefordPointsSource": "unknown",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "stablefordPoints": 24,
+          "stablefordPointsSource": "recorded",
+          "holeStableford": [
+            1,
+            2,
+            1,
+            2,
+            0,
+            2,
+            1,
+            2,
+            2,
+            1,
+            2,
+            1,
+            0,
+            2,
+            1,
+            1,
+            2,
+            1
+          ],
+          "holeStablefordSource": "reconstructed"
         },
         {
           "courseHandicap": 11,
@@ -1743,10 +1819,10 @@ export const historicalLeaderboardRecords = {
           "holeStablefordSource": "recorded"
         }
       ],
-      "points": null,
-      "pointsSource": "unknown",
-      "position": null,
-      "positionSource": "unknown",
+      "points": 50,
+      "pointsSource": "derived",
+      "position": 5,
+      "positionSource": "derived",
       "playoff": null
     },
     "george-stinton": {
@@ -1756,10 +1832,29 @@ export const historicalLeaderboardRecords = {
         {
           "courseHandicap": 0,
           "courseHandicapSource": "recorded",
-          "stablefordPoints": null,
-          "stablefordPointsSource": "unknown",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "stablefordPoints": 31,
+          "stablefordPointsSource": "recorded",
+          "holeStableford": [
+            2,
+            1,
+            2,
+            3,
+            1,
+            2,
+            2,
+            0,
+            2,
+            2,
+            1,
+            2,
+            3,
+            1,
+            2,
+            1,
+            2,
+            2
+          ],
+          "holeStablefordSource": "reconstructed"
         },
         {
           "courseHandicap": 2,
@@ -1789,10 +1884,10 @@ export const historicalLeaderboardRecords = {
           "holeStablefordSource": "recorded"
         }
       ],
-      "points": null,
-      "pointsSource": "unknown",
-      "position": null,
-      "positionSource": "unknown",
+      "points": 59,
+      "pointsSource": "derived",
+      "position": 1,
+      "positionSource": "derived",
       "playoff": null
     },
     "tom-sutehall": {
@@ -1802,10 +1897,29 @@ export const historicalLeaderboardRecords = {
         {
           "courseHandicap": 14,
           "courseHandicapSource": "recorded",
-          "stablefordPoints": null,
-          "stablefordPointsSource": "unknown",
-          "holeStableford": null,
-          "holeStablefordSource": "unknown"
+          "stablefordPoints": 28,
+          "stablefordPointsSource": "recorded",
+          "holeStableford": [
+            1,
+            2,
+            2,
+            1,
+            2,
+            0,
+            3,
+            2,
+            1,
+            2,
+            2,
+            1,
+            2,
+            1,
+            2,
+            1,
+            1,
+            2
+          ],
+          "holeStablefordSource": "reconstructed"
         },
         {
           "courseHandicap": 18,
@@ -1835,10 +1949,10 @@ export const historicalLeaderboardRecords = {
           "holeStablefordSource": "recorded"
         }
       ],
-      "points": null,
-      "pointsSource": "unknown",
-      "position": null,
-      "positionSource": "unknown",
+      "points": 47,
+      "pointsSource": "derived",
+      "position": 6,
+      "positionSource": "derived",
       "playoff": null
     }
   }

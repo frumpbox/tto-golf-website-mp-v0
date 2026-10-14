@@ -73,8 +73,8 @@ Historical leaderboard expectations are normalized from the authoritative
 priority over recalculation from an uncertain handicap index. The verifier
 checks result integrity, historical scoring, handicap consistency, and
 playoff-derived positions independently using PASS, WARNING, UNKNOWN, and FAIL.
-Unknown results are stored as `null`, including every 2025 first round and
-final result. Approved
+Unknown results are stored as `null`. The approved 2025 first-round
+reconstructions and resolved final results are documented below. Approved
 populated-card corrections are marked `reconstructed`; unchanged cards with
 uncertain origin remain `existing-provenance-unknown`. George Stinton's known
 2023 historical handicap value is 2.7 and his approved playing HCP is 6 for
@@ -323,6 +323,26 @@ Before editing data, confirm which code currently consumes it. Divergent root
 copies are not authoritative. Do not invent scores, handicaps, ratings,
 biographies, images, or publication facts.
 
+### 2025 approved R1 synthetic scorecards
+
+James approved six synthetic Royal Ostend R1 hole Stableford patterns on
+13 October 2026 against the supplied results photograph: Dynes 34, Hall 27,
+Lewis 30, Milo 24, Stinton 31, and Sutehall 28. Exact original hole scores
+remain unavailable. Gross scores are derived from canonical par and stroke
+index using the agreed round handicaps; zero-point holes use the minimum
+gross that produces zero points. Cards carry `plausible-synthetic` metadata
+and reconstructed gross and hole Stableford provenance.
+
+James approved an estimated 2025 Handicap Index of 7.6, deriving course
+handicaps of 7 at Royal Ostend and 9 at Royal Zoute. This is an agreed estimate,
+not a recovered historical index. Other recorded handicaps are preserved.
+R2 recorded totals and hole Stableford remain unchanged; R2 gross cards
+remain unavailable. Final totals and positions are derived from the now
+complete round totals: Stinton 59 (1), Hall 57 (2), Dynes 56 (3), Lewis 52 (4),
+Milo 50 (5), and Sutehall 47 (6), matching the supplied photograph. Year in Review now shows George as winner,
+James as runner-up, and the two-point margin. Publication was requested on
+14 October 2026.
+
 ## 2026 recorded tournament results
 
 James supplied the authoritative 2026 White-tee gross cards, playing handicaps,
@@ -392,7 +412,8 @@ article and gallery remain unknown. Conditions are Good. No publication is impli
 
 Run `node --test tests/results-2026.test.js` for independent per-hole allocation,
 252-hole integrity, all fourteen target totals, Scratch override, numeric zero-point replacements and retained PU evidence,
-rank integration and pre-2026 resolved-data snapshot checks. Historical hashes
-are pinned to the pre-change `feat/tto-2026-placeholders` baseline (31f2110),
-which does not contain the separate, uncommitted 2025 reconstruction work in
-the main local preview checkout. That local work is preserved separately.
+rank integration and approved resolved-data snapshot checks. Snapshots for
+2020–2024 retain the original reviewed historical baseline; 2025 now uses the
+hole patterns, estimated index and results James explicitly approved. The
+2026 snapshot preserves the deployed numeric zero-point scorecards unchanged.
+Run `node --test tests/*.test.js` for both years' scoring and regression checks.

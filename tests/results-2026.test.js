@@ -134,7 +134,7 @@ test('recorded HCP drives scoring even when course rating and slope change', () 
   assert.equal(calculateStablefordHole(1,5,1,36),5,'historical cap preserved');
 });
 
-test('previous years are byte-equivalent resolved records to pre-change placeholder-branch baseline', () => {
+test('resolved tournament records match the approved historical snapshots', () => {
   const hashes=JSON.parse(fs.readFileSync(new URL('./fixtures/historical-results-sha256.json',import.meta.url)));
   for (const [y,hash] of Object.entries(hashes)) {
     assert.equal(createHash('sha256').update(JSON.stringify(leaderboardData.years[y])).digest('hex'),hash,`year ${y}`);

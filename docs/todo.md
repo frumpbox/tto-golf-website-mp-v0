@@ -26,3 +26,5 @@ This is the living checklist for finishing The Tyrrells Open website.
 - [ ] Complete Coxmoor's factual White-tee card with verified distances, course rating and slope (2026 par and SI are supplied).
 
 - [x] Simplify the 2026 conditions header to GOOD and replace displayed PU entries with documented net-double-bogey gross values, preserving zero points and original evidence.
+
+- [x] Integrate the approved 2025 R1 synthetic cards, James’s estimated 7.6 index and 7/9 handicaps, totals and final positions with the current site; retain missing R2 gross cards as unknown.

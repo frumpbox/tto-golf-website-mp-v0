@@ -462,7 +462,7 @@ const years = {
         playerId: "george-stinton",
         handicapIndex: 0, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
-          { courseKey: "royalOstend", gross: null },
+          { courseKey: "royalOstend", gross: [4,6,3,3,5,3,5,5,4,4,4,4,2,6,4,5,3,5], grossSource: "reconstructed", grossReconstruction: { type: "plausible-synthetic", reason: "James approved the synthetic hole Stableford pattern against the R1 total in the supplied 2025 results photo; original hole scores are unavailable. Gross derived from canonical par, stroke index and agreed course handicap; zero-point holes use minimum zero-point gross." } },
           { courseKey: "royalZoute", gross: null },
         ],
         playoff: null,
@@ -471,7 +471,7 @@ const years = {
         playerId: "sam-dynes",
         handicapIndex: 16, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
-          { courseKey: "royalOstend", gross: null },
+          { courseKey: "royalOstend", gross: [5,7,3,5,5,4,6,3,5,6,4,5,6,5,4,6,4,5], grossSource: "reconstructed", grossReconstruction: { type: "plausible-synthetic", reason: "James approved the synthetic hole Stableford pattern against the R1 total in the supplied 2025 results photo; original hole scores are unavailable. Gross derived from canonical par, stroke index and agreed course handicap; zero-point holes use minimum zero-point gross." } },
           { courseKey: "royalZoute", gross: null },
         ],
         playoff: null,
@@ -480,7 +480,7 @@ const years = {
         playerId: "james-hall",
         handicapIndex: 6, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
-          { courseKey: "royalOstend", gross: null },
+          { courseKey: "royalOstend", gross: [5,6,4,5,4,5,6,4,4,5,4,4,6,5,5,5,4,5], grossSource: "reconstructed", grossReconstruction: { type: "plausible-synthetic", reason: "James approved the synthetic hole Stableford pattern against the R1 total in the supplied 2025 results photo; original hole scores are unavailable. Gross derived from canonical par, stroke index and agreed course handicap; zero-point holes use minimum zero-point gross." } },
           { courseKey: "royalZoute", gross: null },
         ],
         playoff: null,
@@ -489,7 +489,7 @@ const years = {
         playerId: "felipe-milo",
         handicapIndex: 8, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
-          { courseKey: "royalOstend", gross: null },
+          { courseKey: "royalOstend", gross: [5,6,5,4,7,3,7,3,4,6,3,5,6,6,5,6,3,6], grossSource: "reconstructed", grossReconstruction: { type: "plausible-synthetic", reason: "James approved the synthetic hole Stableford pattern against the R1 total in the supplied 2025 results photo; original hole scores are unavailable. Gross derived from canonical par, stroke index and agreed course handicap; zero-point holes use minimum zero-point gross." } },
           { courseKey: "royalZoute", gross: null },
         ],
         playoff: null,
@@ -498,7 +498,7 @@ const years = {
         playerId: "sam-lewis",
         handicapIndex: 9, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
-          { courseKey: "royalOstend", gross: null },
+          { courseKey: "royalOstend", gross: [4,7,3,5,6,3,8,3,4,4,4,4,4,7,4,7,3,5], grossSource: "reconstructed", grossReconstruction: { type: "plausible-synthetic", reason: "James approved the synthetic hole Stableford pattern against the R1 total in the supplied 2025 results photo; original hole scores are unavailable. Gross derived from canonical par, stroke index and agreed course handicap; zero-point holes use minimum zero-point gross." } },
           { courseKey: "royalZoute", gross: null },
         ],
         playoff: null,
@@ -507,7 +507,7 @@ const years = {
         playerId: "tom-sutehall",
         handicapIndex: 14, // PLACEHOLDER — real handicap index not yet known; preserves current course handicap and Stableford total
         rounds: [
-          { courseKey: "royalOstend", gross: null },
+          { courseKey: "royalOstend", gross: [5,6,4,6,5,5,5,4,6,5,3,6,4,7,4,6,5,6], grossSource: "reconstructed", grossReconstruction: { type: "plausible-synthetic", reason: "James approved the synthetic hole Stableford pattern against the R1 total in the supplied 2025 results photo; original hole scores are unavailable. Gross derived from canonical par, stroke index and agreed course handicap; zero-point holes use minimum zero-point gross." } },
           { courseKey: "royalZoute", gross: null },
         ],
         playoff: null,
@@ -629,8 +629,8 @@ years[2023].summary.winner = "sam-lewis";
 years[2023].summary.runnerUp = "tom-sutehall";
 years[2024].summary.winner = "sam-lewis";
 years[2024].summary.runnerUp = "james-hall";
-years[2025].summary.winner = null;
-years[2025].summary.runnerUp = null;
+years[2025].summary.winner = "george-stinton";
+years[2025].summary.runnerUp = "james-hall";
 
 const yearOrder = [2020, 2021, 2022, 2023, 2024, 2025, 2026];
 
