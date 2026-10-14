@@ -7,7 +7,7 @@ This is the living checklist for finishing The Tyrrells Open website.
 - [x] Correct Samuel 'Dynesy' Dynes throughout the active website.
 - [x] Import the complete Course Ratings workbook.
 - [x] Normalize subjective Course Ratings to one generated hole-tier schema.
-- [x] Complete canonical factual course validation (28 canonical cards verified; 0 courses unresolved).
+- [x] Complete canonical factual course validation (28 canonical cards verified; the added Coxmoor card remains partially unresolved).
 - [ ] Add the completed player profiles.
 - [x] Inventory historical leaderboard/scorecard completeness by year and player.
 - [x] Replace the old ten-mismatch baseline with workbook-authoritative historical results.

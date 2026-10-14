@@ -259,24 +259,25 @@ Subjective totals are derived rather than stored. The official tiers are Gravy
 facility maximum is 46. Eighteen-hole courses use `/54 + /46 = /100`; nine-hole
 courses use `/27 + /46 = /73`.
 
-The website contains 28 course records: the 23 previous records plus
-Broadstone, Hayling, Aldeburgh, Hollinwell, and Pastures. The workbook
+The website contains 29 course records: the 23 previous records plus
+Broadstone, Hayling, Aldeburgh, Hollinwell, Pastures, and Coxmoor. The workbook
 represents 26 courses; 25 are rated and Royal Zoute is explicitly unrated.
-Stewart Creek and Silvertip are website-only and remain unrated. Pastures is
+Stewart Creek, Silvertip, and Coxmoor are website-only and remain unrated. Pastures is
 currently the only nine-hole course. Fifteen previously unrated website
 courses received authoritative workbook ratings in this import.
 
 Descriptions, photos, scorecards, websites, and played-year metadata remain
-incomplete for various courses. The five added courses contain only the
-authoritative subjective rating data and name/hole count; unknown metadata was
-not invented. Canonical factual validation is complete: all 28 courses now
-have deliberately selected and verified canonical factual cards. Pastures
+incomplete for various courses; unknown metadata is not invented. Twenty-eight
+courses have deliberately selected and verified complete canonical factual
+cards. Coxmoor is the 29th course and remains partially unresolved: its White-tee
+par and stroke index are supplied, while distances, course rating and slope
+remain unknown. Pastures
 remains a genuine nine-hole White - Front card; it is not duplicated into an
 artificial 18-hole configuration. Missing-card historical leaderboard
 reconstruction remains separate, unfinished work; the populated-data
 leaderboard verifier currently has no FAIL checks.
 
-Last verified: 23 August 2026
+Last verified: 14 October 2026
 
 ## Year in Review
 
