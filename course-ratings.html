@@ -7,51 +7,33 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="/src/styles/legacy.css" />
+  <link rel="stylesheet" href="/src/styles/homepage.css">
+  <link rel="stylesheet" href="/src/styles/championship.css">
 </head>
-<body>
+<body class="journal journal-pages course-ratings-journal" id="top">
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <nav>
-    <div class="container nav-layout">
-      <a href="index.html"><img src="/crest/tto-crest-gold.svg" class="crest-logo" alt="The Tyrrells Open home" /></a>
-      <h1>The Tyrrells Open</h1>
+    <header class="masthead">
+    <a class="wordmark" href="index.html" aria-label="The Tyrrells Open home"><img src="/crest/tto-crest-gold.svg" width="48" height="58" alt=""><span>The Tyrrells Open<small>The Championship Journal</small></span></a>
+    <nav aria-label="Main navigation">
+      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu" hidden><span>Menu</span><span class="menu-icon" aria-hidden="true"></span></button>
+      <ul id="primary-menu"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="leaderboard.html">Leaderboard</a></li><li><a href="course-ratings.html" aria-current="page">Course Ratings</a></li><li><a href="year-in-review.html">Year in Review</a></li><li><a href="shop.html">Shop <span aria-hidden="true">↗</span></a></li></ul>
+    </nav>
+  </header>
 
-      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+  <section class="journal-page-intro wrap" aria-labelledby="page-heading"><div class="section-label"><span>The collection / 29 courses</span><span>The Championship Journal</span></div><div class="intro-grid"><h1 id="page-heading">Where the<br><em>game takes us.</em></h1><p>From familiar fairways to new horizons. Explore the courses, the cards and our own ratings.</p></div></section>
 
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="leaderboard.html">Leaderboard</a></li>
-        <li><a href="course-ratings.html" class="active">Course Ratings</a></li>
-        <li><a href="year-in-review.html">Year in Review</a></li>
-        <li><a href="shop.html">Shop</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <section class="page-hero">
-    <div class="page-hero-overlay"></div>
-    <div class="page-hero-content">
-      <p class="page-hero-eyebrow">The Tyrrells Open</p>
-      <h2 class="page-hero-title">Course Ratings</h2>
-      <p class="page-hero-subtitle">Every course we've played, rated and reviewed.</p>
-    </div>
-  </section>
-
-  <main class="container">
-    <div id="course-summary-sections"></div>
+  <main id="main" class="container">
+    <div class="course-editorial"><figure><img src="/images/journal/01-golden-course-landscape-800.webp" width="1024" height="1536" alt="Golden grasses overlooking a golf course"><figcaption>From the TTO collection / Location unconfirmed</figcaption></figure><div><span class="eyebrow">Our perspective on the game</span><h2>A course is more<br>than <em>its scorecard.</em></h2><p>Our ratings sit alongside the factual course details. Select a course below to explore its hole ratings, facilities and canonical card.</p><p class="course-key">25 rated · 4 unrated · 29 in the collection</p></div></div><div id="course-summary-sections"></div>
 
     <div id="selected-course-panel"></div>
   </main>
 
-  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="/src/journal-pages.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const summarySections = document.getElementById("course-summary-sections");
@@ -222,6 +204,9 @@
         summarySections.appendChild(heading);
         var wrapper = document.createElement("div");
         wrapper.className = "table-wrapper";
+        wrapper.tabIndex = 0;
+        wrapper.setAttribute("role", "region");
+        wrapper.setAttribute("aria-label", holeCount + " hole course index; scroll horizontally for all columns");
         wrapper.innerHTML = "<table><thead><tr><th>Course</th><th>Location</th><th>Par</th><th>Distance</th><th>Overall</th></tr></thead><tbody></tbody></table>";
         summarySections.appendChild(wrapper);
         return wrapper.querySelector("tbody");
@@ -270,7 +255,7 @@
         summaryRow.style.cursor = "pointer";
         summaryRow.dataset.courseKey = key;
         summaryRow.innerHTML =
-          "<td>" + course.name + "</td>" +
+          "<td><button type=\"button\" class=\"course-select\" aria-expanded=\"false\">" + course.name + " <span aria-hidden=\"true\">↗</span></button></td>" +
           "<td>" + (course.location || "") + "</td>" +
           "<td>" + (parTotal || "TBC") + "</td>" +
           "<td>" + (distanceTotal ? distanceTotal + " yds" : "TBC") + "</td>" +
@@ -282,6 +267,7 @@
 
           if (currentlySelectedRow === this) {
             this.classList.remove("selected");
+            this.querySelector("button").setAttribute("aria-expanded", "false");
             currentlySelectedRow = null;
             panel.innerHTML = "";
             return;
@@ -289,8 +275,10 @@
 
           if (currentlySelectedRow) {
             currentlySelectedRow.classList.remove("selected");
+            currentlySelectedRow.querySelector("button").setAttribute("aria-expanded", "false");
           }
           this.classList.add("selected");
+          this.querySelector("button").setAttribute("aria-expanded", "true");
           currentlySelectedRow = this;
 
           panel.innerHTML = "";
@@ -316,15 +304,10 @@
           heading.appendChild(overallEl);
           leftCol.appendChild(heading);
 
-          var photosDiv = document.createElement("div");
-          photosDiv.className = "course-feature-photos";
-          for (var pi = 0; pi < 4; pi++) {
-            var placeholder = document.createElement("div");
-            placeholder.className = "course-photo-placeholder";
-            placeholder.textContent = "Photo " + (pi + 1);
-            photosDiv.appendChild(placeholder);
-          }
-          leftCol.appendChild(photosDiv);
+          var photoNote = document.createElement("p");
+          photoNote.className = "course-photo-note";
+          photoNote.textContent = "Course photography to follow.";
+          leftCol.appendChild(photoNote);
 
           var descDiv = document.createElement("div");
           descDiv.className = "course-feature-description";
@@ -396,7 +379,7 @@
             scorecardTbc.className = "course-feature-description";
             scorecardTbc.textContent = "Scorecard information TBC.";
             panel.appendChild(scorecardTbc);
-            panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            panel.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "nearest" });
             return;
           }
 
@@ -450,14 +433,18 @@
           scorecardTable.appendChild(tbodyDetail);
           var scorecardWrapper = document.createElement("div");
           scorecardWrapper.className = "table-wrapper";
+          scorecardWrapper.tabIndex = 0;
+          scorecardWrapper.setAttribute("role", "region");
+          scorecardWrapper.setAttribute("aria-label", course.name + " scorecard; scroll horizontally for all holes");
           scorecardWrapper.appendChild(scorecardTable);
           panel.appendChild(scorecardWrapper);
 
-          panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          panel.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "nearest" });
         });
       });
     });
   </script>
 
+  <footer class="site-footer"><div class="wrap"><div class="footer-top"><a class="wordmark" href="index.html"><img src="/crest/tto-crest-gold.svg" width="60" height="74" alt=""><span>The Tyrrells Open<small>Golf. Friendship. Bragging rights.</small></span></a><a class="back-top" href="#top">Back to the first tee <span aria-hidden="true">↑</span></a></div><p class="footer-statement">Until the <em>next round.</em></p><div class="footer-bottom"><span>The Tyrrells Open · Est. 2020</span><nav aria-label="Footer navigation"><a href="about.html">About Us</a><a href="leaderboard.html">Leaderboard</a><a href="course-ratings.html">Course Ratings</a><a href="year-in-review.html">Year in Review</a><a href="shop.html">Shop</a></nav></div></div></footer>
 </body>
 </html>

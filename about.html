@@ -7,53 +7,33 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="/src/styles/legacy.css" />
+  <link rel="stylesheet" href="/src/styles/homepage.css">
+  <link rel="stylesheet" href="/src/styles/championship.css">
 </head>
 
-<body>
+<body class="journal journal-pages about-journal" id="top">
+<a class="skip-link" href="#main">Skip to content</a>
 
   <!-- Navigation (same as homepage) -->
-  <nav>
-    <div class="container nav-layout">
-
-      <a href="index.html"><img src="/crest/tto-crest-gold.svg" class="crest-logo" alt="The Tyrrells Open home" /></a>
-
-      <h1>The Tyrrells Open</h1>
-
-      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About Us</a></li>
-        <li><a href="leaderboard.html">Leaderboard</a></li>
-        <li><a href="course-ratings.html">Course Ratings</a></li>
-        <li><a href="year-in-review.html">Year in Review</a></li>
-        <li><a href="shop.html">Shop</a></li>
-      </ul>
-    </div>
-  </nav>
+    <header class="masthead">
+    <a class="wordmark" href="index.html" aria-label="The Tyrrells Open home"><img src="/crest/tto-crest-gold.svg" width="48" height="58" alt=""><span>The Tyrrells Open<small>The Championship Journal</small></span></a>
+    <nav aria-label="Main navigation">
+      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu" hidden><span>Menu</span><span class="menu-icon" aria-hidden="true"></span></button>
+      <ul id="primary-menu"><li><a href="index.html">Home</a></li><li><a href="about.html" aria-current="page">About Us</a></li><li><a href="leaderboard.html">Leaderboard</a></li><li><a href="course-ratings.html">Course Ratings</a></li><li><a href="year-in-review.html">Year in Review</a></li><li><a href="shop.html">Shop <span aria-hidden="true">↗</span></a></li></ul>
+    </nav>
+  </header>
 
   <!-- Hero section -->
-  <section class="page-hero">
-    <div class="page-hero-overlay"></div>
-    <div class="page-hero-content">
-      <p class="page-hero-eyebrow">The Tyrrells Open</p>
-      <h2 class="page-hero-title">About Us</h2>
-      <p class="page-hero-subtitle">Meet the seven competitors of The Tyrrells Open.</p>
-    </div>
-  </section>
+  <section class="journal-page-intro wrap" aria-labelledby="page-heading"><div class="section-label"><span>The people / The Tyrrells Open</span><span>The Championship Journal</span></div><div class="intro-grid"><h1 id="page-heading">The usual<br><em>suspects.</em></h1><p>Seven competitors. A shared tradition. Meet the personalities behind the scorecards.</p></div></section>
 
   <!-- MAIN CONTENT -->
-  <main class="container">
+  <main id="main" class="container">
 
-    <div class="member-grid">
+    <figure class="roster-banner"><img src="/images/journal/03-tto-group-photo-1536.webp" srcset="/images/journal/03-tto-group-photo-800.webp 800w, /images/journal/03-tto-group-photo-1536.webp 1536w" sizes="90vw" width="1536" height="864" alt="Seven TTO competitors together on the golf course"><figcaption>The company makes the competition. / From the TTO photo collection</figcaption></figure><div class="roster-heading"><h2>Meet the field.</h2><p>Select a competitor to explore their profile.</p></div><div class="member-grid">
 
       <!-- James Hall -->
       <div class="member-card-premium" data-player-id="james-hall" role="button" tabindex="0" aria-expanded="false" aria-controls="player-profile">
@@ -117,7 +97,7 @@
 
       <!-- Fraser Hall -->
       <div class="member-card-premium" data-player-id="fraser-hall" role="button" tabindex="0" aria-expanded="false" aria-controls="player-profile">
-        <div class="member-card-photo">Photo coming soon</div>
+        <div class="member-card-photo"><span class="missing-portrait">FH<small>Portrait to follow</small></span></div>
         <div class="member-card-body">
           <h3 class="member-card-name">Fraser Hall</h3>
           <p class="member-card-title">TTO debut: 2026</p>
@@ -130,7 +110,8 @@
     <section id="player-profile" class="player-profile-expanded" aria-live="polite" hidden></section>
 
   </main>
- <script type="module" src="/src/main.js"></script>
+ <script type="module" src="/src/journal-pages.js"></script>
  <script type="module" src="/src/player-profiles.js"></script>
+  <footer class="site-footer"><div class="wrap"><div class="footer-top"><a class="wordmark" href="index.html"><img src="/crest/tto-crest-gold.svg" width="60" height="74" alt=""><span>The Tyrrells Open<small>Golf. Friendship. Bragging rights.</small></span></a><a class="back-top" href="#top">Back to the first tee <span aria-hidden="true">↑</span></a></div><p class="footer-statement">Until the <em>next round.</em></p><div class="footer-bottom"><span>The Tyrrells Open · Est. 2020</span><nav aria-label="Footer navigation"><a href="about.html">About Us</a><a href="leaderboard.html">Leaderboard</a><a href="course-ratings.html">Course Ratings</a><a href="year-in-review.html">Year in Review</a><a href="shop.html">Shop</a></nav></div></div></footer>
 </body>
 </html>

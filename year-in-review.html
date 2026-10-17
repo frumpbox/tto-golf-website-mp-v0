@@ -7,50 +7,32 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="/src/styles/legacy.css" />
+  <link rel="stylesheet" href="/src/styles/homepage.css">
+  <link rel="stylesheet" href="/src/styles/championship.css">
 </head>
-<body>
-  <nav>
-    <div class="container nav-layout">
-      <a href="index.html"><img src="/crest/tto-crest-gold.svg" class="crest-logo" alt="The Tyrrells Open home" /></a>
-      <h1>The Tyrrells Open</h1>
+<body class="journal journal-pages year-in-review-journal" id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+    <header class="masthead">
+    <a class="wordmark" href="index.html" aria-label="The Tyrrells Open home"><img src="/crest/tto-crest-gold.svg" width="48" height="58" alt=""><span>The Tyrrells Open<small>The Championship Journal</small></span></a>
+    <nav aria-label="Main navigation">
+      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu" hidden><span>Menu</span><span class="menu-icon" aria-hidden="true"></span></button>
+      <ul id="primary-menu"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="leaderboard.html">Leaderboard</a></li><li><a href="course-ratings.html">Course Ratings</a></li><li><a href="year-in-review.html" aria-current="page">Year in Review</a></li><li><a href="shop.html">Shop <span aria-hidden="true">↗</span></a></li></ul>
+    </nav>
+  </header>
 
-      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+  <section class="journal-page-intro wrap" aria-labelledby="page-heading"><div class="section-label"><span>The archive / Seven chapters</span><span>The Championship Journal</span></div><div class="intro-grid"><h1 id="page-heading">Worth<br><em>remembering.</em></h1><p>The courses, the competitors and the stories that outlive the scorecards.</p></div></section>
 
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="leaderboard.html">Leaderboard</a></li>
-        <li><a href="course-ratings.html">Course Ratings</a></li>
-        <li><a href="year-in-review.html" class="active">Year in Review</a></li>
-        <li><a href="shop.html">Shop</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <section class="page-hero">
-    <div class="page-hero-overlay"></div>
-    <div class="page-hero-content">
-      <p class="page-hero-eyebrow">The Tyrrells Open</p>
-      <h2 class="page-hero-title">Year in Review</h2>
-      <p class="page-hero-subtitle">Relive every season — the courses, the moments, the champions.</p>
-    </div>
-  </section>
-
-  <main class="container">
-    <div class="yir-tabs" id="yir-tabs"></div>
+  <main id="main" class="container">
+    <div class="archive-selector-label">Choose a chapter</div><div class="yir-tabs" id="yir-tabs" role="group" aria-label="Select championship year"></div>
 
     <div id="yir-content"></div>
   </main>
 
-  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="/src/journal-pages.js"></script>
   <script type="module">
     import { yearReviews, yearOrder } from '/src/data/year-review-data.js';
 
@@ -73,6 +55,7 @@
     }
 
     function selectYear(year) {
+      year = Number(year);
       selectedYear = year;
 
       const url = new URL(window.location);
@@ -81,6 +64,7 @@
 
       document.querySelectorAll('.yir-tab').forEach(t => {
         t.classList.toggle('active', parseInt(t.dataset.year) === year);
+        t.setAttribute('aria-pressed', String(Number(t.dataset.year) === year));
       });
 
       renderYear(year);
@@ -126,8 +110,8 @@
                 <polyline points="12 6 12 12 16 14"/>
               </svg>
             </div>
-            <p class="yir-coming-soon-title">Coming Soon</p>
-            <p class="yir-coming-soon-desc">The writeup for ${year} is being written. Check back later.</p>
+            <p class="yir-coming-soon-title">The story is still to come.</p>
+            <p class="yir-coming-soon-desc">The ${year} results are available. An annual writeup has not yet been added to the archive.</p>
           </div>`;
       }
 
@@ -139,7 +123,7 @@
           html += `<img class="yir-photo" src="${photo}" alt="${year} photo" />`;
         }
       } else {
-        html += `<p class="yir-gallery-placeholder">No photos yet</p>`;
+        html += `<p class="yir-gallery-placeholder">Verified photographs for this championship have not yet been added.</p>`;
       }
       html += `</div>`;
       html += `</div>`;
@@ -155,5 +139,6 @@
 
     selectYear(selectedYear);
   </script>
+  <footer class="site-footer"><div class="wrap"><div class="footer-top"><a class="wordmark" href="index.html"><img src="/crest/tto-crest-gold.svg" width="60" height="74" alt=""><span>The Tyrrells Open<small>Golf. Friendship. Bragging rights.</small></span></a><a class="back-top" href="#top">Back to the first tee <span aria-hidden="true">↑</span></a></div><p class="footer-statement">Until the <em>next round.</em></p><div class="footer-bottom"><span>The Tyrrells Open · Est. 2020</span><nav aria-label="Footer navigation"><a href="about.html">About Us</a><a href="leaderboard.html">Leaderboard</a><a href="course-ratings.html">Course Ratings</a><a href="year-in-review.html">Year in Review</a><a href="shop.html">Shop</a></nav></div></div></footer>
 </body>
 </html>
