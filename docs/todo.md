@@ -20,7 +20,7 @@ This is the living checklist for finishing The Tyrrells Open website.
 - [ ] Source and use a real photo from each specific TTO tournament year for Year in Review and potential year-specific leaderboard presentation.
 - [ ] Complete remaining course descriptions/photos/content.
 - [ ] Perform final desktop/mobile visual QA across all six pages.
-- [ ] Run final leaderboard verification and `npm run build` before publication.
+- [x] Run final leaderboard verification and `npm run build` before publication.
 
 - [x] Add and validate the complete 2026 tournament results, recorded playing handicaps, Scratch override and PU scorecards.
 - [ ] Complete Coxmoor's factual White-tee card with verified distances, course rating and slope (2026 par and SI are supplied).
@@ -33,3 +33,5 @@ This is the living checklist for finishing The Tyrrells Open website.
 - [ ] Publish the accumulated local changes on `feat/publish-approved-2025` together when James authorises the next release.
 
 - [x] Use James’s supplied reference crest across all six headers and the homepage hero, retaining site gold and transparent backgrounds.
+
+- [x] Implement and locally verify the approved six-page Championship Journal redesign, preserving historical scoring and source photography.
